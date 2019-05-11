@@ -14,10 +14,10 @@
 	border-width:3px;
 	
 	max-width:300px;
-	height:300px;
 	margin: 0px;
 	/*margin: 10px auto;*/
 	display:inline-block;
+	margin: 0 10px;
 
 }
 
@@ -58,14 +58,8 @@
 	height:300px;
 }
 
-.fa-thumbs-up
-{
-	font-size:80px;
-	position:absolute;
-	top:40%;
-}
 
-.fa-thumbs-down
+.fa-thumbs-down, .fa-thumbs-up
 {
 	font-size:80px;
 	vertical-align:middle;
@@ -74,8 +68,12 @@
 
 }
 
-.fa-thumbs-up
+.fa-thumbs-down
 {
-	margin-left:20px;
+	transform: scaleX(-1);
 }
 
+.fa-thumbs-up
+{
+	margin-bottom:50px;
+}
