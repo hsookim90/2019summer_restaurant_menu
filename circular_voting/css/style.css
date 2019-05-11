@@ -1,0 +1,81 @@
+.plate, .item-image, .alpha-bg
+{
+	border-radius:50%;
+}
+
+
+.plate
+{
+	background-color: #ffa500;
+	height: 100%;
+	width:100%;
+	position:relative;
+	border-style:solid;
+	border-width:3px;
+	
+	max-width:300px;
+	height:300px;
+	margin: 0px;
+	/*margin: 10px auto;*/
+	display:inline-block;
+
+}
+
+.item-image, .alpha-bg
+{
+	width:90%;
+	height:90%;
+	position:absolute;
+	margin-left:5%;
+	margin-top:5%;
+}
+
+.alpha-bg
+{
+	background: rgba(70,130,180,0.65);
+}
+
+.alpha-bg:hover
+{
+	background: none;
+}
+
+.plate p
+{
+  	font-family: "Amatic SC";
+	color:white;
+	font-size:80px;
+	font-weight:bold;
+	text-align:center;
+}
+
+.menu-item
+{
+	/* 300px makes font right pos */
+	background-color:blue;
+	position:relative;
+	/*margin: 10px auto;*/
+	height:300px;
+}
+
+.fa-thumbs-up
+{
+	font-size:80px;
+	position:absolute;
+	top:40%;
+}
+
+.fa-thumbs-down
+{
+	font-size:80px;
+	vertical-align:middle;
+	color:pink;
+	height:100%;
+
+}
+
+.fa-thumbs-up
+{
+	margin-left:20px;
+}
+
