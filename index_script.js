@@ -2,7 +2,7 @@
 toggle between hiding and showing the dropdown content */
 function myFunction() {
     document.getElementById("myDropdown").classList.toggle("show");
-}
+  }
   
 function filterFunction() {
     var input, filter, ul, li, a, i;
@@ -18,4 +18,4 @@ function filterFunction() {
             a[i].style.display = "none";
         }
     }
-}
+  }
