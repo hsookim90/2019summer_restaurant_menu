@@ -26,11 +26,16 @@ function openTab(event, tabName) {
 
 function initMap() {
     var options = {
-        zoom: 8,
-        center:{lat:49.8951, lng:97.1384} 
+        zoom: 11,
+        center:{lat:49.8951, lng:-97.1384} 
     }
 
     var map = new google.maps.Map(document.getElementById('map'), options);
+
+    var marker = new google.maps.Marker({
+        position:{lat:49.8951, lng:97.1384},
+        map: map
+    });
 }
 
 document.getElementById("defaultOpen").click();
