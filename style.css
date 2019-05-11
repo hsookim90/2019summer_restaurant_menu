@@ -21,6 +21,11 @@ header h2 {
     padding: 50px 0;
 }
 
+header p {
+    font-size: 18px;
+    text-align: left;
+}
+
 /* Create two columns/boxes that floats next to each other */
 nav {
     float: left;
@@ -35,6 +40,7 @@ nav {
   border: 1px solid #ccc;
   background-color: #f1f1f1;
   width: 100%;
+  height: 300px;
 }
 
 /* Style the buttons inside the tab */
@@ -63,7 +69,7 @@ nav {
 }
 
 /* Style the tab content */
-.tabContent {
+.tabcontent {
   float: left;
   padding: 0px 12px;
   border: 1px solid #ccc;
@@ -75,9 +81,9 @@ nav {
 article {
     float: left;
     padding: 20px;
-    width: 70%;
+    width: 80%;
     background-color: #f1f1f1;
-    height: 300px; /* only for demonstration, should be removed */
+    height: 100%;
 }
 
 /* Clear floats after the columns */
@@ -90,7 +96,7 @@ section:after {
 /* Style the footer */
 footer {
     background-color: #777;
-    padding: 10px;
+    padding: 30px;
     text-align: center;
     color: white;
 }
@@ -172,4 +178,9 @@ div.desc {
 	font-size: 80px;
 	font-weight: bold;
 	text-align: center;
+}
+
+#map {
+    height: 500px;
+    width: 100%;
 }
