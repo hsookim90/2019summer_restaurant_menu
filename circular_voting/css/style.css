@@ -8,14 +8,10 @@
 {
 	background-color: #ffa500;
 	height: 100%;
-	width:100%;
+	width:300px;
 	position:relative;
 	border-style:solid;
 	border-width:3px;
-	
-	max-width:300px;
-	margin: 0px;
-	/*margin: 10px auto;*/
 	display:inline-block;
 	margin: 0 10px;
 
@@ -51,11 +47,11 @@
 
 .menu-item
 {
-	/* 300px makes font right pos */
 	background-color:blue;
-	position:relative;
-	/*margin: 10px auto;*/
+	margin: 20px auto;
+	/* 300px makes font right pos */
 	height:300px;
+	width:500px;
 }
 
 
