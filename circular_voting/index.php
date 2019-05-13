@@ -19,6 +19,26 @@
 		  </div>
 	  	<i class="fas fa-thumbs-up"></i>
 	  </section>
+	  <section class = "menu-item">
+		<i class="fas fa-thumbs-down"></i>
+		  <div class = "plate">
+			<img src = "https://lh5.ggpht.com/_OaYG005JPDs/TVr8btiAytI/AAAAAAAACuA/7aZpNQQxKbE/s640/Chana%20Masala%20above%20close.jpg" class = "item-image">
+			<div class = 'alpha-bg'>
+				<p>Chickpeas</p>
+			</div>
+		  </div>
+	  	<i class="fas fa-thumbs-up"></i>
+	  </section>
+	  <section class = "menu-item">
+		<i class="fas fa-thumbs-down"></i>
+		  <div class = "plate">
+			<img src = "https://lh5.ggpht.com/_OaYG005JPDs/TVr8btiAytI/AAAAAAAACuA/7aZpNQQxKbE/s640/Chana%20Masala%20above%20close.jpg" class = "item-image">
+			<div class = 'alpha-bg'>
+				<p>Chickpeas</p>
+			</div>
+		  </div>
+	  	<i class="fas fa-thumbs-up"></i>
+	  </section>
 	<script>
 		const THUMB_UP = document.querySelector(".fa-thumbs-up"); 
 		THUMB_UP.style.color="green";
