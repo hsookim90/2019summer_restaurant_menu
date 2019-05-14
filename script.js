@@ -16,6 +16,7 @@ function openTab(event, tabName) {
     loadData(tabName);
 }
 
+// AJAX
 // function loadData(tabName) {
 //     $(document).ready(function() {
 //         $("#" + tabName).click(function() {
@@ -24,6 +25,7 @@ function openTab(event, tabName) {
 //     });
 // }
 
+// https://www.youtube.com/watch?v=Zxf1mnP5zcw&t=601s
 function initMap() {
     var options = {
         zoom: 11,
@@ -36,6 +38,23 @@ function initMap() {
         position:{lat:49.8951, lng:-97.1384},
         map: map
     });
+
+    // map.data.loadGeoJson('Neighbourhood.geojson');
+
+    // var script = document.createElement('script');
+    // script.src = 'Neighbourhood.geojson';
+    // document.getElementsByTagName('head')[0].appendChild(script);
+
+    // window.eqfeed_callback = function(results) {
+    //     for (var i = 0; i < results.features.length; i++) {
+    //         var coords = results.features[i].geometry.coordinates;
+    //         var latLng = new google.maps.LatLng(coords[1],coords[0]);
+    //         var marker = new google.maps.Marker({
+    //             position: latLng,
+    //             map: map
+    //         });
+    //     }
+    // }
 }
 
 document.getElementById("defaultOpen").click();
