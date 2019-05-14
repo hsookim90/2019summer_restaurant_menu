@@ -9,9 +9,12 @@
   	<link rel="stylesheet" type="text/css" href="css/style.css">
   	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Amatic SC">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    	<script src="js/script.js" defer></script>
 
   </head>
   <body>
+	<section id = "menu-items">
+
 	  <section class = "menu-item">
 		<i class="fas fa-thumbs-down"></i>
 		  <div class = "plate">
@@ -31,22 +34,7 @@
 		echo createMenuItem("soup");
 	?>
 
-
-	<script>
-
-		var upVoteCount = 0;
-
-		function upVote()
-		{
-				console.log("in upvote");
-				upVoteCount++;
-				console.log(upVoteCount);
-		}
-
-		const THUMB_UP = document.querySelector(".fa-thumbs-up");
-		THUMB_UP.style.color="green";
-		THUMB_UP.addEventListener("click", upVote);
-	</script>
+	</section>
 
   </body>
 </html>
