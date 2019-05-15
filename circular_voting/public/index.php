@@ -32,6 +32,17 @@
 		echo createMenuItem("apples");
 		echo createMenuItem("tomatoe");
 		echo createMenuItem("soup");
+
+		// did not create with rating or hours, think of what to do for  that later
+		$args = ['name' => 'Rockwood Urban Grill', 'address' => '50 Sage Creek Blvd',
+		 				 'phoneNum' => '204-256-7625', 'website' =>'rockwoodgrill.ca',
+						  'menuItems' => 'TODO'];
+    $restaurant = new Restaurant($args);
+		// $menu_item_dummy['itemName' => 'chicken', 'itenNumber' => 3];
+		$menu_item_dummy = ['itemName' => 'chicken', 'itemNumber' => '3'];
+		// $restaurant.createMenuItem($menu_item_dummy);
+		$restaurant->createItem($menu_item_dummy);
+		// $restaurant.createMenuItem($args);
 	?>
 
 	</section>
