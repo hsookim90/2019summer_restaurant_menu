@@ -23,23 +23,46 @@ class Restaurant {
     $this->rating = $args['rating'] ?? '';
     $this->hours = $args['hours'] ?? '';
 
-		// TODO find itemCount from menut items array length
+    // $this->menuitems = $args['menuItems'] ?? [];
+    // $menuItemsAsString = $args['menuItems'] ?? [];
+
+		if (isset($args['menuItems']))
+		{
+			$this->initializeMenu($args['menuItems']);
+		}
+
+	}
+
+	private function initializeMenu($menuItemsAsString)
+	{
+		foreach($menuItemsAsString as $item)
+		{
+			// $this->itemCount++;
+			// $itemCountArray=['itemCount'=>$this->itemCount];
+			// createItem(array_merge($menuItemsAsString, $itemCountArray));
+
+			// createItem($menuItemsAsString + $itemCountArray);
+			$this->createItem($item);
+		}
 	}
 
 	public function createItem($args=[])
 	{
-		$menuItem = new MenuItem($args);
+		$this->itemCount++;
+		$itemCountArray=['itemCount'=>$this->itemCount];
 
-		$menuItems[]=$menuItem;
+		$menuItem = new MenuItem($args+$itemCountArray);
+		$this->menuItems[]=$menuItem;
 
-		$var = $args['itemName'] ?? '';
-		$this->itemCount+=5;
+		// $this->itemCount+=5;
 		echo $this->itemCount;
 
 
 
 		$menuItem->printHTML();
 	}
+
+	// TODO: delete item function
 }
 
 ?>

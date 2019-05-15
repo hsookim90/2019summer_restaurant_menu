@@ -34,14 +34,23 @@
 		echo createMenuItem("soup");
 
 		// did not create with rating or hours, think of what to do for  that later
+
+		// $menuItems =
+		$stubMenuItem1 = ['itemName'=>'chickpears', 'price'=>4];
+		$stubMenuItem2 = ['itemName'=>'rice', 'price'=>2];
+		$stubMenuItem3 = ['itemName'=>'bananas', 'price'=>3];
+		$stubMenuItems = [$stubMenuItem1, $stubMenuItem2, $stubMenuItem3];
+
 		$args = ['name' => 'Rockwood Urban Grill', 'address' => '50 Sage Creek Blvd',
 		 				 'phoneNum' => '204-256-7625', 'website' =>'rockwoodgrill.ca',
-						  'menuItems' => 'TODO'];
+						  'menuItems' => $stubMenuItems];
     $restaurant = new Restaurant($args);
 		// $menu_item_dummy['itemName' => 'chicken', 'itenNumber' => 3];
 		$menu_item_dummy = ['itemName' => 'chicken', 'itemNumber' => '3'];
 		// $restaurant.createMenuItem($menu_item_dummy);
-		$restaurant->createItem($menu_item_dummy);
+
+		// $restaurant->createItem($menu_item_dummy);
+		$restaurant->createItem(['itemName' => 'chicken']);
 		// $restaurant.createMenuItem($args);
 	?>
 

@@ -3,6 +3,11 @@
 class MenuItem {
 	private $itemNumber;
 	private $itemName;
+	private $price;
+	private $imageLink;
+	private $thumbsUp;
+	private $thumbsDown;
+
 
 	private $upVoteNumber = 0;
 	private $downVoteNumber = 0;
@@ -12,6 +17,7 @@ class MenuItem {
 	{
     $this->itemNumber = $args['itemNumber'] ?? '';
     $this->itemName = $args['itemName'] ?? '';
+		$this->price = $args['price'] ?? 0;
 	}
 
 
@@ -30,5 +36,6 @@ class MenuItem {
 		$displayCode .= "</section>";
 		echo $displayCode;
 	}
+
 }
 ?>
