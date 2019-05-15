@@ -10,23 +10,35 @@
     </head>
 
     <body>
-        <!-- <form id="useroption" action="/action_page.php" method="POST"> -->
-        <form id="useroption">
-            Your location:<br>
-            <!-- userloc -->
-            <input type="text" name="userloc"><br>
+        <!-- https://www.youtube.com/watch?v=AftND9WHhr4 -->
+        <div class="blurredBox">
+            <h2>Welcome to Foodie's menu</h2>
+            <form action="">
+                <p>Email</p>
+                <input type="email" placeholder="Enter Email">
+                <p>Password</p>
+                <input type="password" placeholder="Enter Password">
+                <input type="submit" value="Sign In">
+                <p><input type="checkbox">Remember Me</p>
+            </form>
 
-            Your Language:<br>
+            <!-- sending userloc to the server -->
+            <!-- <form action="" method="POST"></form>
+                <p>Your location:<br></p>
+                <input type="userloc" placeholder="Enter Your Location"><br>
+            </form> -->
+
+            <!-- https://www.nomensa.com/blog/2010/7-tips-for-multi-lingual-website-accessibility -->
+            <!-- <p>Your Language:<br></p>
             <div class="dropdown">
                 <button onclick="myFunction()" class="dropbtn">Your Location</button>
                 <div id="myDropdown" class="dropdown-content">
-                    <!-- userlang -->
-                    <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()" name="userlang">
-                    <a href="#English">English</a>
-                    <a href="#French">français</a>
-                    <a href="#Korean">한국어</a>
+                    <input type="userlang" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
+                    <a href="#english">English</a>
+                    <a href="#french">français</a>
+                    <a href="#korean">한국어</a>
                 </div>
-            </div>
-        </form>
+            </div> -->
+        </div>
     </body>
 </html>
