@@ -1,0 +1,39 @@
+{
+  "type": "FeatureCollection",
+  "feature": [
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          49.822465,
+          -97.152559
+        ]
+      },
+      "type": "Feature",
+      "properties": {
+        "category": "restaurant",
+        "hours": "4am - 11pm",
+        "description": "on pembina",
+        "name": "McDonald's",
+        "phone": "(204) 949-6019"
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          49.833982,
+          -97.115085
+        ]
+      },
+      "type": "Feature",
+      "properties": {
+        "category": "restaurant",
+        "hours": "Open 24 hours",
+        "description": "in st vital",
+        "name": "McDonald's",
+        "phone": "(204) 949-6042"
+      }
+    }
+  ]
+}

@@ -76,6 +76,13 @@ body {
     margin-top: 15%;
 }
 
+.blurredBox a {
+    color: #fff;
+    font-size: 14px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
 input[type=checkbox] {
     width: 20%;
 }

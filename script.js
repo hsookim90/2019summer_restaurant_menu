@@ -32,14 +32,17 @@ function initMap() {
         center:{lat:49.8951, lng:-97.1384} 
     }
 
+    // 
     var map = new google.maps.Map(document.getElementById('map'), options);
 
+    // add a marker to the map
     var marker = new google.maps.Marker({
         position:{lat:49.8951, lng:-97.1384},
         map: map
     });
 
-    // map.data.loadGeoJson('Neighbourhood.geojson');
+    // load geojson data
+    map.data.loadGeoJson('winnipegLocalRestaurants.json');
 
     // var script = document.createElement('script');
     // script.src = 'Neighbourhood.geojson';
