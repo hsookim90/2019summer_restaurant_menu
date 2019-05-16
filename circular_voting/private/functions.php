@@ -1,23 +1,46 @@
 <?php
 
-$upvoteCounter = 0;
+function url_for($script_path) {
+  // add the leading '/' if not present
+  if($script_path[0] != '/') {
+    $script_path = "/" . $script_path;
+  }
+  return WWW_ROOT . $script_path;
+}
 
-function createMenuItem($name)
-{
-	global $upvoteCounter;
-	$upvoteCounter++;
-	$displayCode = "<section id = 'menu-item-{$upvoteCounter}' class = 'menu-item'>";
-	$displayCode .= "<i class='fas fa-thumbs-down'></i>";
-	$displayCode .= "<div class = 'plate'>";
-	$displayCode .= "<img src = 'https://lh5.ggpht.com/_OaYG005JPDs/TVr8btiAytI/AAAAAAAACuA/7aZpNQQxKbE/s640/Chana%20Masala%20above%20close.jpg' class = 'item-image'>";
-	$displayCode .= "<div class = 'alpha-bg'>";
-	// $displayCode .= "<p>Chickpeas</p>";
-	$displayCode .= "<p>" . $name . "</p>";
-	$displayCode .= "</div>";
-	$displayCode .= "</div>";
-	$displayCode .= "<i class='fas fa-thumbs-up'></i>";
-	$displayCode .= "</section>";
-	return $displayCode;
+function u($string="") {
+  return urlencode($string);
+}
+
+function raw_u($string="") {
+  return rawurlencode($string);
+}
+
+function h($string="") {
+  return htmlspecialchars($string);
+}
+
+function error_404() {
+  header($_SERVER["SERVER_PROTOCOL"] . " 404 Not Found");
+  exit();
+}
+
+function error_500() {
+  header($_SERVER["SERVER_PROTOCOL"] . " 500 Internal Server Error");
+  exit();
+}
+
+function redirect_to($location) {
+  header("Location: " . $location);
+  exit;
+}
+
+function is_post_request() {
+  return $_SERVER['REQUEST_METHOD'] == 'POST';
+}
+
+function is_get_request() {
+  return $_SERVER['REQUEST_METHOD'] == 'GET';
 }
 
 ?>
