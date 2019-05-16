@@ -12,10 +12,11 @@ class MenuItem {
 	private $upVoteNumber = 0;
 	private $downVoteNumber = 0;
 
-	// TODO: constructor to pass itemnumber, so getHTML as no parameters
+	// menu itemNumber is meaningless when not created by restaurant instance
+	// but still able to make menu item without restaurant
 	function __construct($args=[])
 	{
-    $this->itemNumber = $args['itemNumber'] ?? '';
+    $this->itemNumber = $args['itemCount'] ?? 0;
     $this->itemName = $args['itemName'] ?? '';
 		$this->price = $args['price'] ?? 0;
 	}
@@ -23,12 +24,26 @@ class MenuItem {
 
 	public function printHTML()
 	{
+		// for reference, what the html looks like:
+		// here for future reference if need to change html/css
+		// TODO delete this before production
+
+	  // <section class = "menu-item">
+		// <i class="fas fa-thumbs-down"></i>
+		//   <div class = "plate">
+		// 	<img src = "https://lh5.ggpht.com/_OaYG005JPDs/TVr8btiAytI/AAAAAAAACuA/7aZpNQQxKbE/s640/Chana%20Masala%20above%20close.jpg" class = "item-image">
+		// 	<div class = 'alpha-bg'>
+		// 		<p>Chickpeas</p>
+		// 	</div>
+		//   </div>
+	  // 	<i class="fas fa-thumbs-up"></i>
+	  // </section>
+
 		$displayCode = "<section id = 'menu-item-{$this->itemNumber}' class = 'menu-item'>";
 		$displayCode .= "<i class='fas fa-thumbs-down'></i>";
 		$displayCode .= "<div class = 'plate'>";
 		$displayCode .= "<img src = 'https://lh5.ggpht.com/_OaYG005JPDs/TVr8btiAytI/AAAAAAAACuA/7aZpNQQxKbE/s640/Chana%20Masala%20above%20close.jpg' class = 'item-image'>";
 		$displayCode .= "<div class = 'alpha-bg'>";
-		// $displayCode .= "<p>Chickpeas</p>";
 		$displayCode .= "<p>" . $this->itemName . "</p>";
 		$displayCode .= "</div>";
 		$displayCode .= "</div>";
@@ -36,6 +51,5 @@ class MenuItem {
 		$displayCode .= "</section>";
 		echo $displayCode;
 	}
-
 }
 ?>

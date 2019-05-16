@@ -9,9 +9,6 @@ class Restaurant {
 	private $menuItems = [];
 	private $rating;
 	private $hours;
-	// List of items
-	// method to display item list
-	// create item method to increment itemCount and pass itemNumber
 
 	function __construct($args=[])
 	{
@@ -19,12 +16,8 @@ class Restaurant {
     $this->address = $args['address'] ?? '';
     $this->phoneNum = $args['phoneNum'] ?? '';
     $this->website = $args['website'] ?? '';
-    // $this->menuitems = $args['menu_items'] ?? '';
     $this->rating = $args['rating'] ?? '';
     $this->hours = $args['hours'] ?? '';
-
-    // $this->menuitems = $args['menuItems'] ?? [];
-    // $menuItemsAsString = $args['menuItems'] ?? [];
 
 		if (isset($args['menuItems']))
 		{
@@ -33,19 +26,18 @@ class Restaurant {
 
 	}
 
+	// not sure necessary in production
+	// but nice way to quickly initialize menu items list in dev
 	private function initializeMenu($menuItemsAsString)
 	{
 		foreach($menuItemsAsString as $item)
 		{
-			// $this->itemCount++;
-			// $itemCountArray=['itemCount'=>$this->itemCount];
-			// createItem(array_merge($menuItemsAsString, $itemCountArray));
-
-			// createItem($menuItemsAsString + $itemCountArray);
 			$this->createItem($item);
 		}
 	}
 
+	// menuitem's itemNumber is dictated by where it is in the restaurant's item list
+	// new items will be at the end of the list, therefore high item # is down on the list
 	public function createItem($args=[])
 	{
 		$this->itemCount++;
@@ -54,15 +46,18 @@ class Restaurant {
 		$menuItem = new MenuItem($args+$itemCountArray);
 		$this->menuItems[]=$menuItem;
 
-		// $this->itemCount+=5;
 		echo $this->itemCount;
 
-
-
+		// TODO: This function does 2 things.
+		// 			 Should move the print, probably to the constructor
+		//			 Or some sort of printing function, will decide later
 		$menuItem->printHTML();
 	}
 
-	// TODO: delete item function
+	// TODO: delete item function, needed for user variable list
+
+	// TODO: edit functions for moving up and down list,
+	// 			 note will have to update itemNumber of menu items as well
 }
 
 ?>
