@@ -30,13 +30,6 @@ function initMap() {
         center: pyrmont,
         zoom: 11
     });
-
-    // var script = document.createElement('script');
-    // // This example uses a local copy of the GeoJSON stored at
-    // // http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_week.geojsonp
-    // // script.src = 'https://developers.google.com/maps/documentation/javascript/examples/json/earthquake_GeoJSONP.js';
-    // script.src = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=49.8951,-97.1384&radius=5000&type=restaurant&key=AIzaSyANSsJmxJqYNxohpoCaTgXuX0bIlrMrZu8';
-    // document.getElementsByTagName('head')[0].appendChild(script);
     
     var request = {
         location: pyrmont,
@@ -44,22 +37,10 @@ function initMap() {
         type: ['restaurant']
     };
 
+
     service = new google.maps.places.PlacesService(map);
     service.nearbySearch(request, callback);
 }
-
-// Loop through the results array and place a marker for each
-// set of coordinates.
-// window.eqfeed_callback = function(results) {
-//     for (var i = 0; i < results.features.length; i++) {
-//         var coords = results.features[i].geometry.coordinates;
-//         var latLng = new google.maps.LatLng(coords[1],coords[0]);
-//         var marker = new google.maps.Marker({
-//         position: latLng,
-//         map: map
-//         });
-//     }
-// }
 
 function callback(results, status) {
     if (status == google.maps.places.PlacesServiceStatus.OK) {
@@ -76,9 +57,27 @@ function createMarker(place) {
         position: place.geometry.location
     });
 
+    // address_components are only available in the results of a Place Details request, not a Place Search request. So you'll need to pass the reference ID of each place through a Place Details request in order to get the postal_code.
     google.maps.event.addListener(marker, 'click', function() {
-        infowindow.setContent(place.name);
-        infowindow.open(map, this);
+        var request = {
+            reference: place.reference
+        };
+
+        service.getDetails(request, function(details, status) {            
+            infowindow.setContent(
+                '<div><strong>' + details.name + '</strong><br>'
+                + 'Address: ' + details.formatted_address + '<br>'
+                + 'Phone: ' + details.formatted_phone_number+ '<br>'
+                + 'Price range: ' + details.price_level + '<br>'
+                // price range: 0 (Free), 1 (Inexpensive), ..., 5 (Very Expensive)
+                + 'Rating: ' + details.rating + '<br>'
+                + 'Website: ' + details.website + '<br>'
+                + 'Open Hours: ' + details.opening_hours.weekday_text + '<br>'
+                + '</div>'
+            );
+
+            infowindow.open(map, marker);
+        });
     });
 }
 
