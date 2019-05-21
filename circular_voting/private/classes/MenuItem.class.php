@@ -42,6 +42,7 @@ class MenuItem {
 		// TODO have vars populate from the database
 
 		// $displayCode .= "<section id = 'menu-item-{$this->itemNumber}' class = 'menu-item'>";
+
 		$displayCode = "<section id = 'menu-item-" . h($this->itemNumber)  . "' class = 'menu-item'>";
 		$displayCode .= "<p id= 'upVotesID' style = 'text-align:right'>upvotes = 27</p>";
 		$displayCode .= "<p id= 'downVotesID' style = 'text-align:right'>downvotes =3</p>";
@@ -55,6 +56,12 @@ class MenuItem {
 		$displayCode .= "<i class='fas fa-thumbs-up'></i>";
 		$displayCode .= "</section>";
 		echo $displayCode;
+	}
+
+	// created to test if can compare private var of another instance of same class
+	public function compareItem($comparedItem)
+	{
+		$comparison = $this->price == $comparedItem->price;
 	}
 }
 ?>

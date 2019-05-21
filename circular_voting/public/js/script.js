@@ -19,7 +19,7 @@ function upVoteOld()
         {
 					parent.style.backgroundColor = "green";
 					var upVoteText = document.querySelector('#' + parent.id + ' #upVotesID');
-					
+
 					// TODO replace hardcode below with relevant info
 					var num = 9;
 					upVoteText.innerText = ('upvotes ' + num);

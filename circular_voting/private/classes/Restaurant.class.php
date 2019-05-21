@@ -9,6 +9,8 @@ class Restaurant {
 	private $menuItems = [];
 	private $rating;
 	private $hours;
+	private static $restaurantCount = 0;
+	private $restaurantID;
 
 	function __construct($args=[])
 	{
@@ -18,6 +20,9 @@ class Restaurant {
     $this->website = $args['website'] ?? '';
     $this->rating = $args['rating'] ?? '';
     $this->hours = $args['hours'] ?? '';
+    self::$restaurantCount++;
+    $this->restaurantID = self::$restaurantCount;
+
 
 		if (isset($args['menuItems']))
 		{
@@ -34,6 +39,7 @@ class Restaurant {
 		{
 			$this->createItem($item);
 		}
+		$this->printMenu();
 	}
 
 	// menuitem's itemNumber is dictated by where it is in the restaurant's item list
@@ -47,17 +53,26 @@ class Restaurant {
 		$this->menuItems[]=$menuItem;
 
 		echo $this->itemCount;
-
-		// TODO: This function does 2 things.
-		// 			 Should move the print, probably to the constructor
-		//			 Or some sort of printing function, will decide later
-		$menuItem->printHTML();
 	}
 
 	// TODO: delete item function, needed for user variable list
 
 	// TODO: edit functions for moving up and down list,
 	// 			 note will have to update itemNumber of menu items as well
+	//
+
+	public function printMenu()
+	{
+		echo "<section id='restaurant-" . h($this->restaurantID) . "'>";
+		//echo "<section id='restaurant-id'>";
+
+		foreach($this->menuItems as $menuItem)
+		{
+			$menuItem->printHTML();
+		}
+
+		echo "</section>";
+	}
 }
 
 ?>
