@@ -50,7 +50,9 @@ class Restaurant {
 		$itemCountArray=['itemCount'=>$this->itemCount];
 
 		$menuItem = new MenuItem($args+$itemCountArray);
-		$this->menuItems[]=$menuItem;
+		//$this->menuItems[]=$menuItem;
+		// changed menuItems from reg array to associative key value to address items by item number
+		$this->menuItems[$this->itemCount] = $menuItem;
 
 		echo $this->itemCount;
 	}
@@ -66,12 +68,18 @@ class Restaurant {
 		echo "<section id='restaurant-" . h($this->restaurantID) . "'>";
 		//echo "<section id='restaurant-id'>";
 
-		foreach($this->menuItems as $menuItem)
+		foreach($this->menuItems as $key => $menuItem)
 		{
 			$menuItem->printHTML();
 		}
 
 		echo "</section>";
+	}
+
+	public function incrementUpVoteByItemNumber($number)
+	{
+		// menuItem's key should be the menu item
+		$this->menuItems[$number]->incrementUpvote;
 	}
 }
 

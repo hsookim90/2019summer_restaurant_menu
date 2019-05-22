@@ -19,6 +19,7 @@ class MenuItem {
     $this->itemNumber = $args['itemCount'] ?? 0;
     $this->itemName = $args['itemName'] ?? '';
 		$this->price = $args['price'] ?? 0;
+		$this->upVoteNumber = $args['upVoteNumber'] ?? 0;
 	}
 
 
@@ -56,6 +57,22 @@ class MenuItem {
 		$displayCode .= "<i class='fas fa-thumbs-up'></i>";
 		$displayCode .= "</section>";
 		echo $displayCode;
+	}
+
+	// created to test if can compare private var of another instance of same class
+	public function compareItem($comparedItem)
+	{
+		$comparison = $this->price == $comparedItem->price;
+	}
+
+	public function hasMoreUpvotes($comparedItem)
+	{
+		return $this->upVoteNumber>$comparedItem->upVoteNumber;
+	}
+
+	public function incrementUpvote()
+	{
+		$this->upVoteNumber++;
 	}
 }
 ?>

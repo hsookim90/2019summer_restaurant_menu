@@ -21,6 +21,7 @@
 		$stubMenuItem1 = ['itemName'=>'chickpears', 'price'=>4];
 		$stubMenuItem2 = ['itemName'=>'rice', 'price'=>2];
 		$stubMenuItem3 = ['itemName'=>'bananas', 'price'=>3];
+
 		$stubMenuItems = [$stubMenuItem1, $stubMenuItem2, $stubMenuItem3];
 
 		// did not create with rating or hours, think of what to do for that later
@@ -33,6 +34,10 @@
 
 		// note createItem is public so can make item from outside Restaurant like so:
 		// $restaurant->createItem(['itemName' => 'chicken']);
+
+		$item1 = new MenuItem(['itemCount'=>1, 'itemName'=>'rice', 'price'=>2]);
+		$item2 = new MenuItem(['itemCount'=>2, 'itemName'=>'rice', 'price'=>3]);
+		$item1->compareItem($item2);
 	?>
 
 	</section>
