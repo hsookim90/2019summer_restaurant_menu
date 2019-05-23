@@ -81,6 +81,49 @@ class Restaurant {
 		// menuItem's key should be the menu item
 		$this->menuItems[$number]->incrementUpvote;
 	}
+
+	// item liked then want to put it in right position of array
+	// 1. while loop compare and 2. swap
+	// public function updatePositions($fromIndex = 0, $toIndex = count($this->menuItems))
+	public function updatePositions($votedID, $fromIndex = 0, $toIndex = 0)
+	{
+		// used isset over array_key_exists b/c elements never initialized with null
+		if(isset($this->menuItems[$votedID]))
+		{
+			$currPosition = array_search($votedID, $this->menuItems);
+		}
+
+		// might need to make itemCountNumber getter in menuItem
+		// then can get item from key which is item number
+
+		// while($votedMenuItem->hasMoreUpvotes())
+	}
+
+	// TODO: convert to private, made public to test while making
+	public function isOrderDescending()
+	{
+		$orderDescending = true;
+
+		$itemsValueArray = array_values($this->menuItems);
+
+		$arrLength = count($itemsValueArray);
+		// $arrLength = 3;
+		$currIndex = 0;
+
+		while ($currIndex < ($arrLength-1) && $orderDescending!==false)
+		{
+			$currItem = $itemsValueArray[$currIndex];
+			$nextItem = $itemsValueArray[$currIndex+1];
+			if($currItem->hasLessUpvotes($nextItem))
+			{
+				$orderDescending = false;
+			}
+			$currIndex++;
+		}
+
+		return $orderDescending;
+	}
+
 }
 
 ?>
