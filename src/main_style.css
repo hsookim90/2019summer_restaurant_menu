@@ -4,7 +4,7 @@ body {
 }
 
 /* ------------------------------------------------------------------------- */
-/* Style the header */
+/* header */
 header {
     background-image: url("http://localhost/2019summer_restaurant_menu/images/dishes.jpg");
     height: 200px;
@@ -27,25 +27,15 @@ section {
     height: 80%;
 }
 
-.left-align-in-header {
-    position: absolute;
-    left: 0px;
-    width: 300px;
-    padding: 10px;
-    font-size: 25px;
-}
-
 /* ------------------------------------------------------------------------- */
-/*  Create two columns/boxes that floats next to each other */
-/* Style the tab */
+/* tab */
 .tab {
     float: left;
     border: 1px solid #ccc;
     background-color: #f1f1f1;
     width: 100%;
-
-    /* overflow: auto;
-    white-space: nowrap; */
+    overflow: auto;
+    white-space: nowrap;
 }
 
 /* Style the buttons inside the tab */
@@ -83,6 +73,14 @@ section {
     height: 100%;
 }
 
+.right-align {
+    position: absolute;
+    right: 15px;
+    margin: 20px;
+    font-size: 18px;
+}
+
+/* article */
 article {
     float: left;
     padding: 20px;
@@ -126,7 +124,7 @@ div.desc {
 }
 
 /* ------------------------------------------------------------------------- */
-/* Style the footer */
+/* footer */
 footer {
     background-color: #777;
     padding: 30px;

@@ -13,7 +13,7 @@ function openTab(event, tabName) {
     document.getElementById(tabName).style.display = "block";
     event.currentTarget.className += " active";
 
-    loadData(tabName);
+    // loadData(tabName);
 }
 
 // https://www.youtube.com/watch?v=Zxf1mnP5zcw&t=601s
@@ -83,4 +83,10 @@ function createMarker(place) {
     });
 }
 
-document.getElementById("defaultOpen").click();
+window.onload = function() {
+    startTab();
+}
+
+function startTab() {
+    document.getElementById("defaultOpen").click();
+}

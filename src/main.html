@@ -14,10 +14,6 @@
 
 <body>        
     <header>
-        <div class="left-align-in-header">
-            <p>Your Location</p>
-            <p>Type of restaurant</p>
-        </div>
         <h2>Restaurant Menu</h2>
     </header>
 
@@ -27,6 +23,12 @@
                 <button class="tablinks" onclick="openTab(event, 'Trend')" id="defaultOpen">Trend</button>
                 <button class="tablinks" onclick="openTab(event, 'Promotion')">Promotion</button>
                 <button class="tablinks" onclick="openTab(event, 'Near Me')">Near Me</button>
+            </div>
+
+            <div class="right-align" style="overflow:hidden;">
+                <p style="float: left;">Your Location</p>
+                <p style="float: right;">Type of restaurant</p>
+                <!-- get location and type from server -->
             </div>
         </nav>
 
