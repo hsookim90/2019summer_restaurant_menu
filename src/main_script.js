@@ -23,6 +23,7 @@ var infowindow;
 
 function initMap() {
     var pyrmont = new google.maps.LatLng(49.8951,-97.1384);
+    // TODO : get the dynamic lat and lng
     infowindow = new google.maps.InfoWindow();
 
     map = new google.maps.Map(document.getElementById('map'), {
@@ -74,6 +75,7 @@ function createMarker(place) {
                 + 'Website: ' + details.website + '<br>'
                 + 'Open Hours: ' + details.opening_hours.weekday_text + '<br>'
                 + '</div>'
+                // TODO make a line box to the specific restaurant page
             );
 
             infowindow.open(map, marker);
