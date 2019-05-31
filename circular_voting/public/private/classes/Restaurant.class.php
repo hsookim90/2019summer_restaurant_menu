@@ -87,22 +87,35 @@ class Restaurant {
 	// public function updatePositions($fromIndex = 0, $toIndex = count($this->menuItems))
 	public function updatePositions($votedID, $fromIndex = 0, $toIndex = 0)
 	{
-		// used isset over array_key_exists b/c elements never initialized with null
-		if(isset($this->menuItems[$votedID]))
+		$this->makeOrderDescending();
+
+		$step = $fromIndex>=$toIndex ? -1: 1;
+
+		if ($this->isOrderDescending() && isset($this->menuItems[$votedID]))
 		{
-			$currPosition = array_search($votedID, $this->menuItems);
-		}
+			$this->menuItems[$votedID]->incrementUpvote();
 
-		// might need to make itemCountNumber getter in menuItem
-		// then can get item from key which is item number
-
-		// while($votedMenuItem->hasMoreUpvotes())
-
-		if (isOrderDescending()&&isset($this->menuItems[$votedID]))
-		{
 			$arrValues = array_values($this->menuItems);
 			$arrKeys = array_keys($this->menuItems);
+
+			$position = array_search($votedID, $arrKeys);
+
+			$shiftedPosition = $position;
+
+			// note descending not gonna work here due to $i<, best to do interface behaviour parameterizaiton instead
+			// TODO: change to above comment later
+			$currItem = $arrValues[$position];
+			for ($i = $position; $i>$toIndex; $i+=$step)
+			{
+					$comparedItem = $arrValues[$i+$step];
+					if ($currItem->hasMoreUpvotes($comparedItem))
+					{
+						$shiftedPosition+=$step;
+					}
+			}
+			return $shiftedPosition;
 		}
+
 	}
 
 	// TODO: convert to private, made public to test while making
@@ -131,12 +144,13 @@ class Restaurant {
 		return $orderDescending;
 	}
 
+	// TODO make function private in production and delete direct unit tests
 	public function makeOrderDescending()
 	{
-		usort($this->menuItems, array($this, "cmp"));
+		uasort($this->menuItems, array($this, "cmp"));
 	}
 
-	public function cmp($a, $b)
+	private function cmp($a, $b)
 	{
 		if ($a->hasLessUpvotes($b))
 		{
@@ -150,6 +164,28 @@ class Restaurant {
 		else {
 			return 0;
 		}
+	}
+
+	public function moveElementNewest(&$array, $from, $to, $length = null)
+	{
+		$fromElementArray = array_slice($array, $from, 1, true);
+		$keys = array_keys($array);
+		unset($array[$keys[$from]]);
+
+		// unset affects length for the next slice's length
+		$unsetOffset = 0;
+		if ($from < $to)
+		{
+			$unsetOffset = -1;
+		}
+
+		$tempArray = array_slice($array, 0, $to+$unsetOffset, true);
+		$tempArray+=$fromElementArray;
+		$array = $tempArray + array_slice($array, $to+$unsetOffset, count($array)-($to-1), true);
+	  echo 'new move element final array AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA';
+	  echo '<pre>';
+	   print_r($array);
+	  echo '</pre>';
 	}
 }
 
