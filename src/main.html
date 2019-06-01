@@ -19,21 +19,52 @@
 
     <section>
         <nav>                
-            <div class="tab">
-                <button class="tablinks" onclick="openTab(event, 'Trend')" id="defaultOpen">Trend</button>
-                <button class="tablinks" onclick="openTab(event, 'Promotion')">Promotion</button>
-                <button class="tablinks" onclick="openTab(event, 'Near Me')">Near Me</button>
-            </div>
+            <div class="scrolltab">
+                <button class="tablinks" onclick="openTab(event, 'home_usr')" id="defaultOpen">Home</button>
+                <!-- <button class="tablinks" onclick="openTab(event, 'home_nonusr')">Home</button> -->
+                <button class="tablinks" onclick="openTab(event, 'trend')">Trend</button>
+                <button class="tablinks" onclick="openTab(event, 'promotion')">Promotion</button>
+                <button class="tablinks" onclick="openTab(event, 'near_me')">Near Me</button>
+                
+                <!-- <div class="dropdown">
+                    <button class="dropbtn" onclick="myFunction()">Genre
+                        <i class="fa fa-caret-down"></i>
+                    </button>
+                    <div class="dropdown-content" id="myDropdown">
+                        <button type="button">Italian</button>
+                        <button type="button">Indian</button>
+                        <button type="button">Cajun</button>
+                        <button type="button">Soul</button>
+                        <button type="button">Thai</button>
+                        <button type="button">Greek</button>
+                    </div>
+                </div> -->
 
-            <div class="right-align" style="overflow:hidden;">
-                <p style="float: left;">Your Location</p>
-                <p style="float: right;">Type of restaurant</p>
                 <!-- get location and type from server -->
+                <!-- <div class="tablinks">
+                    <div class="right-align" style="overflow:hidden;">
+                        <p style="float: left;">Your Location</p>
+                        <p style="float: right;">Type of restaurant</p>
+                    </div>
+                </div> -->
             </div>
         </nav>
 
         <article>
-            <div id="Trend" class="tabcontent">
+            <div id="home_usr" class="tabcontent">
+                <div class="searchbar">
+                    <input type="text" placeholder="Search..." name="search">
+                    <button type="submit">Search</button>
+                </div>
+
+                <div id="map_main"></div>
+            </div>
+
+            <div id="home_nonusr" class="tabcontent">
+
+            </div>
+
+            <div id="trend" class="tabcontent">
                 <h3>Trend</h3>
                 <div clsss="container">
                     <div class="row">
@@ -59,14 +90,14 @@
                 </div>
             </div>
             
-            <div id="Promotion" class="tabcontent">
+            <div id="promotion" class="tabcontent">
                 <h3>Promotion</h3>
                 <p>blah</p>
             </div>
             
-            <div id="Near Me" class="tabcontent">
+            <div id="near_me" class="tabcontent">
                 <h3>Near Me</h3>
-                <div id="map"></div>
+                <div id="map_near_me"></div>
             </div>
         </article>
     </section>

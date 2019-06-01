@@ -29,7 +29,7 @@ section {
 
 /* ------------------------------------------------------------------------- */
 /* tab */
-.tab {
+.scrolltab {
     float: left;
     border: 1px solid #ccc;
     background-color: #f1f1f1;
@@ -39,7 +39,7 @@ section {
 }
 
 /* Style the buttons inside the tab */
-.tab button {
+.scrolltab button {
     display: inline-block;
     background-color: inherit;
     color: black;
@@ -50,17 +50,16 @@ section {
     cursor: pointer;
     transition: 0.3s;
     font-size: 17px;
-
     text-decoration: none;
 }
 
 /* Change background color of buttons on hover */
-.tab button:hover {
+.scrolltab button:hover {
     background-color: #ddd;
 }
 
 /* Create an active/current "tab button" class */
-.tab button.active {
+.scrolltab button.active {
     background-color: #ccc;
 }
 
@@ -74,12 +73,63 @@ section {
 }
 
 .right-align {
-    position: absolute;
     right: 15px;
-    margin: 20px;
-    font-size: 18px;
 }
 
+/* Dropdown */
+/* https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_dropdown_navbar_click */
+.dropdown {
+    float: left;
+    overflow: hidden;
+}
+
+.dropdown .dropbtn {
+    font-size: 16px; 
+    border: none;
+    outline: none;
+    color: white;
+    padding: 14px 16px;
+    background-color: inherit;
+    font-family: inherit; /* Important for vertical align on mobile phones */
+    margin: 0; /* Important for vertical align on mobile phones */
+}
+
+.dropdown:hover .dropbtn {
+    background-color: red;
+}
+
+/* Dropdown content (hidden by default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+  
+/* Links inside the dropdown */
+.dropdown-content button {
+    float: none;
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+  
+/* Add a grey background color to dropdown links on hover */
+.dropdown-content button:hover {
+    background-color: #ddd;
+}
+  
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+
+/* ------------------------------------------------------------------------- */
 /* article */
 article {
     float: left;
@@ -117,9 +167,14 @@ div.desc {
     text-align: center;
 }
 
-/* google maps */
-#map {
+#map_main {
     height: 500px;
+    width: 500px;
+    margin: 20px;
+}
+
+#map_near_me {
+    height: 600px;
     width: 100%;
 }
 
@@ -141,5 +196,14 @@ other, on small screens */
     nav, article {
         width: 100%;
         height: auto;
+    }
+
+    .searchbar input[type=text], .searchbar button {
+        float: none;
+        display: block;
+        text-align: left;
+        width: 100%;
+        margin: 0;
+        padding: 14px;
     }
 }
