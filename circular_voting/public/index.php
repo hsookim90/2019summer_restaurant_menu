@@ -30,7 +30,9 @@
 						  'menuItems' => $stubMenuItems];
 
     $restaurant = new Restaurant($stubRestaurantArgs);
+		$_SESSION['restaurants'] = [];
     $_SESSION['restaurants'][]=$restaurant;
+    // $_SESSION['restaurants'][0]=$restaurant;
 
 		// note createItem is public so can make item from outside Restaurant like so:
 		// $restaurant->createItem(['itemName' => 'chicken']);

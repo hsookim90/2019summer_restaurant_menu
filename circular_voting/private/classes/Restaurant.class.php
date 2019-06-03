@@ -11,6 +11,7 @@ class Restaurant {
 	private $hours;
 	private static $restaurantCount = 0;
 	private $restaurantID;
+	// $currentFilter = new UpvotesFilter();
 
 	function __construct($args=[])
 	{
@@ -79,7 +80,7 @@ class Restaurant {
 	public function incrementUpVoteByItemNumber($number)
 	{
 		// menuItem's key should be the menu item
-		$this->menuItems[$number]->incrementUpvote;
+		$this->menuItems[$number]->incrementUpvote();
 	}
 
 	// item liked then want to put it in right position of array
@@ -87,19 +88,15 @@ class Restaurant {
 	// public function updatePositions($fromIndex = 0, $toIndex = count($this->menuItems))
 	public function updatePositions($votedID, $fromIndex = 0, $toIndex = 0)
 	{
-		// used isset over array_key_exists b/c elements never initialized with null
-		if(isset($this->menuItems[$votedID]))
-		{
-			$currPosition = array_search($votedID, $this->menuItems);
-		}
+		$filterObject = new UpvotesFilter();
+		// return $this->currentFilter->findNewPosition($this->menuItems, $votedID, $fromIndex, $toIndex);
+		// return $filterObject->findNewPosition($this->menuItems, $votedID, $fromIndex, $toIndex);
+		return $filterObject->findNewPosition($this->menuItems, $votedID);
 
-		// might need to make itemCountNumber getter in menuItem
-		// then can get item from key which is item number
-
-		// while($votedMenuItem->hasMoreUpvotes())
 	}
 
 	// TODO: convert to private, made public to test while making
+	// note that if all equal, also passes
 	public function isOrderDescending()
 	{
 		$orderDescending = true;
@@ -124,6 +121,45 @@ class Restaurant {
 		return $orderDescending;
 	}
 
+	// TODO make function private in production and delete direct unit tests
+	public function makeOrderDescending()
+	{
+		uasort($this->menuItems, array($this, "cmp"));
+	}
+
+	private function cmp($a, $b)
+	{
+		if ($a->hasLessUpvotes($b))
+		{
+			// note if want order ascending change return to -1.
+			return 1;
+		}
+		elseif ($a->hasMoreUpvotes($b)) {
+			// note if want order ascending change return to 1.
+			return -1;
+		}
+		else {
+			return 0;
+		}
+	}
+
+	public function moveElement(&$array, $from, $to, $length = null)
+	{
+		if ($from===$to) return;
+
+		$fromElementArray = array_slice($array, $from, 1, true);
+		$keys = array_keys($array);
+		unset($array[$keys[$from]]);
+
+		// unset affects length for the next slice's length
+		$unsetOffset = ($from < $to) ? -1 : 0;
+
+		$tempArray = array_slice($array, 0, $to+$unsetOffset, true);
+		$tempArray+=$fromElementArray;
+
+		// 'to-1' to account for the unsetted element
+		$array = $tempArray + array_slice($array, $to+$unsetOffset, count($array)-($to-1), true);
+	}
 }
 
 ?>

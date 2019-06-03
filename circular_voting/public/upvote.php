@@ -27,6 +27,11 @@
     echo 'true';
     $rest = $_SESSION['restaurants'][0];
 		// $menuItems = $rest->menuItems;
+		// $rest->printMenu();
+
+		$rest->incrementUpVoteByItemNumber($id);
+		$rest->updatePositions($id);
+		echo 'start of br <br><br><br><br>';
 		$rest->printMenu();
   }
   else {

@@ -45,7 +45,7 @@ class MenuItem {
 		// $displayCode .= "<section id = 'menu-item-{$this->itemNumber}' class = 'menu-item'>";
 
 		$displayCode = "<section id = 'menu-item-" . h($this->itemNumber)  . "' class = 'menu-item'>";
-		$displayCode .= "<p id= 'upVotesID' style = 'text-align:right'>upvotes = 27</p>";
+		$displayCode .= "<p id= 'upVotesID' style = 'text-align:right'>upvotes = " . h($this->upVoteNumber) . "</p>";
 		$displayCode .= "<p id= 'downVotesID' style = 'text-align:right'>downvotes =3</p>";
 		$displayCode .= "<i class='fas fa-thumbs-down'></i>";
 		$displayCode .= "<div class = 'plate'>";

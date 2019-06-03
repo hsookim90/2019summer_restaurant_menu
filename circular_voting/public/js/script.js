@@ -27,6 +27,9 @@ function upVoteOld()
 					upVoteText.innerText = ('upvotes ' + num);
         }
         console.log('Result: ' + result);
+				var bodyElement = document.body;
+				bodyElement.innerHTML = result;
+				addThumbsUpListners();
       }
     };
     // multiple values maybe like so: xhr.send( "cmd=ping&url=www.google.com" );
@@ -38,4 +41,12 @@ const THUMBS_UP = document.querySelectorAll(".fa-thumbs-up");
 
 for(i=0; i < THUMBS_UP.length; i++) {
 	THUMBS_UP.item(i).addEventListener("click", upVote);
+}
+
+function addThumbsUpListners()
+{
+	const THUMBS_UP = document.querySelectorAll(".fa-thumbs-up");
+	for(i=0; i < THUMBS_UP.length; i++) {
+		THUMBS_UP.item(i).addEventListener("click", upVote);
+	}
 }
