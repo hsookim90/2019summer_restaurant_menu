@@ -52,6 +52,8 @@
 	/* 300px makes font right pos */
 	height:300px;
 	width:500px;
+	/* pos relative for temp upvote/delete # display. may delete later */
+	position: relative;
 }
 
 
@@ -72,4 +74,18 @@
 .fa-thumbs-up
 {
 	margin-bottom:50px;
+}
+
+.upVotesID, .downVotesID
+{
+	color:orange;
+	position: absolute;
+	top:10px;
+	font-size: 20px;
+	font-weight: bold;
+}
+
+.upVotesID
+{
+	right:0px;
 }

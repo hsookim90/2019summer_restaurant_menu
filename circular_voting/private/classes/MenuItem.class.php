@@ -45,8 +45,6 @@ class MenuItem {
 		// $displayCode .= "<section id = 'menu-item-{$this->itemNumber}' class = 'menu-item'>";
 
 		$displayCode = "<section id = 'menu-item-" . h($this->itemNumber)  . "' class = 'menu-item'>";
-		$displayCode .= "<p id= 'upVotesID' style = 'text-align:right'>upvotes = " . h($this->upVoteNumber) . "</p>";
-		$displayCode .= "<p id= 'downVotesID' style = 'text-align:right'>downvotes =3</p>";
 		$displayCode .= "<i class='fas fa-thumbs-down'></i>";
 		$displayCode .= "<div class = 'plate'>";
 		$displayCode .= "<img src = 'https://lh5.ggpht.com/_OaYG005JPDs/TVr8btiAytI/AAAAAAAACuA/7aZpNQQxKbE/s640/Chana%20Masala%20above%20close.jpg' class = 'item-image'>";
@@ -55,6 +53,8 @@ class MenuItem {
 		$displayCode .= "</div>";
 		$displayCode .= "</div>";
 		$displayCode .= "<i class='fas fa-thumbs-up'></i>";
+		$displayCode .= "<p class= 'upVotesID' >upvotes = " . h($this->upVoteNumber) . "</p>";
+		$displayCode .= "<p class= 'downVotesID' >downvotes =3</p>";
 		$displayCode .= "</section>";
 		echo $displayCode;
 	}
