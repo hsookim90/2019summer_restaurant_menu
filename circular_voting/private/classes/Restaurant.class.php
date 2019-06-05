@@ -71,7 +71,8 @@ class Restaurant {
 
 		foreach($this->menuItems as $key => $menuItem)
 		{
-			$menuItem->printHTML();
+			// $menuItem->printHTML();
+			Display::printToScreen($menuItem->printHTML());
 		}
 
 		echo "</section>";

@@ -56,7 +56,9 @@ class MenuItem {
 		$displayCode .= "<p class= 'upVotesID' >upvotes = " . h($this->upVoteNumber) . "</p>";
 		$displayCode .= "<p class= 'downVotesID' >downvotes =3</p>";
 		$displayCode .= "</section>";
-		echo $displayCode;
+		// echo $displayCode;
+		// Display::printToScreen($displayCode);
+		return $displayCode;
 	}
 
 	// created to test if can compare private var of another instance of same class
