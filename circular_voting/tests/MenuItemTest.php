@@ -24,6 +24,6 @@ class MenuItemTest extends TestCase
       $this->assertFalse($item3->hasMoreUpvotes($item4));
     }
 
-    
+
 }
 ?>

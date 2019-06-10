@@ -74,7 +74,6 @@ class Restaurant {
 			// $menuItem->printHTML();
 			Display::printToScreen($menuItem->printHTML());
 		}
-
 		echo "</section>";
 	}
 
@@ -84,82 +83,20 @@ class Restaurant {
 		$this->menuItems[$number]->incrementUpvote();
 	}
 
-	// item liked then want to put it in right position of array
-	// 1. while loop compare and 2. swap
-	// public function updatePositions($fromIndex = 0, $toIndex = count($this->menuItems))
-	public function updatePositions($votedID, $fromIndex = 0, $toIndex = 0)
+	public function updatePositions()
 	{
 		$filterObject = new UpvotesFilter();
-		// return $this->currentFilter->findNewPosition($this->menuItems, $votedID, $fromIndex, $toIndex);
-		// return $filterObject->findNewPosition($this->menuItems, $votedID, $fromIndex, $toIndex);
-		return $filterObject->findNewPosition($this->menuItems, $votedID);
-
+		$filterObject->updateItemsOrder($this->menuItems);
 	}
 
-	// TODO: convert to private, made public to test while making
-	// note that if all equal, also passes
-	public function isOrderDescending()
+	public function getMenuIDs()
 	{
-		$orderDescending = true;
-
-		$itemsValueArray = array_values($this->menuItems);
-
-		$arrLength = count($itemsValueArray);
-		// $arrLength = 3;
-		$currIndex = 0;
-
-		while ($currIndex < ($arrLength-1) && $orderDescending!==false)
+		$idsArray = [];
+		foreach($this->menuItems as $key => $menuItem)
 		{
-			$currItem = $itemsValueArray[$currIndex];
-			$nextItem = $itemsValueArray[$currIndex+1];
-			if($currItem->hasLessUpvotes($nextItem))
-			{
-				$orderDescending = false;
-			}
-			$currIndex++;
+			$idsArray[]=$key;
 		}
-
-		return $orderDescending;
-	}
-
-	// TODO make function private in production and delete direct unit tests
-	public function makeOrderDescending()
-	{
-		uasort($this->menuItems, array($this, "cmp"));
-	}
-
-	private function cmp($a, $b)
-	{
-		if ($a->hasLessUpvotes($b))
-		{
-			// note if want order ascending change return to -1.
-			return 1;
-		}
-		elseif ($a->hasMoreUpvotes($b)) {
-			// note if want order ascending change return to 1.
-			return -1;
-		}
-		else {
-			return 0;
-		}
-	}
-
-	public function moveElement(&$array, $from, $to, $length = null)
-	{
-		if ($from===$to) return;
-
-		$fromElementArray = array_slice($array, $from, 1, true);
-		$keys = array_keys($array);
-		unset($array[$keys[$from]]);
-
-		// unset affects length for the next slice's length
-		$unsetOffset = ($from < $to) ? -1 : 0;
-
-		$tempArray = array_slice($array, 0, $to+$unsetOffset, true);
-		$tempArray+=$fromElementArray;
-
-		// 'to-1' to account for the unsetted element
-		$array = $tempArray + array_slice($array, $to+$unsetOffset, count($array)-($to-1), true);
+		return $idsArray;
 	}
 }
 
