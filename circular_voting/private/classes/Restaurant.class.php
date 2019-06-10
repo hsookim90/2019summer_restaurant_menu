@@ -11,7 +11,6 @@ class Restaurant {
 	private $hours;
 	private static $restaurantCount = 0;
 	private $restaurantID;
-	// $currentFilter = new UpvotesFilter();
 
 	function __construct($args=[])
 	{
@@ -86,17 +85,7 @@ class Restaurant {
 	public function updatePositions()
 	{
 		$filterObject = new UpvotesFilter();
-		$filterObject->updateItemsOrder($this->menuItems);
-	}
-
-	public function getMenuIDs()
-	{
-		$idsArray = [];
-		foreach($this->menuItems as $key => $menuItem)
-		{
-			$idsArray[]=$key;
-		}
-		return $idsArray;
+		$filterObject->setOrderDescending($this->menuItems);
 	}
 }
 

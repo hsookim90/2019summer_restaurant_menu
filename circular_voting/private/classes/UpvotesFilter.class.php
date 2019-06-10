@@ -2,27 +2,42 @@
 
 class UpvotesFilter implements iFilter
 {
-  //private function makeOrderDescending(&$array)
-  public function updateItemsOrder(&$array)
+  public function setOrderDescending(&$array)
 	{
-		uasort($array, array($this, "cmp"));
+		uasort($array, array($this, "cmpDecending"));
 	}
 
-	private function cmp($a, $b)
+  public function setOrderAscending(&$array)
 	{
-		if ($a->hasLessUpvotes($b))
+		uasort($array, array($this, "cmpAscending"));
+	}
+
+	private function cmpDecending($menuItemA, $menuItemB)
+	{
+		if ($menuItemA->hasLessUpvotes($menuItemB))
 		{
-			// note if want order ascending change return to -1.
 			return 1;
 		}
-		elseif ($a->hasMoreUpvotes($b)) {
-			// note if want order ascending change return to 1.
+		elseif ($menuItemA->hasMoreUpvotes($menuItemB)) {
 			return -1;
 		}
 		else {
 			return 0;
 		}
 	}
-}
 
+	private function cmpAscending($menuItemA, $menuItemB)
+	{
+		if ($menuItemA->hasLessUpvotes($menuItemB))
+		{
+			return -1;
+		}
+		elseif ($menuItemA->hasMoreUpvotes($menuItemB)) {
+			return 1;
+		}
+		else {
+			return 0;
+		}
+	}
+}
 ?>
