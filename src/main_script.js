@@ -13,7 +13,7 @@ function openTab(event, tabName) {
     document.getElementById(tabName).style.display = "block";
     event.currentTarget.className += " active";
 
-    loadData(tabName);
+    // loadData(tabName);
 }
 
 // https://www.youtube.com/watch?v=Zxf1mnP5zcw&t=601s
@@ -23,10 +23,15 @@ var infowindow;
 
 function initMap() {
     var pyrmont = new google.maps.LatLng(49.8951,-97.1384);
+    // TODO : get the dynamic lat and lng
     infowindow = new google.maps.InfoWindow();
 
-    map = new google.maps.Map(document.getElementById('map'), {
-        // center:{lat:49.8951, lng:-97.1384},
+    map_main = new google.maps.Map(document.getElementById('map_main'), {
+        center: pyrmont,
+        zoom: 11
+    });
+
+    map_near_me = new google.maps.Map(document.getElementById('map_near_me'), {
         center: pyrmont,
         zoom: 11
     });
@@ -38,7 +43,7 @@ function initMap() {
     };
 
 
-    service = new google.maps.places.PlacesService(map);
+    service = new google.maps.places.PlacesService(map_near_me);
     service.nearbySearch(request, callback);
 }
 
@@ -53,7 +58,7 @@ function callback(results, status) {
 
 function createMarker(place) {
     var marker = new google.maps.Marker({
-        map: map,
+        map: map_near_me,
         position: place.geometry.location
     });
 
@@ -74,11 +79,58 @@ function createMarker(place) {
                 + 'Website: ' + details.website + '<br>'
                 + 'Open Hours: ' + details.opening_hours.weekday_text + '<br>'
                 + '</div>'
+                // TODO make a line box to the specific restaurant page
             );
 
-            infowindow.open(map, marker);
+            infowindow.open(map_near_me, marker);
         });
     });
 }
 
-document.getElementById("defaultOpen").click();
+window.onload = function() {
+    startTab();
+}
+
+function startTab() {
+    document.getElementById("defaultOpen").click();
+}
+
+// /* When the user clicks on the button, 
+// toggle between hiding and showing the dropdown content */
+// function myFunction() {
+//     document.getElementById("myDropdown").classList.toggle("show");
+// }
+  
+// // Close the dropdown if the user clicks outside of it
+// window.onclick = function(e) {
+//     if (!e.target.matches('.dropbtn')) {
+//         var myDropdown = document.getElementById("myDropdown");
+//         if (myDropdown.classList.contains('show')) {
+//             myDropdown.classList.remove('show');
+//         }
+//     }
+// }
+
+/* When the user clicks on the button, 
+toggle between hiding and showing the dropdown content */
+function myFunction() {
+    document.getElementById("myDropdown").classList.toggle("show");
+}
+
+// Close the dropdown menu if the user clicks outside of it
+window.onclick = function(event) {
+    if (!event.target.matches('.dropbtn')) {
+        var dropdowns = document.getElementsByClassName("dropdown-content");
+        var i;
+        for (i = 0; i < dropdowns.length; i++) {
+            var openDropdown = dropdowns[i];
+            if (openDropdown.classList.contains('show')) {
+                openDropdown.classList.remove('show');
+            }
+        }
+    }
+}
+
+$("document").ready(function() {
+    
+});
