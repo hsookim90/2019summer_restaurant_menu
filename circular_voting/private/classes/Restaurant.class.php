@@ -11,6 +11,7 @@ class Restaurant {
 	private $hours;
 	private static $restaurantCount = 0;
 	private $restaurantID;
+	private $filterObject;
 
 	function __construct($args=[])
 	{
@@ -22,6 +23,7 @@ class Restaurant {
     $this->hours = $args['hours'] ?? '';
     self::$restaurantCount++;
     $this->restaurantID = self::$restaurantCount;
+		$this->filterObject = new UpvotesFilter();
 
 
 		if (isset($args['menuItems']))
@@ -39,6 +41,7 @@ class Restaurant {
 		{
 			$this->createItem($item);
 		}
+		$this->updatePositions();
 		$this->printMenu();
 	}
 
@@ -85,7 +88,8 @@ class Restaurant {
 	public function updatePositions()
 	{
 		$filterObject = new UpvotesFilter();
-		$filterObject->setOrderDescending($this->menuItems);
+		$this->filterObject->setOrderDescending($this->menuItems);
+
 	}
 }
 

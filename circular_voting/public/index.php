@@ -20,7 +20,8 @@
 		// stub stuff will be replaced with database in future milestones
 		$stubMenuItem1 = ['itemName'=>'chickpears', 'price'=>4];
 		$stubMenuItem2 = ['itemName'=>'rice', 'price'=>2];
-		$stubMenuItem3 = ['itemName'=>'bananas', 'price'=>3];
+		// note upvotenumber = 1 for now, in production go back to 0 b/c no one voted for it
+		$stubMenuItem3 = ['itemName'=>'bananas', 'price'=>3, 'upVoteNumber'=>1];
 
 		$stubMenuItems = [$stubMenuItem1, $stubMenuItem2, $stubMenuItem3];
 
