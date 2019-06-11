@@ -7,12 +7,22 @@
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Amatic SC">
+
     <link rel="stylesheet" type="text/css" href="main_style.css">
     <script src="main_script.js"></script>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Amatic SC">
 </head>
 
-<body>        
+<body>
+        <div class="dropdown">
+                <button onclick="myFunction()" class="dropbtn">Dropdown</button>
+                <div id="myDropdown" class="dropdown-content">
+                    <a href="#">Link 1</a>
+                    <a href="#">Link 2</a>
+                    <a href="#">Link 3</a>
+                </div>
+            </div>
     <header>
         <h2>Restaurant Menu</h2>
     </header>
@@ -21,32 +31,9 @@
         <nav>                
             <div class="scrolltab">
                 <button class="tablinks" onclick="openTab(event, 'home_usr')" id="defaultOpen">Home</button>
-                <!-- <button class="tablinks" onclick="openTab(event, 'home_nonusr')">Home</button> -->
                 <button class="tablinks" onclick="openTab(event, 'trend')">Trend</button>
                 <button class="tablinks" onclick="openTab(event, 'promotion')">Promotion</button>
                 <button class="tablinks" onclick="openTab(event, 'near_me')">Near Me</button>
-                
-                <!-- <div class="dropdown">
-                    <button class="dropbtn" onclick="myFunction()">Genre
-                        <i class="fa fa-caret-down"></i>
-                    </button>
-                    <div class="dropdown-content" id="myDropdown">
-                        <button type="button">Italian</button>
-                        <button type="button">Indian</button>
-                        <button type="button">Cajun</button>
-                        <button type="button">Soul</button>
-                        <button type="button">Thai</button>
-                        <button type="button">Greek</button>
-                    </div>
-                </div> -->
-
-                <!-- get location and type from server -->
-                <!-- <div class="tablinks">
-                    <div class="right-align" style="overflow:hidden;">
-                        <p style="float: left;">Your Location</p>
-                        <p style="float: right;">Type of restaurant</p>
-                    </div>
-                </div> -->
             </div>
         </nav>
 
@@ -84,7 +71,7 @@
 
                     <div class="row">
                         <div class="col-lg-4">
-                            <!-- tab content should be here -->
+
                         </div>
                     </div>
                 </div>
