@@ -20,8 +20,12 @@
 					upVoteText.innerText = ('upvotes ' + num);
         }
         console.log('Result: ' + result);
-				var bodyElement = document.body;
-				bodyElement.innerHTML = result;
+				// var bodyElement = document.body;
+				// bodyElement.innerHTML = result;
+
+        var menuDisplay = document.querySelector(".menu-items-display");
+        menuDisplay.innerHTML = result;
+
 				addThumbsUpListners();
 				addThumbsDownListners();
       }
@@ -40,8 +44,10 @@
       if(xhr.readyState == 4 && xhr.status == 200) {
         var result = xhr.responseText;
         console.log('Result: ' + result);
-				var bodyElement = document.body;
-				bodyElement.innerHTML = result;
+				// var bodyElement = document.body;
+				// bodyElement.innerHTML = result;
+        var menuDisplay = document.querySelector(".menu-items-display");
+        menuDisplay.innerHTML = result;
 				addThumbsUpListners();
 				addThumbsDownListners();
       }

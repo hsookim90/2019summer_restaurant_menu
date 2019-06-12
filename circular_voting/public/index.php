@@ -2,6 +2,8 @@
 	require_once('../private/initialize.php');
 	session_start();
 	if(!isset($_SESSION['restaurants'])) {$_SESSION['restaurants'] = []; }
+	// default filter is by upvote
+	$filter = $_GET['filter']??"upvotes";
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -15,6 +17,15 @@
 
   </head>
   <body>
+      <form action = "<?php echo url_for("/index.php"); ?>" method = "GET">
+        <section class = "filters-row">
+				      <button type = "submit" name = "filter" class ="" value = "upvotes">Upvotes</button>
+				      <button type = "submit" name = "filter" class ="" value = "downvotes">DownVotes</button>
+				      <button type = "submit" name = "filter" class ="" value = "ratio">Ratio</button>
+        </section>
+			</form>
+
+	<section class = "menu-items-display">
 	<?php
 
 		// stub stuff will be replaced with database in future milestones
@@ -31,6 +42,7 @@
 						  'menuItems' => $stubMenuItems];
 
     $restaurant = new Restaurant($stubRestaurantArgs);
+		$restaurant->setFilter($filter);
 		$_SESSION['restaurants'] = [];
     $_SESSION['restaurants'][]=$restaurant;
     // $_SESSION['restaurants'][0]=$restaurant;

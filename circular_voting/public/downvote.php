@@ -20,11 +20,6 @@
   {
     $id = $matches[1];
 
-    // TODO change from always echo eio_true
-    // probably will need to return back updated menu item number
-    // may even need to figure out a way to return the whole list of items
-    // might be able to only need to item top and below assuming can only give 1 vote
-    echo 'true';
     $rest = $_SESSION['restaurants'][0];
 		// $menuItems = $rest->menuItems;
 		// $rest->printMenu();

@@ -94,9 +94,27 @@ class Restaurant {
 
 	public function updatePositions()
 	{
-		$filterObject = new UpvotesFilter();
 		$this->filterObject->setOrderDescending($this->menuItems);
+	}
 
+	public function setFilter($filter)
+	{
+		switch ($filter) {
+			case 'upvotes':
+				$this->filterObject = new UpvotesFilter();
+				break;
+			case 'downvotes':
+				$this->filterObject = new DownvotesFilter();
+				break;
+
+			default:
+				$this->filterObject = new UpvotesFilter();
+				break;
+		}
+		// i think to call updatePositions b/c after u click a filter u expect the positions to change
+		$this->updatePositions();
+		// below prints it twice
+		// $this->printMenu();
 	}
 }
 

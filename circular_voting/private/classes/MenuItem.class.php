@@ -79,11 +79,22 @@ class MenuItem {
 		return $this->upVoteNumber < $comparedItem->upVoteNumber;
 	}
 
+	public function hasMoreDownvotes($comparedItem)
+	{
+		return $this->downVoteNumber > $comparedItem->downVoteNumber;
+	}
+
+	// created b/c complications with hasMoreUpvotes with duplicates in list
+	public function hasLessDownvotes($comparedItem)
+	{
+		return $this->downVoteNumber < $comparedItem->downVoteNumber;
+	}
+
 	public function incrementUpvote()
 	{
 		$this->upVoteNumber++;
 	}
-	
+
 	public function incrementDownvote()
 	{
 		$this->downVoteNumber++;
