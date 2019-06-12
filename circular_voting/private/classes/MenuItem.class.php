@@ -20,6 +20,7 @@ class MenuItem {
     $this->itemName = $args['itemName'] ?? '';
 		$this->price = $args['price'] ?? 0;
 		$this->upVoteNumber = $args['upVoteNumber'] ?? 0;
+		$this->downVoteNumber = $args['downVoteNumber'] ?? 0;
 	}
 
 
@@ -54,7 +55,7 @@ class MenuItem {
 		$displayCode .= "</div>";
 		$displayCode .= "<i class='fas fa-thumbs-up'></i>";
 		$displayCode .= "<p class= 'upVotesID' >upvotes = " . h($this->upVoteNumber) . "</p>";
-		$displayCode .= "<p class= 'downVotesID' >downvotes =3</p>";
+		$displayCode .= "<p class= 'downVotesID' >downvotes =" . h($this->downVoteNumber) . "</p>";
 		$displayCode .= "</section>";
 		// echo $displayCode;
 		// Display::printToScreen($displayCode);
@@ -81,6 +82,11 @@ class MenuItem {
 	public function incrementUpvote()
 	{
 		$this->upVoteNumber++;
+	}
+	
+	public function incrementDownvote()
+	{
+		$this->downVoteNumber++;
 	}
 }
 ?>

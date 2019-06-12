@@ -85,6 +85,13 @@ class Restaurant {
 		$this->menuItems[$number]->incrementUpvote();
 	}
 
+	public function incrementDownVoteByItemNumber($number)
+	{
+		// menuItem's key should be the menu item
+		$this->menuItems[$number]->incrementDownvote();
+	}
+
+
 	public function updatePositions()
 	{
 		$filterObject = new UpvotesFilter();

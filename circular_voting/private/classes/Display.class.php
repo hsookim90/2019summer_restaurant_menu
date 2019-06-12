@@ -8,7 +8,7 @@ class Display{
 
   // problem upvotenumber is private to menu item?
   // why is upvote number private again?
-  public function name($itemNumber, $itemName, $upVoteNumber)
+  public function name($itemNumber, $itemName, $upVoteNumber, $downVoteNumber)
   {
 		$displayCode = "<section id = 'menu-item-" . h($this->itemNumber)  . "' class = 'menu-item'>";
 		$displayCode .= "<i class='fas fa-thumbs-down'></i>";
@@ -20,7 +20,7 @@ class Display{
 		$displayCode .= "</div>";
 		$displayCode .= "<i class='fas fa-thumbs-up'></i>";
 		$displayCode .= "<p class= 'upVotesID' >upvotes = " . h($this->upVoteNumber) . "</p>";
-		$displayCode .= "<p class= 'downVotesID' >downvotes =3</p>";
+		$displayCode .= "<p class= 'downVotesID' >downvotes =" . h($this->downVoteNumber) . "</p>";
 		$displayCode .= "</section>";
   }
 }
