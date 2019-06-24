@@ -5,6 +5,12 @@
 	// if(!isset($_SESSION['restaurants'])) {$_SESSION['restaurants'] = []; }
 	// default filter is by upvote
 	$filter = $_GET['filter']??"upvotes";
+
+	if(isset($_POST['resetRest']))
+	{
+		unset($_SESSION['restaurants']);
+	}
+
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -25,6 +31,11 @@
 				      <button type = "submit" name = "filter" class ="" value = "ratio">Ratio</button>
         </section>
 			</form>
+			<div>
+      <form action = "<?php echo url_for("/index.php"); ?>" method = "POST">
+				<button type = "submit" name = "resetRest" value = "Submit">Reset Resaurants</button>
+			</form>
+		</div>
 
 	<section class = "menu-items-display">
 	<?php
