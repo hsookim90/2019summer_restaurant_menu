@@ -42,7 +42,7 @@ class Restaurant {
 			$this->createItem($item);
 		}
 		$this->updatePositions();
-		$this->printMenu();
+		// $this->printMenu();
 	}
 
 	// menuitem's itemNumber is dictated by where it is in the restaurant's item list

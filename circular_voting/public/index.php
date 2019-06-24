@@ -1,7 +1,8 @@
 <?php
 	require_once('../private/initialize.php');
 	session_start();
-	if(!isset($_SESSION['restaurants'])) {$_SESSION['restaurants'] = []; }
+
+	// if(!isset($_SESSION['restaurants'])) {$_SESSION['restaurants'] = []; }
 	// default filter is by upvote
 	$filter = $_GET['filter']??"upvotes";
 ?>
@@ -42,17 +43,17 @@
 						  'menuItems' => $stubMenuItems];
 
     $restaurant = new Restaurant($stubRestaurantArgs);
-		$restaurant->setFilter($filter);
-		$_SESSION['restaurants'] = [];
-    $_SESSION['restaurants'][]=$restaurant;
-    // $_SESSION['restaurants'][0]=$restaurant;
+		// $restaurant->setFilter($filter);
+		// $_SESSION['restaurants'] = [];
+    // $_SESSION['restaurants'][]=$restaurant;
 
-		// note createItem is public so can make item from outside Restaurant like so:
-		// $restaurant->createItem(['itemName' => 'chicken']);
+		if(isset($_SESSION['restaurants'])===false)
+		{
+    	$_SESSION['restaurants'][]=$restaurant;
+		}
+		$_SESSION['restaurants'][0]->setFilter($filter);
+		$_SESSION['restaurants'][0]->printMenu();
 
-		$item1 = new MenuItem(['itemCount'=>1, 'itemName'=>'rice', 'price'=>2]);
-		$item2 = new MenuItem(['itemCount'=>2, 'itemName'=>'rice', 'price'=>3]);
-		$item1->compareItem($item2);
 	?>
 
 	</section>
