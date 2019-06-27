@@ -13,8 +13,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Amatic SC">
 
-    <link rel="stylesheet" type="text/css" href=<?php echo url_for('css/main_style.css')?>>
-    <script src=<?php echo url_for('js/main_script.js')?>></script>
+    <link rel="stylesheet" type="text/css" href=<?php echo url_for('css/home.css')?>>
+    <script src=<?php echo url_for('js/home.js')?>></script>
 </head>
 
 <body>

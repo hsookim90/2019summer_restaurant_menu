@@ -10,8 +10,8 @@
         <title>Welcome to Foodie's menu</title>
 
 	<link rel="stylesheet" type="text/css"
-href=<?php echo url_for('css/landingPage.css')?>>
-<script src="index_script.js"></script>
+href=<?php echo url_for('css/landing.css')?>>
+<script src=<?php echo url_for('js/landing.js')?>></script>
     </head>
 
     <body style = "background-image: url(<?php echo url_for('images/index_background.jpg');?>)">
