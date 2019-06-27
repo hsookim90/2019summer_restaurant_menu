@@ -18,7 +18,7 @@
 </head>
 
 <body>
-    <header>
+    <header style = "background-image: url(<?php echo url_for('images/dishes.jpg');?>)">
         <h2>Restaurant Menu</h2>
     </header>
 
