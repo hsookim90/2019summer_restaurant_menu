@@ -53,13 +53,31 @@
                         <div class="col-lg-4">
                             <div class="gallery">
                                 <img src=<?php echo url_for('images/bigmac.jpg');?> alt="BigMac" width="600" height="400">
-                                <div class="desc">BigMac</div>
+                                <div class="desc">
+                                    <button class="menuDetailBtn" onclick="popupModal(event, 'bigmac-Modal')">BigMac</Button>
+
+                                    <div id="bigmac-Modal" class="modal">
+                                        <div class="modal-content">
+                                            <span class="close" onclick="closeModal(event, 'bigmac-Modal')">&times;</span>
+                                            <p>blah blah</p>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div class="col-lg-4">
                             <div class="gallery">
                                 <img src="<?php echo url_for('images/fries.jpg');?>" alt="BigMac" width="600" height="400">
-                                <div class="desc">Franch Fries</div>
+                                <div class="desc">
+                                    <button class="menuDetailBtn" onclick="popupModal(event, 'frenchfries-Modal')">French Fries</Button>
+
+                                    <div id="frenchFries-Modal" class="modal">
+                                        <div class="modal-content">
+                                            <span class="close" onclick="closeModal(event, 'frenchfries-Modal')">&times;</span>
+                                            <p>blah blah</p>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

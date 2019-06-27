@@ -1,21 +1,3 @@
-function openTab(event, tabName) {
-    var i, tabcontent, tablinks;
-    tabcontent = document.getElementsByClassName("tabcontent");
-    for (i = 0; i < tabcontent.length; i++) {
-        tabcontent[i].style.display = "none";
-    }
-
-    tablinks = document.getElementsByClassName("tablinks");
-    for (i = 0; i < tablinks.length; i++) {
-        tablinks[i].className = tablinks[i].className.replace(" active", "");
-    }
-
-    document.getElementById(tabName).style.display = "block";
-    event.currentTarget.className += " active";
-
-    // loadData(tabName);
-}
-
 // https://www.youtube.com/watch?v=Zxf1mnP5zcw&t=601s
 var map;
 var service;
@@ -95,21 +77,23 @@ function startTab() {
     document.getElementById("defaultOpen").click();
 }
 
-// /* When the user clicks on the button, 
-// toggle between hiding and showing the dropdown content */
-// function myFunction() {
-//     document.getElementById("myDropdown").classList.toggle("show");
-// }
-  
-// // Close the dropdown if the user clicks outside of it
-// window.onclick = function(e) {
-//     if (!e.target.matches('.dropbtn')) {
-//         var myDropdown = document.getElementById("myDropdown");
-//         if (myDropdown.classList.contains('show')) {
-//             myDropdown.classList.remove('show');
-//         }
-//     }
-// }
+function openTab(event, tabName) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+
+    document.getElementById(tabName).style.display = "block";
+    event.currentTarget.className += " active";
+
+    // loadData(tabName);
+}
 
 /* When the user clicks on the button, 
 toggle between hiding and showing the dropdown content */
@@ -129,6 +113,18 @@ window.onclick = function(event) {
             }
         }
     }
+}
+
+function popupModal(event, modalName) {
+    var modal = document.getElementById(modalName);
+
+    modal.style.display = "block";
+}
+
+function closeModal(event, modalName) {
+    var modal = document.getElementById(modalName);
+
+    modal.style.display = "none";
 }
 
 $("document").ready(function() {
