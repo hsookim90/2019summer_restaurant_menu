@@ -23,43 +23,32 @@
     </header>
 
     <section>
-        <nav>
-            <div class="scrolltab">
-                <button class="tablinks" onclick="openTab(event, 'home_usr')" id="defaultOpen">Home</button>
-                <button class="tablinks" onclick="openTab(event, 'trend')">Trend</button>
-                <button class="tablinks" onclick="openTab(event, 'promotion')">Promotion</button>
-                <button class="tablinks" onclick="openTab(event, 'near_me')">Near Me</button>
-            </div>
-        </nav>
-
         <article>
             <div id="home_usr" class="tabcontent">
                 <div class="searchbar">
                     <input type="text" placeholder="Search..." name="search">
                     <button type="submit">Search</button>
                 </div>
-
-                <div id="map_main"></div>
             </div>
 
             <div id="home_nonusr" class="tabcontent">
 
             </div>
 
-            <div id="trend" class="tabcontent">
-                <h3>Trend</h3>
+            <div id="restaurants" class="tabcontent">
+                <h3>Restaurants</h3>
                 <div clsss="container">
                     <div class="row">
                         <div class="col-lg-4">
                             <div class="gallery">
-                                <img src=<?php echo url_for('images/bigmac.jpg');?> alt="BigMac" width="600" height="400">
+                                <img src=<?php echo url_for('images/1200px-McDonald\'s_Golden_Arches.svg.png');?> alt="mcdonalds logo" width="600" height="400">
                                 <div class="desc">
-                                    <button class="menuDetailBtn" onclick="popupModal(event, 'bigmac-Modal')">BigMac</Button>
+                                    <button class="menuDetailBtn" onclick="popupModal(event, 'mcdonalds_modal')">McDonalds</Button>
 
-                                    <div id="bigmac-Modal" class="modal">
+                                    <div id="mcdonalds_modal" class="modal">
                                         <div class="modal-content">
-                                            <span class="close" onclick="closeModal(event, 'bigmac-Modal')">&times;</span>
-                                            <p>blah blah</p>
+                                            <span class="close" onclick="closeModal(event, 'mcdonalds_modal')">&times;</span>
+                                            <p>McDonald's is an American fast food company, founded in 1940 as a restaurant operated by Richard and Maurice McDonald, in San Bernardino, California, United States.</p>
                                         </div>
                                     </div>
                                 </div>
@@ -67,32 +56,21 @@
                         </div>
                         <div class="col-lg-4">
                             <div class="gallery">
-                                <img src="<?php echo url_for('images/fries.jpg');?>" alt="BigMac" width="600" height="400">
+                                <img src="<?php echo url_for('images/3w3Blx0v.jpg');?>" alt="burgerking logo" width="600" height="400">
                                 <div class="desc">
-                                    <button class="menuDetailBtn" onclick="popupModal(event, 'frenchfries-Modal')">French Fries</Button>
+                                    <button class="menuDetailBtn" onclick="popupModal(event, 'burgerking_modal')">Burger King</Button>
 
-                                    <div id="frenchFries-Modal" class="modal">
+                                    <div id="burgerking_modal" class="modal">
                                         <div class="modal-content">
-                                            <span class="close" onclick="closeModal(event, 'frenchfries-Modal')">&times;</span>
-                                            <p>blah blah</p>
+                                            <span class="close" onclick="closeModal(event, 'burgerking_modal')">&times;</span>
+                                            <p>Burger King is an American global chain of hamburger fast food restaurants. Headquartered in the unincorporated area of Miami-Dade County, Florida, the company was founded in 1953 as Insta-Burger King, a Jacksonville, Florida–based restaurant chain.</p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-
-                    <div class="row">
-                        <div class="col-lg-4">
-
-                        </div>
-                    </div>
                 </div>
-            </div>
-
-            <div id="promotion" class="tabcontent">
-                <h3>Promotion</h3>
-                <p>blah</p>
             </div>
 
             <div id="near_me" class="tabcontent">

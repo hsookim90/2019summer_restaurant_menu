@@ -28,41 +28,6 @@ section {
 }
 
 /* --------------------------- */
-/* nav bar */
-.scrolltab {
-    border: 1px solid #ccc;
-    background-color: #f1f1f1;
-    width: 100%;
-    overflow: hidden;
-    white-space: nowrap;
-}
-
-/* Style the buttons inside the tab */
-.scrolltab button {
-    display: inline-block;
-    background-color: inherit;
-    color: black;
-    padding: 18px;
-    border: none;
-    outline: none;
-    text-align: center;
-    cursor: pointer;
-    transition: 0.3s;
-    font-size: 17px;
-    text-decoration: none;
-}
-
-/* Change background color of buttons on hover */
-.scrolltab button:hover {
-    background-color: #ddd;
-}
-
-/* Create an active/current "tab button" class */
-.scrolltab button.active {
-    background-color: #ccc;
-}
-
-/* --------------------------- */
 /* article */
 article {
     float: left;
@@ -147,15 +112,9 @@ section:after {
 
 /* --------------------------- */
 
-#map_main {
-    height: 500px;
-    width: 500px;
-    margin: 20px;
-}
-
 #map_near_me {
     height: 600px;
-    width: 100%;
+    width: 80%;
 }
 
 /* --------------------------- */

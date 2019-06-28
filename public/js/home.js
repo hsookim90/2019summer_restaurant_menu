@@ -8,11 +8,6 @@ function initMap() {
     // TODO : get the dynamic lat and lng
     infowindow = new google.maps.InfoWindow();
 
-    map_main = new google.maps.Map(document.getElementById('map_main'), {
-        center: pyrmont,
-        zoom: 11
-    });
-
     map_near_me = new google.maps.Map(document.getElementById('map_near_me'), {
         center: pyrmont,
         zoom: 11
@@ -69,52 +64,6 @@ function createMarker(place) {
     });
 }
 
-window.onload = function() {
-    startTab();
-}
-
-function startTab() {
-    document.getElementById("defaultOpen").click();
-}
-
-function openTab(event, tabName) {
-    var i, tabcontent, tablinks;
-    tabcontent = document.getElementsByClassName("tabcontent");
-    for (i = 0; i < tabcontent.length; i++) {
-        tabcontent[i].style.display = "none";
-    }
-
-    tablinks = document.getElementsByClassName("tablinks");
-    for (i = 0; i < tablinks.length; i++) {
-        tablinks[i].className = tablinks[i].className.replace(" active", "");
-    }
-
-    document.getElementById(tabName).style.display = "block";
-    event.currentTarget.className += " active";
-
-    // loadData(tabName);
-}
-
-/* When the user clicks on the button, 
-toggle between hiding and showing the dropdown content */
-function myFunction() {
-    document.getElementById("myDropdown").classList.toggle("show");
-}
-
-// Close the dropdown menu if the user clicks outside of it
-window.onclick = function(event) {
-    if (!event.target.matches('.dropbtn')) {
-        var dropdowns = document.getElementsByClassName("dropdown-content");
-        var i;
-        for (i = 0; i < dropdowns.length; i++) {
-            var openDropdown = dropdowns[i];
-            if (openDropdown.classList.contains('show')) {
-                openDropdown.classList.remove('show');
-            }
-        }
-    }
-}
-
 function popupModal(event, modalName) {
     var modal = document.getElementById(modalName);
 
@@ -126,7 +75,3 @@ function closeModal(event, modalName) {
 
     modal.style.display = "none";
 }
-
-$("document").ready(function() {
-    
-});
