@@ -1,0 +1,16 @@
+{
+    "name": "glenn/best-dish",
+    "description": "User voting system for the best dish at a restaurant.",
+    "type": "project",
+    "license": "GPL 3.0",
+    "authors": [
+        {
+            "name": "Glenn-Jaya",
+            "email": "jayasugp@myumanitoba.ca"
+        }
+    ],
+    "require": {},
+    "require-dev": {
+        "phpunit/phpunit": "^8"
+    }
+}
