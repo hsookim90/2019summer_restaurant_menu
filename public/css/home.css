@@ -4,27 +4,136 @@ body {
 }
 
 /* ------------------------------------------------------------------------- */
+/* The side navigation menu */
+.sidenav {
+    height: 100%; /* 100% Full-height */
+    width: 0; /* 0 width - change this with JavaScript */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Stay on top */
+    top: 0; /* Stay at the top */
+    left: 0;
+    background-color: #111; /* Black*/
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 60px; /* Place content 60px from the top */
+    transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+}
+
+/* The navigation menu links */
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidenav a:hover {
+    color: #f1f1f1;
+}
+
+/* Position and style the close button (top right corner) */
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+/* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+#main {
+    transition: margin-left .5s;
+    padding: 20px;
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+    .sidenav {
+        padding-top: 15px;
+    }
+    .sidenav a {
+        font-size: 18px;
+    }
+}
+
+/* ------------------------------------------------------------------------- */
 /* header */
-header {
-    /* background-image: url("http://localhost/2019summer_restaurant_menu/images/dishes.jpg"); */
-    height: 200px;
-    padding: 30px;
+
+/* Create a sticky/fixed navbar */
+#header {
+    overflow: hidden;
+    background-color: #f1f1f1;
+    padding: 90px 10px; /* Large padding which will shrink on scroll (using JS) */
+    transition: 0.4s; /* Adds a transition effect when the padding is decreased */
+    position: fixed; /* Sticky/fixed navbar */
+    width: 100%;
+    top: 0; /* At the top */
+    z-index: 99; 
+}
+  
+/* Style the navbar links */
+#header a {
+    float: left;
+    color: black;
     text-align: center;
+    padding: 12px;
+    text-decoration: none;
+    font-size: 18px; 
+    line-height: 25px;
+    border-radius: 4px;
+}
+  
+/* Style the logo */
+#header #logo {
     font-size: 35px;
+    font-weight: bold;
+    transition: 0.4s;
+}
+
+/* Links on mouse-over */
+#header a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+/* Style the active/current link */
+#header a.active {
+    background-color: dodgerblue;
     color: white;
 }
 
-header h2 {
-    padding: 50px 0;
+/* Display some links to the right */
+#header-right {
+    float: right;
 }
 
-header p {
-    font-size: 18px;
-    text-align: left;
+/* Add responsiveness - on screens less than 580px wide, display the navbar vertically instead of horizontally */
+@media screen and (max-width: 580px) {
+    #header {
+        padding: 20px 10px !important; /* Use !important to make sure that JavaScript doesn't override the padding on small screens */
+    }
+    #header a {
+        float: none;
+        display: block;
+        text-align: left;
+    }
+    #header-right {
+        float: none;
+    }
 }
 
 section {
     height: 80%;
+}
+
+footer {
+    background-color: #777;
+    padding: 20px;
+    text-align: center;
+    color: white;
+    height: 5%;
 }
 
 /* --------------------------- */
@@ -118,16 +227,6 @@ section:after {
 }
 
 /* --------------------------- */
-/* footer */
-footer {
-    background-color: #777;
-    padding: 30px;
-    text-align: center;
-    color: white;
-    height: 20%;
-}
-
-/* --------------------------- */
 /* Responsive layout - makes the two columns/boxes
 stack on top of each other instead of next to each
 other, on small screens */
@@ -143,6 +242,6 @@ other, on small screens */
         text-align: left;
         width: 100%;
         margin: 0;
-        padding: 14px;
+        padding: 6px;
     }
 }
