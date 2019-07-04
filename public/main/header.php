@@ -9,7 +9,9 @@
     </div>
 
     <div id="header">
-        <a href="#" id="logo">CompanyLogo</a>
+        <span onclick="openNav()">open</span>
+
+        <a href="#" id="logo">Logo</a>
 
         <div class="searchbar">
             <input type="text" placeholder="Search..." name="search">
@@ -17,6 +19,5 @@
         </div>
 
         <!-- Use any element to open the sidenav -->
-        <span onclick="openNav()">open</span>
     </div>
 </header>

@@ -1,4 +1,3 @@
-// https://www.youtube.com/watch?v=Zxf1mnP5zcw&t=601s
 var map;
 var service;
 var infowindow;
@@ -8,7 +7,7 @@ function initMap() {
     // TODO : get the dynamic lat and lng
     infowindow = new google.maps.InfoWindow();
 
-    map_near_me = new google.maps.Map(document.getElementById('map_near_me'), {
+    map_nearme = new google.maps.Map(document.getElementById('map_nearme'), {
         center: pyrmont,
         zoom: 11
     });
@@ -19,8 +18,7 @@ function initMap() {
         type: ['restaurant']
     };
 
-
-    service = new google.maps.places.PlacesService(map_near_me);
+    service = new google.maps.places.PlacesService(map_nearme);
     service.nearbySearch(request, callback);
 }
 
@@ -35,7 +33,7 @@ function callback(results, status) {
 
 function createMarker(place) {
     var marker = new google.maps.Marker({
-        map: map_near_me,
+        map: map_nearme,
         position: place.geometry.location
     });
 
@@ -59,7 +57,7 @@ function createMarker(place) {
                 // TODO make a line box to the specific restaurant page
             );
 
-            infowindow.open(map_near_me, marker);
+            infowindow.open(map_nearme, marker);
         });
     });
 }
