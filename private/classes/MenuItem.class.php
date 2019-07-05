@@ -45,18 +45,37 @@ class MenuItem {
 
 		// $displayCode .= "<section id = 'menu-item-{$this->itemNumber}' class = 'menu-item'>";
 
+		// START OF OLD DISPLAY
+
+		// $displayCode = "<section id = 'menu-item-" . h($this->itemNumber)  . "' class = 'menu-item'>";
+		// $displayCode .= "<i class='fas fa-thumbs-down'></i>";
+		// $displayCode .= "<div class = 'plate'>";
+		// $displayCode .= "<img src = 'https://lh5.ggpht.com/_OaYG005JPDs/TVr8btiAytI/AAAAAAAACuA/7aZpNQQxKbE/s640/Chana%20Masala%20above%20close.jpg' class = 'item-image'>";
+		// $displayCode .= "<div class = 'alpha-bg'>";
+		// $displayCode .= "<p>" . h($this->itemName) . "</p>";
+		// $displayCode .= "</div>";
+		// $displayCode .= "</div>";
+		// $displayCode .= "<i class='fas fa-thumbs-up'></i>";
+		// $displayCode .= "<p class= 'upVotesID' >upvotes = " . h($this->upVoteNumber) . "</p>";
+		// $displayCode .= "<p class= 'downVotesID' >downvotes =" . h($this->downVoteNumber) . "</p>";
+		// $displayCode .= "</section>";
+
+		// end of old display
+
 		$displayCode = "<section id = 'menu-item-" . h($this->itemNumber)  . "' class = 'menu-item'>";
-		$displayCode .= "<i class='fas fa-thumbs-down'></i>";
+		$displayCode .= "<h1>" . h($this->itemName) . "</h1>";
 		$displayCode .= "<div class = 'plate'>";
 		$displayCode .= "<img src = 'https://lh5.ggpht.com/_OaYG005JPDs/TVr8btiAytI/AAAAAAAACuA/7aZpNQQxKbE/s640/Chana%20Masala%20above%20close.jpg' class = 'item-image'>";
-		$displayCode .= "<div class = 'alpha-bg'>";
-		$displayCode .= "<p>" . h($this->itemName) . "</p>";
 		$displayCode .= "</div>";
-		$displayCode .= "</div>";
+		$displayCode .= "<p class='price-num'>$" . h($this->price) . "</p>";
+		$displayCode .= "<i class='fas fa-thumbs-down'></i>";
 		$displayCode .= "<i class='fas fa-thumbs-up'></i>";
-		$displayCode .= "<p class= 'upVotesID' >upvotes = " . h($this->upVoteNumber) . "</p>";
-		$displayCode .= "<p class= 'downVotesID' >downvotes =" . h($this->downVoteNumber) . "</p>";
+		$displayCode .= "<div class='votes-bar'</div>";
+		$displayCode .= "<span class ='down-votes-num'>" . h($this->downVoteNumber) . "</span>";
+		$displayCode .= "<span class ='up-votes-num'>" . h($this->upVoteNumber) . "</span>";
+		$displayCode .= "</div>";
 		$displayCode .= "</section>";
+
 		// echo $displayCode;
 		// Display::printToScreen($displayCode);
 		return $displayCode;
