@@ -1,6 +1,6 @@
 <?php
 	require_once('../../private/initialize.php');
 ?>
-<footer>
+<div class="footer">
     <p>Glenn & Harrison</p>
-</footer>
+</div>

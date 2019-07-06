@@ -1,6 +1,5 @@
-<?php
-	require_once('../../private/initialize.php');
-?>
+<?php require_once('../../private/initialize.php');?>
+
 <!DOCTYPE html>
 <html lang="en">
 <?php require 'head.php';?>
@@ -8,10 +7,10 @@
 <body>
     <?php require 'header.php';?>
     
-    <section>
+    <div class="content">
         <h3>Near Me</h3>
         <div id="map_nearme"></div>
-    </section>
+    </div>
 
     <?php require 'footer.php';?>
 

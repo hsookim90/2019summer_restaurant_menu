@@ -1,3 +1,43 @@
+// ------------- Modal
+function popupModal(event, modalName) {
+    var modal = document.getElementById(modalName);
+
+    modal.style.display = "block";
+}
+
+function closeModal(event, modalName) {
+    var modal = document.getElementById(modalName);
+
+    modal.style.display = "none";
+}
+
+// -------------- Side Nav
+/* Set the width of the side navigation to 250px */
+function openNav() {
+    document.getElementById("mySidenav").style.width = "250px";
+}
+  
+/* Set the width of the side navigation to 0 */
+function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+}
+
+// --------------- Scroll
+window.onscroll = function() {myFunction()};
+
+var header = document.getElementById("myHeader");
+var sticky = header.offsetTop;
+
+function myFunction() {
+    if (window.pageYOffset > sticky) {
+        header.classList.add("sticky");
+    } else {
+        header.classList.remove("sticky");
+    }
+}
+
+// ------------------------------------------------------ //
+// Google Maps
 var map;
 var service;
 var infowindow;
@@ -41,60 +81,22 @@ function createMarker(place) {
             reference: place.reference
         };
 
-        service.getDetails(request, function(details, status) {            
+        service.getDetails(request, function(details, status) {
+            // price range: 0 (Free), 1 (Inexpensive), ..., 5 (Very Expensive)
             infowindow.setContent(
                 '<div><strong>' + details.name + '</strong><br>'
                 + 'Address: ' + details.formatted_address + '<br>'
                 + 'Phone: ' + details.formatted_phone_number+ '<br>'
                 + 'Price range: ' + details.price_level + '<br>'
-                // price range: 0 (Free), 1 (Inexpensive), ..., 5 (Very Expensive)
                 + 'Rating: ' + details.rating + '<br>'
                 + 'Website: ' + details.website + '<br>'
                 + 'Open Hours: ' + details.opening_hours.weekday_text + '<br>'
                 + '</div>'
-                // TODO make a line box to the specific restaurant page
             );
 
             infowindow.open(map, marker);
         });
     });
-}
-
-function popupModal(event, modalName) {
-    var modal = document.getElementById(modalName);
-
-    modal.style.display = "block";
-}
-
-function closeModal(event, modalName) {
-    var modal = document.getElementById(modalName);
-
-    modal.style.display = "none";
-}
-
-/* Set the width of the side navigation to 250px */
-function openNav() {
-    document.getElementById("mySidenav").style.width = "250px";
-}
-  
-/* Set the width of the side navigation to 0 */
-function closeNav() {
-    document.getElementById("mySidenav").style.width = "0";
-}
-
-// When the user scrolls down 80px from the top of the document, resize the navbar's padding and the logo's font size
-window.onscroll = function() {scrollFunction()};
-
-function scrollFunction() {
-    if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
-        document.getElementById("header").style.padding = "30px 10px";
-        document.getElementById("logo").style.fontSize = "25px";
-        // document.getElementById("topSearchbar").style.visibility = "hidden";
-    } else {
-        document.getElementById("header").style.padding = "80px 10px";
-        document.getElementById("logo").style.fontSize = "35px";
-        // document.getElementById("topSearchbar").style.visibility = "visible";
-    }
 }
 
 // $(document).ready(function() {
