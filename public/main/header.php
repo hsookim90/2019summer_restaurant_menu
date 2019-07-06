@@ -17,7 +17,5 @@
             <input type="text" placeholder="Search..." name="search">
             <button type="submit">Search</button>
         </div>
-
-        <!-- Use any element to open the sidenav -->
     </div>
 </header>

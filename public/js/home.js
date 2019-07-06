@@ -4,10 +4,8 @@ var infowindow;
 
 function initMap() {
     var pyrmont = new google.maps.LatLng(49.8951,-97.1384);
-    // TODO : get the dynamic lat and lng
-    infowindow = new google.maps.InfoWindow();
 
-    map_nearme = new google.maps.Map(document.getElementById('map_nearme'), {
+    map = new google.maps.Map(document.getElementById('map_nearme'), {
         center: pyrmont,
         zoom: 11
     });
@@ -18,7 +16,7 @@ function initMap() {
         type: ['restaurant']
     };
 
-    service = new google.maps.places.PlacesService(map_nearme);
+    service = new google.maps.places.PlacesService(map);
     service.nearbySearch(request, callback);
 }
 
@@ -33,7 +31,7 @@ function callback(results, status) {
 
 function createMarker(place) {
     var marker = new google.maps.Marker({
-        map: map_nearme,
+        map: map,
         position: place.geometry.location
     });
 
@@ -57,7 +55,7 @@ function createMarker(place) {
                 // TODO make a line box to the specific restaurant page
             );
 
-            infowindow.open(map_nearme, marker);
+            infowindow.open(map, marker);
         });
     });
 }
@@ -96,3 +94,13 @@ function scrollFunction() {
         document.getElementById("logo").style.fontSize = "35px";
     }
 }
+
+// $(document).ready(function() {
+//     $("button").click(function() {
+//         $.getJSON('https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=49.8951,-97.1384&radius=15000&type=restaurant&key=AIzaSyANSsJmxJqYNxohpoCaTgXuX0bIlrMrZu8', function(data) {
+//             $.each(data, function(i, field) {
+//                 $('div').append(field + " ");
+//             });
+//         });
+//     });
+// });
