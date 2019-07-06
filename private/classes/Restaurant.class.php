@@ -79,6 +79,18 @@ class Restaurant {
 		echo "</section>";
 	}
 
+	// json encode reference: https://www.dyn-web.com/tutorials/php-js/json/multidim-arrays.php
+	public function getAllItemsDetails()
+	{
+		$allItemsDetails = [];
+		foreach($this->menuItems as $key => $menuItem)
+		{
+			$allItemsDetails[] = $menuItem->getItemDetails();
+		}
+		// echo json_encode($allItemsDetails);
+		return $allItemsDetails;
+	}
+
 	public function incrementUpVoteByItemNumber($number)
 	{
 		// menuItem's key should be the menu item

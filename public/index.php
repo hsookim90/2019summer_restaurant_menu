@@ -64,8 +64,20 @@
 		}
 		$_SESSION['restaurants'][0]->setFilter($filter);
 		$_SESSION['restaurants'][0]->printMenu();
+		// $_SESSION['restaurants'][0]->getAllItemsDetails();
 
 	?>
+
+	<script type = "text/javascript">
+		var menuItemsDetails = <?php echo json_encode($_SESSION['restaurants'][0]->getAllItemsDetails()); ?>;
+		console.log('testing json encode in JS');
+		console.log(menuItemsDetails);
+		console.log("start of menu item names:");
+		for (var i = 0; i < menuItemsDetails.length; i++)
+		{
+			console.log(menuItemsDetails[i].itemName);
+		}
+	</script>
 
 	</section>
 

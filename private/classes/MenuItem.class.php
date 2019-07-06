@@ -23,6 +23,12 @@ class MenuItem {
 		$this->downVoteNumber = $args['downVoteNumber'] ?? 0;
 	}
 
+	public function getItemDetails()
+	{
+		return ['itemName'=>$this->itemName, '$price'=>$this->price, 'upVoteNumber'=>$this->upVoteNumber,
+						'downVoteNumber'=>$this->downVoteNumber];
+	}
+
 
 	public function printHTML()
 	{

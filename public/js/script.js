@@ -8,20 +8,7 @@
     xhr.onreadystatechange = function () {
       if(xhr.readyState == 4 && xhr.status == 200) {
         var result = xhr.responseText;
-        if (result == 'true')
-        {
-					parent.style.backgroundColor = "green";
-					var upVoteText = document.querySelector('#' + parent.id + ' #upVotesID');
-
-					// TODO replace hardcode below with relevant info
-					var num = 9;
-					upVoteText.innerText = ('upvotes ' + num);
-					num++;
-					upVoteText.innerText = ('upvotes ' + num);
-        }
         console.log('Result: ' + result);
-				// var bodyElement = document.body;
-				// bodyElement.innerHTML = result;
 
         var menuDisplay = document.querySelector(".menu-items-display");
         menuDisplay.innerHTML = result;
