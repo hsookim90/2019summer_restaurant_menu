@@ -7,12 +7,10 @@
 
 <body>
     <?php require 'header.php';?>
-
+    
     <section>
-        <article>
-            <h3>Near Me</h3>
-            <div id="map_nearme"></div>
-        </article>
+        <h3>Near Me</h3>
+        <div id="map_nearme"></div>
     </section>
 
     <?php require 'footer.php';?>

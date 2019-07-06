@@ -9,13 +9,23 @@
     </div>
 
     <div id="header">
-        <span onclick="openNav()">open</span>
-
         <a href="#" id="logo">Logo</a>
 
-        <div class="searchbar">
+        <span id="openSidebar" onclick="openNav()">
+            open
+        </span>
+        <span id="topSearchbar">
             <input type="text" placeholder="Search..." name="search">
             <button type="submit">Search</button>
-        </div>
+        </span>
+        <span id="filterIcon">
+            <button onclick="popupModal(event, 'filterModal')">Filter</button>
+            <div id="filterModal" class="modal">
+                <div class="modal-content">
+                    <span class="close" onclick="closeModal(event, 'filterModal')">&times;</span>
+                    <p>content
+                </div>
+            </div>
+        </span>
     </div>
 </header>
