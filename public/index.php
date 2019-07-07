@@ -97,6 +97,10 @@
 				displayCode += "<i class='fas fa-thumbs-down'></i>";
 				displayCode += "<i class='fas fa-thumbs-up'></i>";
 				displayCode += "<div class='votes-bar'</div>";
+				displayCode += "<span class ='down-votes-num'>" + itemObj.downVoteNumber + "</span>";
+				displayCode += "<span class ='up-votes-num'>" + itemObj.upVoteNumber + "</span>";
+				displayCode += "</div>";
+				displayCode += "</section>";
 				return displayCode;
 		}
 	</script>

@@ -26,8 +26,9 @@
 
 		$rest->incrementUpVoteByItemNumber($id);
 		$rest->updatePositions();
-		echo 'start of br <br><br><br><br>';
-		$rest->printMenu();
+		// echo 'start of br <br><br><br><br>';
+		// $rest->printMenu();
+		$rest->ajaxJSONEncode();
   }
   else {
     echo 'false';

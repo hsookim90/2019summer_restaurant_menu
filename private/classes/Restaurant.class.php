@@ -128,6 +128,11 @@ class Restaurant {
 		// below prints it twice
 		// $this->printMenu();
 	}
+
+	public function ajaxJSONEncode()
+	{
+		echo json_encode($this->getAllItemsDetails());
+	}
 }
 
 ?>
