@@ -26,7 +26,8 @@
 
 		$rest->incrementDownVoteByItemNumber($id);
 		$rest->updatePositions();
-		$rest->printMenu();
+		// $rest->printMenu();
+		$rest->ajaxJSONEncode();
   }
   else {
     echo 'false';
