@@ -26,7 +26,7 @@
     <span id="filterIcon">
         <img src=<?php echo url_for('images/filter-512.png')?> alt="filter icon" style="width:25px;height:30px;border:0;" onclick="popupModal(event, 'filterModal')">
         <!-- <button onclick="popupModal(event, 'filterModal')">Filter</button> -->
-        
+
         <div id="filterModal" class="modal">
             <div class="modal-content">
                 <span class="close" onclick="closeModal(event, 'filterModal')">&times;</span>
