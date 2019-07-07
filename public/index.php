@@ -69,28 +69,15 @@
 
 	<script type = "text/javascript">
 		var menuItemsDetails = <?php echo json_encode($_SESSION['restaurants'][0]->getAllItemsDetails()); ?>;
-		console.log('testing json encode in JS');
-		console.log(menuItemsDetails);
-		console.log("start of menu item names:");
     var menuDisplayHtml = "";
+
 		for (var i = 0; i < menuItemsDetails.length; i++)
 		{
-			console.log(menuItemsDetails[i].itemName);
-			console.log('getting id num:');
-			console.log(menuItemsDetails[i]);
-			console.log(getItemHTMLString(menuItemsDetails[i]));
       menuDisplayHtml += getItemHTMLString(menuItemsDetails[i]);
-
-			// below 2 lines actually do work commenting out for now
-      // var menuDisplay = document.querySelector(".menu-items-display");
-      // menuDisplay.innerHTML = getItemHTMLString(menuItemsDetails[i]);
 		}
 
-		console.log('START OF PRINT MENU ITEM');
-		console.log(menuDisplayHtml);
     var menuDisplay = document.querySelector(".menu-items-display");
     menuDisplay.innerHTML = menuDisplayHtml;
-		console.log('END OF PRINT MENU ITEM');
 
 		function getItemHTMLString(itemObj)
 		{

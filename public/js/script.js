@@ -7,20 +7,14 @@
     xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
     xhr.onreadystatechange = function () {
       if(xhr.readyState == 4 && xhr.status == 200) {
-        // start of old ajax response of pure html
 
         var menuItems = JSON.parse(xhr.responseText);
-        console.log(menuItems[0].itemName);
         var menuDisplayHtml = "";
 
 		    for (var i = 0; i < menuItems.length; i++)
         {
           menuDisplayHtml += getMobileItemHTMLString(menuItems[i]);
         }
-
-        console.log('START OF CONSOLE DISPLAY');
-        console.log(menuDisplayHtml);
-        console.log('END OF CONSOLE DISPLAY');
 
         var menuDisplay = document.querySelector(".menu-items-display");
         menuDisplay.innerHTML = menuDisplayHtml;
@@ -41,29 +35,14 @@
     xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
     xhr.onreadystatechange = function () {
       if(xhr.readyState == 4 && xhr.status == 200) {
-        // start of old ajax response of pure html
-
-        // var result = xhr.responseText;
-        // console.log('Result: ' + result);
-        // var menuDisplay = document.querySelector(".menu-items-display");
-        // menuDisplay.innerHTML = result;
-				// addThumbsUpListners();
-				// addThumbsDownListners();
-
-        // end of old ajax
 
         var menuItems = JSON.parse(xhr.responseText);
-        console.log(menuItems[0].itemName);
         var menuDisplayHtml = "";
 
 		    for (var i = 0; i < menuItems.length; i++)
         {
           menuDisplayHtml += getMobileItemHTMLString(menuItems[i]);
         }
-
-        console.log('START OF CONSOLE DISPLAY');
-        console.log(menuDisplayHtml);
-        console.log('END OF CONSOLE DISPLAY');
 
         var menuDisplay = document.querySelector(".menu-items-display");
         menuDisplay.innerHTML = menuDisplayHtml;
