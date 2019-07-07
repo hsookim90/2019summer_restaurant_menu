@@ -42,7 +42,6 @@ class Restaurant {
 			$this->createItem($item);
 		}
 		$this->updatePositions();
-		// $this->printMenu();
 	}
 
 	// menuitem's itemNumber is dictated by where it is in the restaurant's item list
@@ -65,19 +64,6 @@ class Restaurant {
 	// TODO: edit functions for moving up and down list,
 	// 			 note will have to update itemNumber of menu items as well
 	//
-
-	public function printMenu()
-	{
-		echo "<section id='restaurant-" . h($this->restaurantID) . "'>";
-		//echo "<section id='restaurant-id'>";
-
-		foreach($this->menuItems as $key => $menuItem)
-		{
-			// $menuItem->printHTML();
-			Display::printToScreen($menuItem->printHTML());
-		}
-		echo "</section>";
-	}
 
 	// json encode reference: https://www.dyn-web.com/tutorials/php-js/json/multidim-arrays.php
 	public function getAllItemsDetails()
@@ -125,8 +111,6 @@ class Restaurant {
 		}
 		// i think to call updatePositions b/c after u click a filter u expect the positions to change
 		$this->updatePositions();
-		// below prints it twice
-		// $this->printMenu();
 	}
 
 	public function ajaxJSONEncode()

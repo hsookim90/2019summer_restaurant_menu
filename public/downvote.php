@@ -21,12 +21,9 @@
     $id = $matches[1];
 
     $rest = $_SESSION['restaurants'][0];
-		// $menuItems = $rest->menuItems;
-		// $rest->printMenu();
 
 		$rest->incrementDownVoteByItemNumber($id);
 		$rest->updatePositions();
-		// $rest->printMenu();
 		$rest->ajaxJSONEncode();
   }
   else {

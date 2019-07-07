@@ -63,7 +63,6 @@
     	$_SESSION['restaurants'][]=$restaurant;
 		}
 		$_SESSION['restaurants'][0]->setFilter($filter);
-		// $_SESSION['restaurants'][0]->printMenu();
 		// $_SESSION['restaurants'][0]->getAllItemsDetails();
 
 	?>
