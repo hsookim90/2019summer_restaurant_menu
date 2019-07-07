@@ -25,8 +25,9 @@ class MenuItem {
 
 	public function getItemDetails()
 	{
-		return ['itemName'=>$this->itemName, '$price'=>$this->price, 'upVoteNumber'=>$this->upVoteNumber,
-						'downVoteNumber'=>$this->downVoteNumber];
+		// might need to do h($this->itemName), but that might make the price a int to a string
+		return ['itemName'=>$this->itemName, 'price'=>$this->price, 'upVoteNumber'=>$this->upVoteNumber,
+						'downVoteNumber'=>$this->downVoteNumber, 'itemNumber'=>$this->itemNumber];
 	}
 
 

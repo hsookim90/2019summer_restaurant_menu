@@ -76,6 +76,28 @@
 		for (var i = 0; i < menuItemsDetails.length; i++)
 		{
 			console.log(menuItemsDetails[i].itemName);
+			console.log('getting id num:');
+			console.log(menuItemsDetails[i]);
+			console.log(getItemHTMLString(menuItemsDetails[i]));
+
+			// below 2 lines actually do work commenting out for now
+      // var menuDisplay = document.querySelector(".menu-items-display");
+      // menuDisplay.innerHTML = getItemHTMLString(menuItemsDetails[i]);
+		}
+
+		function getItemHTMLString(itemObj)
+		{
+				var displayCode = "<section id = 'menu-item-" + itemObj.itemNumber
+				+ "' class = 'menu-item'>";
+				displayCode += "<h1>" + itemObj.itemName + "</h1>";
+				displayCode += "<div class = 'plate'>";
+				displayCode += "<img src = 'https://lh5.ggpht.com/_OaYG005JPDs/TVr8btiAytI/AAAAAAAACuA/7aZpNQQxKbE/s640/Chana%20Masala%20above%20close.jpg' class = 'item-image'>";
+				displayCode += "</div>";
+				displayCode += "<p class='price-num'>$" + itemObj.price + "</p>";
+				displayCode += "<i class='fas fa-thumbs-down'></i>";
+				displayCode += "<i class='fas fa-thumbs-up'></i>";
+				displayCode += "<div class='votes-bar'</div>";
+				return displayCode;
 		}
 	</script>
 
