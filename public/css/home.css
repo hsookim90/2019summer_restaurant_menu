@@ -133,3 +133,26 @@ body {
 #map_nearme {
     height: 400px;
 }
+
+#restaurant_location {
+    height: 400px;
+}
+
+/* --------------------------- */
+/* Restaurant page */
+.checked {
+    color: orange;
+}
+
+/* a:link, a:visited {
+    background-color: #9652f0;
+    color: white;
+    padding: 14px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+  
+a:hover, a:active {
+    background-color: red;
+} */

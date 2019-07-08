@@ -11,7 +11,7 @@
         <div id="restaurantList">
             <h3>Restaurants</h3>
 
-            <button>get json data</button>
+            <!-- <button>get json data</button> -->
 
             <h3>On Scroll Sticky Header</h3>
             <p>The header will stick to the top when you reach its scroll position.</p>

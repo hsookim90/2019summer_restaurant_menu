@@ -13,7 +13,6 @@
     </div>
 
     <?php require 'footer.php';?>
-
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyANSsJmxJqYNxohpoCaTgXuX0bIlrMrZu8&libraries=places&callback=initMap"></script>
 </body>
 </html>
