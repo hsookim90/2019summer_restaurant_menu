@@ -2,7 +2,6 @@
 	require_once('../private/initialize.php');
 	session_start();
 
-	// if(!isset($_SESSION['restaurants'])) {$_SESSION['restaurants'] = []; }
 	// default filter is by upvote
 	$filter = $_GET['filter']??"upvotes";
 
@@ -10,8 +9,8 @@
 	{
 		unset($_SESSION['restaurants']);
 	}
-
 ?>
+
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -38,66 +37,34 @@
 		</div>
 
 	<section class = "menu-items-display">
-	<?php
 
-		// stub stuff will be replaced with database in future milestones
-		$stubMenuItem1 = ['itemName'=>'chickpears', 'price'=>4];
-		$stubMenuItem2 = ['itemName'=>'rice', 'price'=>2, 'downVoteNumber'=>1];
-		// note upvotenumber = 1 for now, in production go back to 0 b/c no one voted for it
-		$stubMenuItem3 = ['itemName'=>'bananas', 'price'=>3, 'upVoteNumber'=>1];
+<?php
 
-		$stubMenuItems = [$stubMenuItem1, $stubMenuItem2, $stubMenuItem3];
+	// stub stuff will be replaced with database in future milestones
+	$stubMenuItem1 = ['itemName'=>'chickpears', 'price'=>4];
+	$stubMenuItem2 = ['itemName'=>'rice', 'price'=>2, 'downVoteNumber'=>1];
+	// note upvotenumber = 1 for now, in production go back to 0 b/c no one voted for it
+	$stubMenuItem3 = ['itemName'=>'bananas', 'price'=>3, 'upVoteNumber'=>1];
 
-		// did not create with rating or hours, think of what to do for that later
-		$stubRestaurantArgs = ['name' => 'Rockwood Urban Grill', 'address' => '50 Sage Creek Blvd',
-		 				 'phoneNum' => '204-256-7625', 'website' =>'rockwoodgrill.ca',
-						  'menuItems' => $stubMenuItems];
+	$stubMenuItems = [$stubMenuItem1, $stubMenuItem2, $stubMenuItem3];
 
-    $restaurant = new Restaurant($stubRestaurantArgs);
-		// $restaurant->setFilter($filter);
-		// $_SESSION['restaurants'] = [];
-    // $_SESSION['restaurants'][]=$restaurant;
+	// did not create with rating or hours, think of what to do for that later
+	$stubRestaurantArgs = ['name' => 'Rockwood Urban Grill', 'address' => '50 Sage Creek Blvd',
+	 				 'phoneNum' => '204-256-7625', 'website' =>'rockwoodgrill.ca',
+					  'menuItems' => $stubMenuItems];
 
-		if(isset($_SESSION['restaurants'])===false)
-		{
-    	$_SESSION['restaurants'][]=$restaurant;
-		}
-		$_SESSION['restaurants'][0]->setFilter($filter);
-		// $_SESSION['restaurants'][0]->getAllItemsDetails();
+  $restaurant = new Restaurant($stubRestaurantArgs);
 
-	?>
+	if(isset($_SESSION['restaurants'])===false)
+	{
+  	$_SESSION['restaurants'][]=$restaurant;
+	}
+	$_SESSION['restaurants'][0]->setFilter($filter);
+?>
 
 	<script type = "text/javascript">
 		var menuItemsDetails = <?php echo json_encode($_SESSION['restaurants'][0]->getAllItemsDetails()); ?>;
-    var menuDisplayHtml = "";
-
-		for (var i = 0; i < menuItemsDetails.length; i++)
-		{
-      menuDisplayHtml += getItemHTMLString(menuItemsDetails[i]);
-		}
-
-    var menuDisplay = document.querySelector(".menu-items-display");
-    menuDisplay.innerHTML = menuDisplayHtml;
-
-		function getItemHTMLString(itemObj)
-		{
-				var displayCode = "<section id = 'menu-item-" + itemObj.itemNumber
-				+ "' class = 'menu-item'>";
-				displayCode += "<h1>" + itemObj.itemName + "</h1>";
-				displayCode += "<div class = 'plate'>";
-				displayCode += "<img src = 'https://lh5.ggpht.com/_OaYG005JPDs/TVr8btiAytI/AAAAAAAACuA/7aZpNQQxKbE/s640/Chana%20Masala%20above%20close.jpg' class = 'item-image'>";
-				displayCode += "</div>";
-				displayCode += "<p class='price-num'>$" + itemObj.price + "</p>";
-				displayCode += "<i class='fas fa-thumbs-down'></i>";
-				displayCode += "<i class='fas fa-thumbs-up'></i>";
-				displayCode += "<div class='votes-bar'</div>";
-				displayCode += "<span class ='down-votes-num'>" + itemObj.downVoteNumber + "</span>";
-				displayCode += "<span class ='up-votes-num'>" + itemObj.upVoteNumber + "</span>";
-				displayCode += "</div>";
-				displayCode += "</section>";
-				return displayCode;
-		}
-	</script>
+  </script>
 
 	</section>
 
