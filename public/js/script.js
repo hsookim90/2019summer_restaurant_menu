@@ -1,5 +1,24 @@
   // TODO: find way to combine upVote and downVote functions
 
+if (matchMedia)
+{
+	const mq = window.matchMedia("(min-width:800px)");
+	mq.addListener(widthChange);
+	widthChange(mq);
+}
+
+function widthChange(mq)
+{
+	if (mq.matches)
+	{
+		document.body.style.backgroundColor = "blue";
+	}
+	else
+	{
+		document.body.style.backgroundColor = "purple";
+	}
+}
+
 var menuDisplayHtml = "";
 
 if (typeof menuItemsDetails !== "undefined")
