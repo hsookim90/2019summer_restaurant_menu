@@ -1,43 +1,3 @@
-// ------------- Modal
-function popupModal(event, modalName) {
-    var modal = document.getElementById(modalName);
-
-    modal.style.display = "block";
-}
-
-function closeModal(event, modalName) {
-    var modal = document.getElementById(modalName);
-
-    modal.style.display = "none";
-}
-
-// -------------- Side Nav
-/* Set the width of the side navigation to 250px */
-function openNav() {
-    document.getElementById("mySidenav").style.width = "250px";
-}
-  
-/* Set the width of the side navigation to 0 */
-function closeNav() {
-    document.getElementById("mySidenav").style.width = "0";
-}
-
-// --------------- Scroll
-window.onscroll = function() {myFunction()};
-
-var header = document.getElementById("myHeader");
-var sticky = header.offsetTop;
-
-function myFunction() {
-    if (window.pageYOffset > sticky) {
-        header.classList.add("sticky");
-    } else {
-        header.classList.remove("sticky");
-    }
-}
-
-// ------------------------------------------------------ //
-// Google Maps
 var map;
 var service;
 var infowindow;
@@ -45,17 +5,16 @@ var infowindow;
 function initMap() {
     var pyrmont = new google.maps.LatLng(49.8951,-97.1384);
 
-    map = new google.maps.Map(document.getElementById('map_nearme'), {
+    map = new google.maps.Map(document.getElementById('restaurant_location'), {
         center: pyrmont,
         zoom: 11
     });
     
     var request = {
-        location: pyrmont,
-        radius: '15000',
-        type: ['restaurant']
+        location: pyrmont
     };
 
+    // TODO: only need one specific restaurant location. nearbysearch not in need.
     service = new google.maps.places.PlacesService(map);
     service.nearbySearch(request, callback);
 }
@@ -98,13 +57,3 @@ function createMarker(place) {
         });
     });
 }
-
-// $(document).ready(function() {
-//     $("button").click(function() {
-//         $.getJSON('https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=49.8951,-97.1384&radius=15000&type=restaurant&key=AIzaSyANSsJmxJqYNxohpoCaTgXuX0bIlrMrZu8', function(data) {
-//             $.each(data, function(i, field) {
-//                 $('div').append(field + " ");
-//             });
-//         });
-//     });
-// });

@@ -1,113 +1,97 @@
-body {
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: #ccc;
+* {
+    box-sizing: border-box;
 }
 
 /* ------------------------------------------------------------------------- */
-/* header */
-header {
-    /* background-image: url("http://localhost/2019summer_restaurant_menu/images/dishes.jpg"); */
-    height: 200px;
+/* The side navigation menu */
+.sidenav {
+    height: 100%; /* 100% Full-height */
+    width: 0; /* 0 width - change this with JavaScript */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Stay on top */
+    top: 0; /* Stay at the top */
+    left: 0;
+    background-color: #111; /* Black*/
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 60px; /* Place content 60px from the top */
+    transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+}
+
+/* The navigation menu links */
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidenav a:hover {
+    color: #f1f1f1;
+}
+
+/* Position and style the close button (top right corner) */
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+    .sidenav {
+        padding-top: 15px;
+    }
+    .sidenav a {
+        font-size: 18px;
+    }
+}
+
+/* ------------------------------------------------------------------------- */
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.top-container {
+    background-color: #f1f1f1;
     padding: 30px;
     text-align: center;
-    font-size: 35px;
+}
+
+.header {
+    padding: 10px 16px;
+    background: #555;
+    /* color: #f1f1f1; */
+}
+
+.content {
+    padding: 16px;
+    background-color: #f1f1f1;
+}
+
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+.sticky + .content {
+    padding-top: 102px;
+}
+
+.footer {
+    background-color: #777;
+    padding:20px;
+    text-align: center;
     color: white;
 }
 
-header h2 {
-    padding: 50px 0;
-}
-
-header p {
-    font-size: 18px;
-    text-align: left;
-}
-
-section {
-    height: 80%;
-}
-
 /* --------------------------- */
-/* nav bar */
-.scrolltab {
-    border: 1px solid #ccc;
-    background-color: #f1f1f1;
-    width: 100%;
-    overflow: hidden;
-    white-space: nowrap;
-}
-
-/* Style the buttons inside the tab */
-.scrolltab button {
-    display: inline-block;
-    background-color: inherit;
-    color: black;
-    padding: 18px;
-    border: none;
-    outline: none;
-    text-align: center;
-    cursor: pointer;
-    transition: 0.3s;
-    font-size: 17px;
-    text-decoration: none;
-}
-
-/* Change background color of buttons on hover */
-.scrolltab button:hover {
-    background-color: #ddd;
-}
-
-/* Create an active/current "tab button" class */
-.scrolltab button.active {
-    background-color: #ccc;
-}
-
-/* --------------------------- */
-/* article */
-article {
-    float: left;
-    padding: 20px;
-    width: 100%;
-    background-color: #f1f1f1;
-}
-
-/* Clear floats after the columns */
-section:after {
-    content: "";
-    display: table;
-    clear: both;
-}
-
-/* square menu */
-.gallery {
-    margin: 5px;
-    border: 1px solid #ccc;
-    float: left;
-    width: 180px;
-}
-
-.gallery:hover {
-    border: 1px solid #777;
-}
-
-.gallery img {
-    width: 100%;
-    height: auto;
-}
-
-.desc {
-    text-align: center;
-}
-
-.menuDetailBtn {
-    border: 1px solid #ccc;
-    background-color: #f1f1f1;
-    width: 100%;
-    height: 100%;
-    padding: 15px;
-}
-/* --------------------------- */
-/* The Modal (background) */
 .modal {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
@@ -120,8 +104,7 @@ section:after {
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
-  
-/* Modal Content/Box */
+
 .modal-content {
     background-color: #fefefe;
     margin: 15% auto; /* 15% from the top and centered */
@@ -146,44 +129,30 @@ section:after {
 }
 
 /* --------------------------- */
-
-#map_main {
-    height: 500px;
-    width: 500px;
-    margin: 20px;
+/* Google Maps */
+#map_nearme {
+    height: 400px;
 }
 
-#map_near_me {
-    height: 600px;
-    width: 100%;
+#restaurant_location {
+    height: 400px;
 }
 
 /* --------------------------- */
-/* footer */
-footer {
-    background-color: #777;
-    padding: 30px;
-    text-align: center;
+/* Restaurant page */
+.checked {
+    color: orange;
+}
+
+/* a:link, a:visited {
+    background-color: #9652f0;
     color: white;
-    height: 20%;
+    padding: 14px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
 }
-
-/* --------------------------- */
-/* Responsive layout - makes the two columns/boxes
-stack on top of each other instead of next to each
-other, on small screens */
-@media (max-width: 600px) {
-    nav, article {
-        width: 100%;
-        height: auto;
-    }
-
-    .searchbar input[type=text], .searchbar button {
-        float: none;
-        display: block;
-        text-align: left;
-        width: 100%;
-        margin: 0;
-        padding: 14px;
-    }
-}
+  
+a:hover, a:active {
+    background-color: red;
+} */
