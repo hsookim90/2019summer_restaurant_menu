@@ -11,9 +11,7 @@ function initMap() {
     });
     
     var request = {
-        location: pyrmont,
-        radius: '15000',
-        type: ['restaurant']
+        location: pyrmont
     };
 
     // TODO: only need one specific restaurant location. nearbysearch not in need.
