@@ -23,43 +23,11 @@ class MenuItem {
 		$this->downVoteNumber = $args['downVoteNumber'] ?? 0;
 	}
 
-
-	public function printHTML()
+	public function getItemDetails()
 	{
-		// for reference, what the html looks like:
-		// here for future reference if need to change html/css
-		// TODO delete this before production
-
-	  // <section class = "menu-item">
-		// <i class="fas fa-thumbs-down"></i>
-		//   <div class = "plate">
-		// 	<img src = "https://lh5.ggpht.com/_OaYG005JPDs/TVr8btiAytI/AAAAAAAACuA/7aZpNQQxKbE/s640/Chana%20Masala%20above%20close.jpg" class = "item-image">
-		// 	<div class = 'alpha-bg'>
-		// 		<p>Chickpeas</p>
-		// 	</div>
-		//   </div>
-	  // 	<i class="fas fa-thumbs-up"></i>
-	  // </section>
-
-		// TODO have vars populate from the database
-
-		// $displayCode .= "<section id = 'menu-item-{$this->itemNumber}' class = 'menu-item'>";
-
-		$displayCode = "<section id = 'menu-item-" . h($this->itemNumber)  . "' class = 'menu-item'>";
-		$displayCode .= "<i class='fas fa-thumbs-down'></i>";
-		$displayCode .= "<div class = 'plate'>";
-		$displayCode .= "<img src = 'https://lh5.ggpht.com/_OaYG005JPDs/TVr8btiAytI/AAAAAAAACuA/7aZpNQQxKbE/s640/Chana%20Masala%20above%20close.jpg' class = 'item-image'>";
-		$displayCode .= "<div class = 'alpha-bg'>";
-		$displayCode .= "<p>" . h($this->itemName) . "</p>";
-		$displayCode .= "</div>";
-		$displayCode .= "</div>";
-		$displayCode .= "<i class='fas fa-thumbs-up'></i>";
-		$displayCode .= "<p class= 'upVotesID' >upvotes = " . h($this->upVoteNumber) . "</p>";
-		$displayCode .= "<p class= 'downVotesID' >downvotes =" . h($this->downVoteNumber) . "</p>";
-		$displayCode .= "</section>";
-		// echo $displayCode;
-		// Display::printToScreen($displayCode);
-		return $displayCode;
+		// might need to do h($this->itemName), but that might make the price a int to a string
+		return ['itemName'=>$this->itemName, 'price'=>$this->price, 'upVoteNumber'=>$this->upVoteNumber,
+						'downVoteNumber'=>$this->downVoteNumber, 'itemNumber'=>$this->itemNumber];
 	}
 
 	// created to test if can compare private var of another instance of same class

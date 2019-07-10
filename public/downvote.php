@@ -21,13 +21,10 @@
     $id = $matches[1];
 
     $rest = $_SESSION['restaurants'][0];
-		// $menuItems = $rest->menuItems;
-		// $rest->printMenu();
 
 		$rest->incrementDownVoteByItemNumber($id);
 		$rest->updatePositions();
-		echo 'start of br <br><br><br><br>';
-		$rest->printMenu();
+		$rest->ajaxJSONEncode();
   }
   else {
     echo 'false';

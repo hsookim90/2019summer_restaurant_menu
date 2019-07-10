@@ -7,17 +7,18 @@
 .plate
 {
 	background-color: #ffa500;
-	height: 100%;
-	width:300px;
+	background-color: rgba(100,70,28,1);
+	background-color:white;
+	height: 300px;
+	width:100%;
 	position:relative;
 	border-style:solid;
-	border-width:3px;
+	border-width:2px;
 	display:inline-block;
-	margin: 0 10px;
-
+	box-sizing:border-box;
 }
 
-.item-image, .alpha-bg
+.item-image
 {
 	width:90%;
 	height:90%;
@@ -26,66 +27,82 @@
 	margin-top:5%;
 }
 
-.alpha-bg
+.menu-item h1
 {
-	background: rgba(70,130,180,0.65);
+  font-family: "Amatic SC";
+	color:white;
+	font-size:80px;
+	font-weight:bold;
+	text-align:center;
+	margin:0px;
 }
 
-.alpha-bg:hover
+.menu-item
 {
-	background: none;
+	background-color:gray;
+	margin: 20px auto;
+	height:480px;
+	width:300px;
+	border-radius:25px;
+	position:relative;
 }
 
 .plate p
 {
-  	font-family: "Amatic SC";
+  font-family: "Amatic SC";
 	color:white;
 	font-size:80px;
 	font-weight:bold;
 	text-align:center;
 }
 
-.menu-item
-{
-	background-color:blue;
-	margin: 20px auto;
-	/* 300px makes font right pos */
-	height:300px;
-	width:500px;
-	/* pos relative for temp upvote/delete # display. may delete later */
-	position: relative;
-}
-
-
 .fa-thumbs-down, .fa-thumbs-up
 {
-	font-size:80px;
-	vertical-align:middle;
-	color:pink;
-	height:100%;
-
+	font-size:50px;
+	position:absolute;
+	bottom:3.5%;
 }
 
 .fa-thumbs-down
 {
+	left:5%;
+	color:coral;
 	transform: scaleX(-1);
 }
 
 .fa-thumbs-up
 {
-	margin-bottom:50px;
+	right:5%;
+	margin-bottom:6%;
+	color:greenyellow;
 }
 
-.upVotesID, .downVotesID
+.menu-item .price-num
 {
-	color:orange;
-	position: absolute;
-	top:10px;
-	font-size: 20px;
-	font-weight: bold;
+	font-size:40px;
+	color:white;
+	text-align:center;
+	margin:0 auto;
 }
 
-.upVotesID
+.up-votes-num, .down-votes-num
 {
-	right:0px;
+	font-size:1.5em;
+}
+
+.up-votes-num
+{
+	color:greenyellow;
+}
+
+.down-votes-num
+{
+	color:coral;
+}
+
+.votes-bar
+{
+	display:flex;
+	justify-content:space-between;
+	padding:0 18%;
 }
