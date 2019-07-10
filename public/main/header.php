@@ -2,10 +2,10 @@
 
 <div id="mySidenav" class="sidenav">
     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-    <a href=<?php echo url_for('list.php')?>>Restaurant List</a>
-    <a href=<?php echo url_for('nearme.php')?>>Near Me</a>
+    <a href=<?php echo url_for('/main/list.php')?>>Restaurant List</a>
+    <a href=<?php echo url_for('/main/nearme.php')?>>Near Me</a>
     <a href='#'>Favourite Restaurant</a>
-    <a href='#'>Account Setting</a>
+    <a href=<?php echo url_for('/main/account.php')?>>Account Setting</a>
 </div>
 
 <div class="top-container">
