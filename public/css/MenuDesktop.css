@@ -1,0 +1,109 @@
+.plate, .item-image, .alpha-bg
+{
+	border-radius:50%;
+}
+
+
+.plate
+{
+	background-color: #ffa500;
+	background-color: rgba(100,70,28,1);
+	background-color:white;
+	width:20%;
+	padding-bottom: 20%;
+	position:relative;
+	border-style:solid;
+	border-width:2px;
+	display:inline-block;
+	box-sizing:border-box;
+}
+
+.item-image
+{
+	width:90%;
+	height:90%;
+	position:absolute;
+	margin-left:5%;
+	margin-top:5%;
+}
+
+.menu-item h1
+{
+  font-family: "Amatic SC";
+	color:white;
+	font-size:6vw;
+	font-weight:bold;
+	text-align:center;
+	margin:0px;
+	display:inline-block;
+}
+
+.menu-item
+{
+	background-color:gray;
+	margin: 20px auto;
+	width:80	%;
+	border-radius:25px;
+	position:relative;
+	display:flex;
+	align-items: center;
+}
+
+.fa-thumbs-down, .fa-thumbs-up
+{
+	font-size:5vw;
+}
+
+.fa-thumbs-down
+{
+	color:coral;
+	transform: scaleX(-1);
+	margin-top: 20%;
+}
+
+.fa-thumbs-up
+{
+	/* margin-bottom:6%; */
+	color:greenyellow;
+	transform: scaleX(-1);
+	margin-bottom: 20%;
+}
+
+.menu-item .price-num
+{
+	font-size:3.5vw;
+	color:white;
+	margin: 0;
+}
+
+.up-votes-num, .down-votes-num
+{
+	font-size:3.5vw;
+}
+
+.up-votes-num
+{
+	color:greenyellow;
+	margin-bottom: 10%;
+}
+
+.down-votes-num
+{
+	color:coral;
+	margin-top: 80%;
+}
+
+.votes-bar
+{
+	display:flex;
+	justify-content:space-between;
+	padding:0 18%;
+}
+
+.vertical-thumbs
+{
+	display: inline-flex;
+	flex-direction: column;
+	/* justify-content: space-between; */
+	/* align-content: space-between; */
+}

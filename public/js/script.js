@@ -2,7 +2,7 @@
 
 if (matchMedia)
 {
-	const mq = window.matchMedia("(min-width:800px)");
+	const mq = window.matchMedia("(min-width:1000px)");
 	mq.addListener(widthChange);
 	widthChange(mq);
 }
@@ -120,7 +120,7 @@ function getMobileItemHTMLString(itemObj)
 		displayCode += "<p class='price-num'>$" + escapeHTML(itemObj.price) + "</p>";
 		displayCode += "<i class='fas fa-thumbs-down'></i>";
 		displayCode += "<i class='fas fa-thumbs-up'></i>";
-		displayCode += "<div class='votes-bar'</div>";
+		displayCode += "<div class='votes-bar'>";
 		displayCode += "<span class ='down-votes-num'>" + escapeHTML(itemObj.downVoteNumber) + "</span>";
 		displayCode += "<span class ='up-votes-num'>" + escapeHTML(itemObj.upVoteNumber) + "</span>";
 		displayCode += "</div>";
