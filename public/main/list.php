@@ -11,7 +11,17 @@
         <div id="restaurantList">
             <h3>Restaurants</h3>
 
-            <!-- <button>get json data</button> -->
+            <form>
+                Select a CD:
+                <select name="cds" onchange="showCD(this.value)">
+                <option value="">Select a CD:</option>
+                <option value="Bob Dylan">Bob Dylan</option>
+                <option value="Bee Gees">Bee Gees</option>
+                <option value="Cat Stevens">Cat Stevens</option>
+                </select>
+            </form>
+
+            <div id="txtHint"><b>CD info will be listed here...</b></div>
 
             <h3>On Scroll Sticky Header</h3>
             <p>The header will stick to the top when you reach its scroll position.</p>
