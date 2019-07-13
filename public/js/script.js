@@ -1,5 +1,7 @@
   // TODO: find way to combine upVote and downVote functions
 
+var mobile=false;
+
 if (matchMedia)
 {
 	const mq = window.matchMedia("(min-width:1000px)");
@@ -12,10 +14,12 @@ function widthChange(mq)
 	if (mq.matches)
 	{
 		document.body.style.backgroundColor = "blue";
+		mobile = false;
 	}
 	else
 	{
 		document.body.style.backgroundColor = "purple";
+		mobile = true;
 	}
 }
 
@@ -25,7 +29,8 @@ if (typeof menuItemsDetails !== "undefined")
 {
   for (var i = 0; i < menuItemsDetails.length; i++)
   {
-    menuDisplayHtml += getMobileItemHTMLString(menuItemsDetails[i]);
+    // menuDisplayHtml += getMobileItemHTMLString(menuItemsDetails[i]);
+    menuDisplayHtml += getDesktopItemHTMLString(menuItemsDetails[i]);
   }
 }
 
@@ -35,6 +40,10 @@ menuDisplay.innerHTML = menuDisplayHtml;
 function upVote() {
 
   var parent = this.parentElement;
+	// triple parent if menu desktop html
+	parent = parent.parentElement;
+	parent = parent.parentElement;
+
   var xhr = new XMLHttpRequest();
   xhr.open('POST', 'upvote.php', true);
   xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
@@ -47,7 +56,8 @@ function upVote() {
 
 	    for (var i = 0; i < menuItems.length; i++)
       {
-        menuDisplayHtml += getMobileItemHTMLString(menuItems[i]);
+        // menuDisplayHtml += getMobileItemHTMLString(menuItems[i]);
+    		menuDisplayHtml += getDesktopItemHTMLString(menuItems[i]);
       }
 
       var menuDisplay = document.querySelector(".menu-items-display");
@@ -63,6 +73,10 @@ function upVote() {
 
 function downVote() {
   var parent = this.parentElement;
+	// triple parent if menu desktop html
+	parent = parent.parentElement;
+	parent = parent.parentElement;
+
   var xhr = new XMLHttpRequest();
   xhr.open('POST', 'downvote.php', true);
   xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
@@ -75,7 +89,8 @@ function downVote() {
 
 	    for (var i = 0; i < menuItems.length; i++)
       {
-        menuDisplayHtml += getMobileItemHTMLString(menuItems[i]);
+        // menuDisplayHtml += getMobileItemHTMLString(menuItems[i]);
+    		menuDisplayHtml += getDesktopItemHTMLString(menuItems[i]);
       }
 
       var menuDisplay = document.querySelector(".menu-items-display");
@@ -125,6 +140,40 @@ function getMobileItemHTMLString(itemObj)
 		displayCode += "<span class ='up-votes-num'>" + escapeHTML(itemObj.upVoteNumber) + "</span>";
 		displayCode += "</div>";
 		displayCode += "</section>";
+		return displayCode;
+}
+
+function getDesktopItemHTMLString(itemObj)
+{
+		var displayCode = "<section id = 'menu-item-" + escapeHTML(itemObj.itemNumber)
+		+ "' class = 'menu-item'>";
+
+    displayCode += "<section class = 'thumbs-and-nums'>";
+    displayCode += "<span class='vertical-align'>";
+    // displayCode += "<span class ='up-votes-num'> 3 </span>";
+    // displayCode += "<span class ='down-votes-num'> 4 </span>";
+		displayCode += "<span class ='up-votes-num'>" + escapeHTML(itemObj.upVoteNumber) + "</span>";
+		displayCode += "<span class ='down-votes-num'>" + escapeHTML(itemObj.downVoteNumber) + "</span>";
+    displayCode += "</span>";
+    displayCode += "<span class='vertical-align'>";
+    displayCode += "<i class='fas fa-thumbs-up'></i>";
+    displayCode += "<i class='fas fa-thumbs-down'></i>";
+    displayCode += "</span>";
+    displayCode += "</section>";
+  	displayCode += "<div class = 'plate'>";
+    displayCode += "<img src = 'https://lh5.ggpht.com/_OaYG005JPDs/TVr8btiAytI/AAAAAAAACuA/7aZpNQQxKbE/s640/Chana%20Masala%20above%20close.jpg' class = 'item-image'>";
+  	displayCode += "</div>";
+    displayCode += "<span class = 'vertical-align'>";
+		displayCode += "<h1>" + escapeHTML(itemObj.itemName) + "</h1>";
+		displayCode += "<p class='price-num'>$" + escapeHTML(itemObj.price) + "</p>";
+  	displayCode += "</span>";
+    displayCode += "<div class = 'ingredients'>";
+    displayCode += "<p>";
+    displayCode += "Garbanzo Beans, zucchiini, mushrooms, tomato, garlic, oregano, cilantro.";
+    displayCode += "<p>";
+    displayCode += "<div>";
+		displayCode += "</section>";
+
 		return displayCode;
 }
 
