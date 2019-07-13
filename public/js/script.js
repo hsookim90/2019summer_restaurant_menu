@@ -1,5 +1,6 @@
   // TODO: find way to combine upVote and downVote functions
 
+// in functions where change in code for deskopt can use mobile boolean
 var mobile=false;
 
 if (matchMedia)
@@ -11,38 +12,57 @@ if (matchMedia)
 
 function widthChange(mq)
 {
+	// console.log('width change');
+	var oldMobileBool = mobile;
 	if (mq.matches)
 	{
 		document.body.style.backgroundColor = "blue";
 		mobile = false;
+		printMenuItems();
 	}
 	else
 	{
 		document.body.style.backgroundColor = "purple";
 		mobile = true;
+		printMenuItems();
 	}
+		addThumbsUpListners();
+		addThumbsDownListners();
 }
 
-var menuDisplayHtml = "";
+printMenuItems();
 
-if (typeof menuItemsDetails !== "undefined")
+function printMenuItems()
 {
-  for (var i = 0; i < menuItemsDetails.length; i++)
-  {
-    // menuDisplayHtml += getMobileItemHTMLString(menuItemsDetails[i]);
-    menuDisplayHtml += getDesktopItemHTMLString(menuItemsDetails[i]);
-  }
-}
+	var menuDisplayHtml = "";
 
-var menuDisplay = document.querySelector(".menu-items-display");
-menuDisplay.innerHTML = menuDisplayHtml;
+	if (typeof menuItemsDetails !== "undefined")
+	{
+	  for (var i = 0; i < menuItemsDetails.length; i++)
+	  {
+			if (mobile == true)
+			{
+				menuDisplayHtml += getMobileItemHTMLString(menuItemsDetails[i]);
+			}
+			else
+			{
+	    	menuDisplayHtml += getDesktopItemHTMLString(menuItemsDetails[i]);
+			}
+	  }
+	}
+	var menuDisplay = document.querySelector(".menu-items-display");
+	menuDisplay.innerHTML = menuDisplayHtml;
+}
 
 function upVote() {
 
   var parent = this.parentElement;
 	// triple parent if menu desktop html
-	parent = parent.parentElement;
-	parent = parent.parentElement;
+	if (mobile==false)
+	{
+		parent = parent.parentElement;
+		parent = parent.parentElement;
+	}
 
   var xhr = new XMLHttpRequest();
   xhr.open('POST', 'upvote.php', true);
@@ -52,12 +72,19 @@ function upVote() {
     if(xhr.readyState == 4 && xhr.status == 200) {
 
       var menuItems = JSON.parse(xhr.responseText);
+			menuItemsDetails = menuItems;
       var menuDisplayHtml = "";
 
 	    for (var i = 0; i < menuItems.length; i++)
       {
-        // menuDisplayHtml += getMobileItemHTMLString(menuItems[i]);
-    		menuDisplayHtml += getDesktopItemHTMLString(menuItems[i]);
+				if (mobile == true)
+				{
+        	menuDisplayHtml += getMobileItemHTMLString(menuItems[i]);
+				}
+				else
+				{
+    			menuDisplayHtml += getDesktopItemHTMLString(menuItems[i]);
+				}
       }
 
       var menuDisplay = document.querySelector(".menu-items-display");
@@ -74,8 +101,11 @@ function upVote() {
 function downVote() {
   var parent = this.parentElement;
 	// triple parent if menu desktop html
-	parent = parent.parentElement;
-	parent = parent.parentElement;
+	if (mobile==false)
+	{
+		parent = parent.parentElement;
+		parent = parent.parentElement;
+	}
 
   var xhr = new XMLHttpRequest();
   xhr.open('POST', 'downvote.php', true);
@@ -85,12 +115,21 @@ function downVote() {
     if(xhr.readyState == 4 && xhr.status == 200) {
 
       var menuItems = JSON.parse(xhr.responseText);
+			menuItemsDetails = menuItems;
       var menuDisplayHtml = "";
 
 	    for (var i = 0; i < menuItems.length; i++)
       {
         // menuDisplayHtml += getMobileItemHTMLString(menuItems[i]);
-    		menuDisplayHtml += getDesktopItemHTMLString(menuItems[i]);
+    		// menuDisplayHtml += getDesktopItemHTMLString(menuItems[i]);
+				if (mobile == true)
+				{
+        	menuDisplayHtml += getMobileItemHTMLString(menuItems[i]);
+				}
+				else
+				{
+    			menuDisplayHtml += getDesktopItemHTMLString(menuItems[i]);
+				}
       }
 
       var menuDisplay = document.querySelector(".menu-items-display");
