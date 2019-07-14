@@ -26,15 +26,16 @@ $price=$xmlDoc->getElementsByTagName('price_level');
 
 // https://maps.googleapis.com/maps/api/place/photo?photoreference=PHOTO_REFERENCE&sensor=false&maxheight=MAX_HEIGHT&maxwidth=MAX_WIDTH&key=YOUR_API_KEY
 for ($i=0; $i<=$numResults->length-1;$i++) {
-    // check if type of each result is element
-    echo("Names: ");
-    echo($names->item($i)->nodeValue . '<br>');
-    echo("Address: ");
-    echo($addresses->item($i)->nodeValue . '<br>');
-    echo("Rating: ");
-    echo($ratings->item($i)->nodeValue . '<br>');
-    echo("Price: ");
-    echo($price->item($i)->nodeValue . '<br>');
-    echo("<br>");
+    echo '<a href="' . 'restaurant.php' . '">';
+    echo '<button class="restItem">';
+    echo $names->item($i)->nodeValue . '<br>';
+    echo $addresses->item($i)->nodeValue . '<br>';
+    echo 'Rating: ';
+    echo $ratings->item($i)->nodeValue . '<br>';
+    echo 'Price: ';
+    echo $price->item($i)->nodeValue . '<br>';
+    echo '<br>';
+    echo '</button>';
+    echo '</a>';
 }
 ?>

@@ -156,3 +156,16 @@ body {
 a:hover, a:active {
     background-color: red;
 } */
+
+.restItem {
+    border: none;
+    background-color: inherit;
+    padding: 14px 20px;
+    cursor: pointer;
+    display: inline-block;
+
+    text-align: left;
+  }
+  
+/* On mouse-over */
+.restItem:hover {background: #eee;}
