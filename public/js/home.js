@@ -25,7 +25,7 @@ function closeNav() {
 // --------------- Scroll
 document.addEventListener('DOMContentLoaded', function(event) {
     window.onscroll = function() {myFunction()};
-    
+
     var header = document.getElementById("myHeader");
     var sticky = header.offsetTop;
 

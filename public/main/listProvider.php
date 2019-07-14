@@ -1,40 +1,40 @@
 <?php
+require_once('../../private/initialize.php');
 $q=$_GET["q"];
 
 $xmlDoc = new DOMDocument();
-$xmlDoc->load("https://maps.googleapis.com/maps/api/place/nearbysearch/xml?location=49.8951,-97.1384&radius=15000&type=restaurant&key=AIzaSyANSsJmxJqYNxohpoCaTgXuX0bIlrMrZu8");
+$xmlDoc->load("https://maps.googleapis.com/maps/api/place/nearbysearch/xml?location=49.8951,-97.1384&radius=15000&type=restaurant&price_level&key=AIzaSyANSsJmxJqYNxohpoCaTgXuX0bIlrMrZu8");
 
-// $x=$xmlDoc->getElementsByTagName('ARTIST');
+// $x=$xmlDoc->getElementsByTagName('name');
 
-// for ($i=0; $i<=$x->length-1; $i++) {
-//     //Process only element nodes
+// // exclude next_page_token
+// for ($i=0; $i<=$x->length-2;$i++) {
+//     // check if type of each result is element
 //     if ($x->item($i)->nodeType==1) {
-//         if ($x->item($i)->childNodes->item(0)->nodeValue == $q) {
-//             $y=($x->item($i)->parentNode);
-//         }
-//     }
-// }
-
-// $cd=($y->childNodes);
-
-// for ($i=0;$i<$cd->length;$i++) { 
-//     //Process only element nodes
-//     if ($cd->item($i)->nodeType==1) {
-//         echo("<b>" . $cd->item($i)->nodeName . ":</b> ");
-//         echo($cd->item($i)->childNodes->item(0)->nodeValue);
+//         echo("name: ");
+//         echo($x->item($i)->childNodes->item(0)->nodeValue);
 //         echo("<br>");
 //     }
 // }
 
-$x=$xmlDoc->getElementsByTagName('name');
+$numResults=$xmlDoc->getElementsByTagName('result');
 
-// exclude next_page_token
-for ($i=0; $i<=$x->length-2;$i++) {
+$names=$xmlDoc->getElementsByTagName('name');
+$addresses=$xmlDoc->getElementsByTagName('vicinity');
+$ratings=$xmlDoc->getElementsByTagName('rating');
+$price=$xmlDoc->getElementsByTagName('price_level');
+
+// https://maps.googleapis.com/maps/api/place/photo?photoreference=PHOTO_REFERENCE&sensor=false&maxheight=MAX_HEIGHT&maxwidth=MAX_WIDTH&key=YOUR_API_KEY
+for ($i=0; $i<=$numResults->length-1;$i++) {
     // check if type of each result is element
-    if ($x->item($i)->nodeType==1) {
-        echo("name: ");
-        echo($x->item($i)->childNodes->item(0)->nodeValue);
-        echo("<br>");
-    }
+    echo("Names: ");
+    echo($names->item($i)->nodeValue . '<br>');
+    echo("Address: ");
+    echo($addresses->item($i)->nodeValue . '<br>');
+    echo("Rating: ");
+    echo($ratings->item($i)->nodeValue . '<br>');
+    echo("Price: ");
+    echo($price->item($i)->nodeValue . '<br>');
+    echo("<br>");
 }
 ?>
