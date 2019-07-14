@@ -113,3 +113,10 @@
   font-family: "Amatic SC";
 	font-size: 3vw;
 }
+
+.item-and-price
+{
+	width: 25vw;
+	text-align: center;
+	overflow: hidden;
+}

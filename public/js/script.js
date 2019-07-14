@@ -16,13 +16,11 @@ function widthChange(mq)
 	var oldMobileBool = mobile;
 	if (mq.matches)
 	{
-		document.body.style.backgroundColor = "blue";
 		mobile = false;
 		printMenuItems();
 	}
 	else
 	{
-		document.body.style.backgroundColor = "purple";
 		mobile = true;
 		printMenuItems();
 	}
@@ -202,7 +200,7 @@ function getDesktopItemHTMLString(itemObj)
   	displayCode += "<div class = 'plate'>";
     displayCode += "<img src = 'https://lh5.ggpht.com/_OaYG005JPDs/TVr8btiAytI/AAAAAAAACuA/7aZpNQQxKbE/s640/Chana%20Masala%20above%20close.jpg' class = 'item-image'>";
   	displayCode += "</div>";
-    displayCode += "<span class = 'vertical-align'>";
+    displayCode += "<span class = 'vertical-align item-and-price'>";
 		displayCode += "<h1>" + escapeHTML(itemObj.itemName) + "</h1>";
 		displayCode += "<p class='price-num'>$" + escapeHTML(itemObj.price) + "</p>";
   	displayCode += "</span>";
