@@ -15,6 +15,7 @@
             <p>Phone: xxx-xxx-xxxx</p>
             <p>Address: Pembina Hwy</p>
             <div id="restaurant_location"></div>
+            <?php echo $restName = $_GET['restName'];?>
         </div>
 
         <div id="review">
