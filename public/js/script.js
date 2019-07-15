@@ -1,6 +1,8 @@
   // TODO: find way to combine upVote and downVote functions
 
-// in functions where change in code for deskopt can use mobile boolean
+printMenuItems();
+
+// in functions where change in code for desktop can use mobile boolean
 var mobile=false;
 
 if (matchMedia)
@@ -15,23 +17,17 @@ if (matchMedia)
 
 function widthChange(mq)
 {
-	// console.log('width change');
-	var oldMobileBool = mobile;
 	if (mq.matches)
 	{
 		mobile = false;
-		printMenuItems();
 	}
 	else
 	{
 		mobile = true;
-		printMenuItems();
 	}
-		addThumbsUpListners();
-		addThumbsDownListners();
+		printMenuItems();
 }
 
-printMenuItems();
 
 function printMenuItems()
 {
@@ -53,12 +49,17 @@ function printMenuItems()
 	}
 	var menuDisplay = document.querySelector(".menu-items-display");
 	menuDisplay.innerHTML = menuDisplayHtml;
+	addThumbsUpListners();
+	addThumbsDownListners();
 }
 
 function upVote() {
 
   var parent = this.parentElement;
 	// triple parent if menu desktop html
+	// b/c up-votes-num is in vertical-align class (parent 1)
+	// vertical-align-class in thumbs-and-nums class (parent 2)
+	// thumbs-and-nums class is in the menu-item-# class (parent 3)
 	if (mobile==false)
 	{
 		parent = parent.parentElement;
@@ -74,25 +75,8 @@ function upVote() {
 
       var menuItems = JSON.parse(xhr.responseText);
 			menuItemsDetails = menuItems;
-      var menuDisplayHtml = "";
 
-	    for (var i = 0; i < menuItems.length; i++)
-      {
-				if (mobile == true)
-				{
-        	menuDisplayHtml += getMobileItemHTMLString(menuItems[i]);
-				}
-				else
-				{
-    			menuDisplayHtml += getDesktopItemHTMLString(menuItems[i]);
-				}
-      }
-
-      var menuDisplay = document.querySelector(".menu-items-display");
-      menuDisplay.innerHTML = menuDisplayHtml;
-
-			addThumbsUpListners();
-			addThumbsDownListners();
+			printMenuItems();
     }
   };
   // multiple values maybe like so: xhr.send( "cmd=ping&url=www.google.com" );
@@ -117,36 +101,12 @@ function downVote() {
 
       var menuItems = JSON.parse(xhr.responseText);
 			menuItemsDetails = menuItems;
-      var menuDisplayHtml = "";
 
-	    for (var i = 0; i < menuItems.length; i++)
-      {
-        // menuDisplayHtml += getMobileItemHTMLString(menuItems[i]);
-    		// menuDisplayHtml += getDesktopItemHTMLString(menuItems[i]);
-				if (mobile == true)
-				{
-        	menuDisplayHtml += getMobileItemHTMLString(menuItems[i]);
-				}
-				else
-				{
-    			menuDisplayHtml += getDesktopItemHTMLString(menuItems[i]);
-				}
-      }
-
-      var menuDisplay = document.querySelector(".menu-items-display");
-      menuDisplay.innerHTML = menuDisplayHtml;
-
-			addThumbsUpListners();
-			addThumbsDownListners();
+			printMenuItems();
     }
   };
-  // multiple values maybe like so: xhr.send( "cmd=ping&url=www.google.com" );
   xhr.send("id=" + parent.id);
 }
-
-
-addThumbsUpListners();
-addThumbsDownListners();
 
 function addThumbsUpListners()
 {
@@ -190,8 +150,6 @@ function getDesktopItemHTMLString(itemObj)
 
     displayCode += "<section class = 'thumbs-and-nums'>";
     displayCode += "<span class='vertical-align'>";
-    // displayCode += "<span class ='up-votes-num'> 3 </span>";
-    // displayCode += "<span class ='down-votes-num'> 4 </span>";
 		displayCode += "<span class ='up-votes-num'>" + escapeHTML(itemObj.upVoteNumber) + "</span>";
 		displayCode += "<span class ='down-votes-num'>" + escapeHTML(itemObj.downVoteNumber) + "</span>";
     displayCode += "</span>";
