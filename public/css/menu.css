@@ -1,0 +1,190 @@
+.plate, .item-image
+{
+	border-radius:50%;
+}
+
+.plate
+{
+	background-color:white;
+	width: 20vw;
+	padding-bottom: 20vw;
+	position:relative;
+	border-style:solid;
+	border-width:2px;
+	box-sizing:border-box;
+}
+
+.item-image
+{
+	width:90%;
+	height:90%;
+	position:absolute;
+	margin-left:5%;
+	margin-top:5%;
+}
+
+.menu-item h1
+{
+  font-family: "Amatic SC";
+	color:white;
+	font-size:6vw;
+	margin:0px;
+}
+
+.menu-item
+{
+	background-color:gray;
+	margin: 20px auto;
+	/* width:80%; */
+	border-radius:25px;
+	display:flex;
+	align-items: center;
+	height:21vw;
+	justify-content: space-around;
+}
+
+.fa-thumbs-down, .fa-thumbs-up
+{
+	font-size:5vw;
+	margin-left: 1vw;
+}
+
+.fa-thumbs-down
+{
+	color:coral;
+	transform: scaleX(-1);
+	margin-top: 20%;
+}
+
+.fa-thumbs-up
+{
+	color:greenyellow;
+	transform: scaleX(-1);
+	margin-bottom: 20%;
+}
+
+.menu-item .price-num
+{
+	font-size:3.5vw;
+	color:white;
+	margin: 0;
+}
+
+.up-votes-num, .down-votes-num
+{
+	font-size:3.5vw;
+}
+
+.up-votes-num
+{
+	color:greenyellow;
+}
+
+.down-votes-num
+{
+	color:coral;
+	margin-top: 80%;
+}
+
+
+.vertical-align
+{
+	display: inline-flex;
+	flex-direction: column;
+}
+
+.ingredients
+{
+	height:90%;
+	width:30%;
+	background-color:purple;
+	color: white;
+	border-radius: 10%;
+	border-style:solid;
+	border-width:5px;
+	display: flex;
+	align-items: center;
+	overflow: hidden;
+}
+
+.ingredients p
+{
+	margin: 0 4%;
+  font-family: "Amatic SC";
+	font-size: 3vw;
+}
+
+.item-and-price
+{
+	width: 25vw;
+	text-align: center;
+	overflow: hidden;
+}
+
+@media (max-width: 599px)
+{
+    .plate
+    {
+        height: 300px;
+        width:100%;
+    }
+
+    .menu-item h1
+    {
+      font-size: 80px;
+      text-align: center;
+    }
+
+    .menu-item
+    {
+      width:300px;
+      position:relative;
+      height:100%;
+      display: block;
+    }
+
+    .fa-thumbs-down, .fa-thumbs-up
+    {
+      font-size: 50px;
+      position: absolute;
+      bottom: 3.5%;
+      margin-left: 0;
+    }
+
+    .fa-thumbs-down
+    {
+      left:5%;
+      /* margin-top: 0%; */
+    }
+
+    .fa-thumbs-up
+    {
+      right:5%;
+      margin-bottom: 6%;
+	    transform: scaleX(1);
+    }
+
+    .menu-item .price-num
+    {
+      font-size:40px;
+      text-align:center;
+      margin:0 auto;
+    }
+
+    .up-votes-num, .down-votes-num
+    {
+      font-size: 1.5em;
+    }
+
+    .down-votes-num
+    {
+      margin-top: 0;
+    }
+
+    .votes-bar
+    {
+      display: flex;
+      justify-content: space-between;
+      padding: 0 18%;
+    }
+}
