@@ -5,7 +5,10 @@ var mobile=false;
 
 if (matchMedia)
 {
-	const mq = window.matchMedia("(min-width:1000px)");
+	// for some reason chrome dev device emulator doesn't work for px less than 985px
+	// eg putting this at 1000px will work in chrome dev tools
+	// but the 600px gets recgonized in normal browser, not sure why?
+	const mq = window.matchMedia("(min-width:600px)");
 	mq.addListener(widthChange);
 	widthChange(mq);
 }
