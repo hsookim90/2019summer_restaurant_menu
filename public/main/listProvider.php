@@ -26,7 +26,7 @@ $price=$xmlDoc->getElementsByTagName('price_level');
 
 // https://maps.googleapis.com/maps/api/place/photo?photoreference=PHOTO_REFERENCE&sensor=false&maxheight=MAX_HEIGHT&maxwidth=MAX_WIDTH&key=YOUR_API_KEY
 for ($i=0; $i<=$numResults->length-1;$i++) {
-    echo '<a href="' . 'restaurant.php' . '">';
+    echo '<a href="' . 'restaurant.php?restName=' . urldecode($names->item($i)->nodeValue) . '">';
     echo '<button class="restItem">';
     echo $names->item($i)->nodeValue . '<br>';
     echo $addresses->item($i)->nodeValue . '<br>';
