@@ -10,11 +10,9 @@
     
     <div class="content">
         <div id="rest_info">
-            <img src=<?php echo url_for('images/3w3Blx0v.jpg')?> alt="burgerking logo" style="width:100px;height:100px;border:0;">
-            <h3>Burger King</h3>
-            <p>Phone: xxx-xxx-xxxx</p>
-            <p>Address: Pembina Hwy</p>
-            <div id="restaurant_location"></div>
+            <h3><?php echo $restName = $_GET['restName'];?></h3><br>
+            <img src="https://maps.googleapis.com/maps/api/place/photo?photoreference=<?php echo $_GET['photo_ref'];?>&sensor=false&maxheight=200&maxwidth=200&key=AIzaSyANSsJmxJqYNxohpoCaTgXuX0bIlrMrZu8" alt="restaurant image">
+            <p><?php echo $address = $_GET['address'];?></p>
         </div>
 
         <div id="review">
@@ -27,9 +25,9 @@
                 <span class="fa fa-star"></span>
             </span>
             <span id="reviewFromUser"></span>
-        </div>
-
-        <a href="#" target="_blank">See Menu</a>
+        </div><br>
+        <div id="restaurant_location"></div><br>
+        <a href="#">See Menu</a>
     </div>
 
     <?php require 'footer.php';?>

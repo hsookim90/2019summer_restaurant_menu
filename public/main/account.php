@@ -17,22 +17,6 @@
         </div>
     </div>
 
-    <!-- TODO: this script should be in home.js but that happens, it does not work. probably scope issue -->
-    <script>
-        window.onscroll = function() {myFunction()};
-
-        var header = document.getElementById("myHeader");
-        var sticky = header.offsetTop;
-
-        function myFunction() {
-            if (window.pageYOffset > sticky) {
-                header.classList.add("sticky");
-            } else {
-                header.classList.remove("sticky");
-            }
-        }
-    </script>
-
     <?php require 'footer.php';?>
 </body>
 </html>
