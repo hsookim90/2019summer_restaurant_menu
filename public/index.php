@@ -13,13 +13,14 @@
 	include(SHARED_PATH . '/navHeader.php')
 ?>
 
-  <form action = "<?php echo url_for("/index.php"); ?>" method = "GET">
+  <form class = 'categories-bar' action = "<?php echo url_for("/index.php"); ?>" method = "GET">
     <section class = "filters-row">
 		      <button type = "submit" name = "filter" class ="" value = "upvotes">Upvotes</button>
 		      <button type = "submit" name = "filter" class ="" value = "downvotes">DownVotes</button>
 		      <button type = "submit" name = "filter" class ="" value = "ratio">Ratio</button>
     </section>
 	</form>
+	
 	<div>
   <form action = "<?php echo url_for("/index.php"); ?>" method = "POST">
 		<button type = "submit" name = "resetRest" value = "Submit">Reset Resaurants</button>

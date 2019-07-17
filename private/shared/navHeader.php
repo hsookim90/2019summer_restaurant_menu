@@ -4,14 +4,14 @@
     <meta charset="utf-8">
     <title>Voting Idea</title>
 
-  	<link rel="stylesheet" type="text/css" href="css/menu.css">
+  	<link rel="stylesheet" type="text/css" href="<?php echo url_for('css/menu.css');?>">
     <link rel="stylesheet" type="text/css" href=<?php echo url_for('css/home.css')?>>
 
   	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Amatic SC">
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    
+
     <script src=<?php echo url_for("js/script.js");?> defer></script>
     <script src=<?php echo url_for('js/home.js')?>></script>
 
