@@ -40,10 +40,6 @@ document.addEventListener('DOMContentLoaded', function(event) {
 
 // --------------- Restaurant List
 $(function showList() {
-    // if (str == "") {
-    //     document.getElementById("listContents").innerHTML = "";
-    //     return;
-    // } 
     if (window.XMLHttpRequest) {
         // code for IE7+, Firefox, Chrome, Opera, Safari
         xmlhttp = new XMLHttpRequest();
@@ -55,7 +51,6 @@ $(function showList() {
             document.getElementById("listContents").innerHTML = this.responseText;
         }
     }
-    // xmlhttp.open("GET", "listProvider.php?q="+str, true);
     xmlhttp.open("GET", "listProvider.php", true);
     xmlhttp.send();
 });
