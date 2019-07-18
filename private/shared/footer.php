@@ -1,6 +1,5 @@
-<footer>
-  <p>Glenn & Harrison</p>
-</footer>
+<link rel="stylesheet" type="text/css" href=<?php echo url_for('css/home.css')?>>
 
-</body>
-</html>
+<div class="footer">
+    <p>Glenn & Harrison</p>
+</div>
