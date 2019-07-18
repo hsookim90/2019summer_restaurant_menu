@@ -1,12 +1,8 @@
-<?php require_once('../../private/initialize.php');?>
+<?php
+require_once('../../private/initialize.php');
+include(SHARED_PATH . '/navHeader.php');
+?>
 
-<!DOCTYPE html>
-<html lang="en">
-<?php require 'head.php';?>
-
-<body>
-    <?php require 'header.php';?>
-    
     <div class="content">
         <div id="acc_info">
             <img src=<?php echo url_for('images/thumb__ser.png')?> alt="accoung img" style="width:100px;height:100px;border:0;">
@@ -17,6 +13,4 @@
         </div>
     </div>
 
-    <?php require 'footer.php';?>
-</body>
-</html>
+<?php include(SHARED_PATH . '/footer.php');?>
