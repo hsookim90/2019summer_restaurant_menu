@@ -9,36 +9,25 @@
 	{
 		unset($_SESSION['restaurants']);
 	}
+
+	include(SHARED_PATH . '/navHeader.php')
 ?>
 
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>Voting Idea</title>
+  <form class = 'categories-bar' action = "<?php echo url_for("/index.php"); ?>" method = "GET">
+    <section class = "filters-row">
+		      <button type = "submit" name = "filter" class ="" value = "upvotes">Upvotes</button>
+		      <button type = "submit" name = "filter" class ="" value = "downvotes">DownVotes</button>
+		      <button type = "submit" name = "filter" class ="" value = "ratio">Ratio</button>
+    </section>
+	</form>
+	
+	<div>
+  <form action = "<?php echo url_for("/index.php"); ?>" method = "POST">
+		<button type = "submit" name = "resetRest" value = "Submit">Reset Resaurants</button>
+	</form>
+</div>
 
-  	<link rel="stylesheet" type="text/css" href="css/menu.css">
-
-  	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Amatic SC">
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
-    	<script src="js/script.js" defer></script>
-
-  </head>
-  <body>
-      <form action = "<?php echo url_for("/index.php"); ?>" method = "GET">
-        <section class = "filters-row">
-				      <button type = "submit" name = "filter" class ="" value = "upvotes">Upvotes</button>
-				      <button type = "submit" name = "filter" class ="" value = "downvotes">DownVotes</button>
-				      <button type = "submit" name = "filter" class ="" value = "ratio">Ratio</button>
-        </section>
-			</form>
-			<div>
-      <form action = "<?php echo url_for("/index.php"); ?>" method = "POST">
-				<button type = "submit" name = "resetRest" value = "Submit">Reset Resaurants</button>
-			</form>
-		</div>
-
-	<section class = "menu-items-display">
+<section class = "menu-items-display">
 
 <?php
 
@@ -70,5 +59,4 @@
 
 	</section>
 
-  </body>
-</html>
+	<?php include(SHARED_PATH . '/footer.php');?>

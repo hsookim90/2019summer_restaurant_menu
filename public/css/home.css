@@ -8,7 +8,7 @@
     height: 100%; /* 100% Full-height */
     width: 0; /* 0 width - change this with JavaScript */
     position: fixed; /* Stay in place */
-    z-index: 1; /* Stay on top */
+    z-index: 2; /* Stay on top */
     top: 0; /* Stay at the top */
     left: 0;
     background-color: #111; /* Black*/
@@ -41,6 +41,12 @@
     margin-left: 50px;
 }
 
+.header {
+  width: 100%;
+  position: fixed;
+  z-index: 1;
+}
+
 /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
 @media screen and (max-height: 450px) {
     .sidenav {
@@ -67,6 +73,9 @@ body {
     padding: 10px 16px;
     background: #555;
     /* color: #f1f1f1; */
+    /* width: 100%;
+    position: fixed;
+    z-index: 1; */
 }
 
 .content {
@@ -112,7 +121,7 @@ body {
     border: 1px solid #888;
     width: 80%; /* Could be more or less, depending on screen size */
 }
-  
+
 /* The Close Button */
 .close {
     color: #aaa;
@@ -120,7 +129,7 @@ body {
     font-size: 28px;
     font-weight: bold;
 }
-  
+
 .close:hover,
 .close:focus {
     color: black;
@@ -152,7 +161,7 @@ body {
     text-decoration: none;
     display: inline-block;
 }
-  
+
 a:hover, a:active {
     background-color: red;
 } */
@@ -166,6 +175,6 @@ a:hover, a:active {
 
     text-align: left;
   }
-  
+
 /* On mouse-over */
 .restItem:hover {background: #eee;}

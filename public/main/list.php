@@ -1,12 +1,8 @@
-<?php require_once('../../private/initialize.php');?>
+<?php
+require_once('../../private/initialize.php');
+include(SHARED_PATH . '/navHeader.php');
+?>
 
-<!DOCTYPE html>
-<html lang="en">
-<?php require 'head.php';?>
-
-<body>
-    <?php require 'header.php';?>
-    
     <div class="content">
         <div id="restaurantList">
             <h3>Restaurants</h3>
@@ -15,6 +11,4 @@
         </div>
     </div>
 
-    <?php require 'footer.php';?>
-</body>
-</html>
+<?php include(SHARED_PATH . '/footer.php');?>
