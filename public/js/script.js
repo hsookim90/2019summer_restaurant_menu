@@ -1,21 +1,71 @@
   // TODO: find way to combine upVote and downVote functions
 
-var menuDisplayHtml = "";
+printMenuItems();
 
-if (typeof menuItemsDetails !== "undefined")
+// in functions where change in code for desktop can use mobile boolean
+var mobile=false;
+
+if (matchMedia)
 {
-  for (var i = 0; i < menuItemsDetails.length; i++)
-  {
-    menuDisplayHtml += getMobileItemHTMLString(menuItemsDetails[i]);
-  }
+	// for some reason chrome dev device emulator doesn't work for px less than 985px
+	// eg putting this at 1000px will work in chrome dev tools
+	// but the 600px gets recgonized in normal browser, not sure why?
+	const mq = window.matchMedia("(min-width:600px)");
+	mq.addListener(widthChange);
+	widthChange(mq);
 }
 
-var menuDisplay = document.querySelector(".menu-items-display");
-menuDisplay.innerHTML = menuDisplayHtml;
+function widthChange(mq)
+{
+	if (mq.matches)
+	{
+		mobile = false;
+	}
+	else
+	{
+		mobile = true;
+	}
+		printMenuItems();
+}
+
+
+function printMenuItems()
+{
+	var menuDisplayHtml = "";
+
+	if (typeof menuItemsDetails !== "undefined")
+	{
+	  for (var i = 0; i < menuItemsDetails.length; i++)
+	  {
+			if (mobile == true)
+			{
+				menuDisplayHtml += getMobileItemHTMLString(menuItemsDetails[i]);
+			}
+			else
+			{
+	    	menuDisplayHtml += getDesktopItemHTMLString(menuItemsDetails[i]);
+			}
+	  }
+	}
+	var menuDisplay = document.querySelector(".menu-items-display");
+	menuDisplay.innerHTML = menuDisplayHtml;
+	addThumbsUpListners();
+	addThumbsDownListners();
+}
 
 function upVote() {
 
   var parent = this.parentElement;
+	// triple parent if menu desktop html
+	// b/c up-votes-num is in vertical-align class (parent 1)
+	// vertical-align-class in thumbs-and-nums class (parent 2)
+	// thumbs-and-nums class is in the menu-item-# class (parent 3)
+	if (mobile==false)
+	{
+		parent = parent.parentElement;
+		parent = parent.parentElement;
+	}
+
   var xhr = new XMLHttpRequest();
   xhr.open('POST', 'upvote.php', true);
   xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
@@ -24,18 +74,9 @@ function upVote() {
     if(xhr.readyState == 4 && xhr.status == 200) {
 
       var menuItems = JSON.parse(xhr.responseText);
-      var menuDisplayHtml = "";
+			menuItemsDetails = menuItems;
 
-	    for (var i = 0; i < menuItems.length; i++)
-      {
-        menuDisplayHtml += getMobileItemHTMLString(menuItems[i]);
-      }
-
-      var menuDisplay = document.querySelector(".menu-items-display");
-      menuDisplay.innerHTML = menuDisplayHtml;
-
-			addThumbsUpListners();
-			addThumbsDownListners();
+			printMenuItems();
     }
   };
   // multiple values maybe like so: xhr.send( "cmd=ping&url=www.google.com" );
@@ -44,6 +85,13 @@ function upVote() {
 
 function downVote() {
   var parent = this.parentElement;
+	// triple parent if menu desktop html
+	if (mobile==false)
+	{
+		parent = parent.parentElement;
+		parent = parent.parentElement;
+	}
+
   var xhr = new XMLHttpRequest();
   xhr.open('POST', 'downvote.php', true);
   xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
@@ -52,27 +100,13 @@ function downVote() {
     if(xhr.readyState == 4 && xhr.status == 200) {
 
       var menuItems = JSON.parse(xhr.responseText);
-      var menuDisplayHtml = "";
+			menuItemsDetails = menuItems;
 
-	    for (var i = 0; i < menuItems.length; i++)
-      {
-        menuDisplayHtml += getMobileItemHTMLString(menuItems[i]);
-      }
-
-      var menuDisplay = document.querySelector(".menu-items-display");
-      menuDisplay.innerHTML = menuDisplayHtml;
-
-			addThumbsUpListners();
-			addThumbsDownListners();
+			printMenuItems();
     }
   };
-  // multiple values maybe like so: xhr.send( "cmd=ping&url=www.google.com" );
   xhr.send("id=" + parent.id);
 }
-
-
-addThumbsUpListners();
-addThumbsDownListners();
 
 function addThumbsUpListners()
 {
@@ -101,11 +135,43 @@ function getMobileItemHTMLString(itemObj)
 		displayCode += "<p class='price-num'>$" + escapeHTML(itemObj.price) + "</p>";
 		displayCode += "<i class='fas fa-thumbs-down'></i>";
 		displayCode += "<i class='fas fa-thumbs-up'></i>";
-		displayCode += "<div class='votes-bar'</div>";
+		displayCode += "<div class='votes-bar'>";
 		displayCode += "<span class ='down-votes-num'>" + escapeHTML(itemObj.downVoteNumber) + "</span>";
 		displayCode += "<span class ='up-votes-num'>" + escapeHTML(itemObj.upVoteNumber) + "</span>";
 		displayCode += "</div>";
 		displayCode += "</section>";
+		return displayCode;
+}
+
+function getDesktopItemHTMLString(itemObj)
+{
+		var displayCode = "<section id = 'menu-item-" + escapeHTML(itemObj.itemNumber)
+		+ "' class = 'menu-item'>";
+
+    displayCode += "<section class = 'thumbs-and-nums'>";
+    displayCode += "<span class='vertical-align'>";
+		displayCode += "<span class ='up-votes-num'>" + escapeHTML(itemObj.upVoteNumber) + "</span>";
+		displayCode += "<span class ='down-votes-num'>" + escapeHTML(itemObj.downVoteNumber) + "</span>";
+    displayCode += "</span>";
+    displayCode += "<span class='vertical-align'>";
+    displayCode += "<i class='fas fa-thumbs-up'></i>";
+    displayCode += "<i class='fas fa-thumbs-down'></i>";
+    displayCode += "</span>";
+    displayCode += "</section>";
+  	displayCode += "<div class = 'plate'>";
+    displayCode += "<img src = 'https://lh5.ggpht.com/_OaYG005JPDs/TVr8btiAytI/AAAAAAAACuA/7aZpNQQxKbE/s640/Chana%20Masala%20above%20close.jpg' class = 'item-image'>";
+  	displayCode += "</div>";
+    displayCode += "<span class = 'vertical-align item-and-price'>";
+		displayCode += "<h1>" + escapeHTML(itemObj.itemName) + "</h1>";
+		displayCode += "<p class='price-num'>$" + escapeHTML(itemObj.price) + "</p>";
+  	displayCode += "</span>";
+    displayCode += "<div class = 'ingredients'>";
+    displayCode += "<p>";
+    displayCode += "Garbanzo Beans, zucchiini, mushrooms, tomato, garlic, oregano, cilantro.";
+    displayCode += "<p>";
+    displayCode += "<div>";
+		displayCode += "</section>";
+
 		return displayCode;
 }
 
