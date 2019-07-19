@@ -67,5 +67,10 @@ class MenuItem {
 	{
 		$this->downVoteNumber++;
 	}
+
+	public function compareNames($comparedItem)
+	{
+		return strcasecmp($this->itemName, $comparedItem->itemName);
+	}
 }
 ?>
