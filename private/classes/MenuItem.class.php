@@ -72,5 +72,25 @@ class MenuItem {
 	{
 		return strcasecmp($this->itemName, $comparedItem->itemName);
 	}
+
+	public function comparePrice($comparedItem)
+	{
+			// below doesn't work b/c only does integers.
+			// return $this->price <=> $comparedItem->price;
+
+			$difference = $this->price - $comparedItem->price;
+			if ($difference > 0)
+			{
+				return 1;
+			}
+			else if ($difference < 0)
+			{
+				return -1;
+			}
+			else {
+				return 0;
+			}
+	}
+
 }
 ?>
