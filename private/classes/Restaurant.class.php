@@ -92,7 +92,15 @@ class Restaurant {
 
 	public function updatePositions()
 	{
-		$this->filterObject->setOrderDescending($this->menuItems);
+		$className = get_class($this->filterObject);
+		if ($className == 'AlphaFilter' || $className =='PriceFilter')
+		{
+			$this->filterObject->setOrderAscending($this->menuItems);
+		}
+		else
+		{
+			$this->filterObject->setOrderDescending($this->menuItems);
+		}
 	}
 
 	public function setFilter($filter)
@@ -104,7 +112,12 @@ class Restaurant {
 			case 'downvotes':
 				$this->filterObject = new DownvotesFilter();
 				break;
-
+			case 'alpha':
+				$this->filterObject = new AlphaFilter();
+				break;
+			case 'price':
+				$this->filterObject = new PriceFilter();
+				break;
 			default:
 				$this->filterObject = new UpvotesFilter();
 				break;
