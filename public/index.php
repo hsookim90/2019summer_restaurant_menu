@@ -15,12 +15,14 @@
 
   <form class = 'categories-bar' action = "<?php echo url_for("/index.php"); ?>" method = "GET">
     <section class = "filters-row">
+					<!-- ratio button idea -->
 		      <button type = "submit" name = "filter" class ="" value = "upvotes">Upvotes</button>
 		      <button type = "submit" name = "filter" class ="" value = "downvotes">DownVotes</button>
-		      <button type = "submit" name = "filter" class ="" value = "ratio">Ratio</button>
+		      <button type = "submit" name = "filter" class ="" value = "alpha">Alpha</button>
+		      <button type = "submit" name = "filter" class ="" value = "price">Price</button>
     </section>
 	</form>
-	
+
 	<div>
   <form action = "<?php echo url_for("/index.php"); ?>" method = "POST">
 		<button type = "submit" name = "resetRest" value = "Submit">Reset Resaurants</button>
@@ -33,7 +35,7 @@
 
 	// stub stuff will be replaced with database in future milestones
 	$stubMenuItem1 = ['itemName'=>'chickpears', 'price'=>4];
-	$stubMenuItem2 = ['itemName'=>'rice', 'price'=>2, 'downVoteNumber'=>1];
+	$stubMenuItem2 = ['itemName'=>'rice', 'price'=>5, 'downVoteNumber'=>1];
 	// note upvotenumber = 1 for now, in production go back to 0 b/c no one voted for it
 	$stubMenuItem3 = ['itemName'=>'bananas', 'price'=>3, 'upVoteNumber'=>1];
 

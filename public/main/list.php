@@ -13,6 +13,6 @@ include(SHARED_PATH . '/navHeader.php');
         </div>
         <div id="listContents"></div>
     </div>
-</div>
+</body>
 
 <?php include(SHARED_PATH . '/footer.php');?>
