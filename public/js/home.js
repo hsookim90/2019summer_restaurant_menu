@@ -38,24 +38,6 @@ document.addEventListener('DOMContentLoaded', function(event) {
     }
 })
 
-// --------------- Restaurant List
-// $(function showList() {
-//     if (window.XMLHttpRequest) {
-//         // code for IE7+, Firefox, Chrome, Opera, Safari
-//         xmlhttp = new XMLHttpRequest();
-//     } else {  // code for IE6, IE5
-//         xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-//     }
-//     xmlhttp.onreadystatechange = function() {
-//         if (this.readyState == 4 && this.status == 200) {
-//             document.getElementById("listContents").innerHTML = this.responseText;
-//         }
-//     }
-//     // xmlhttp.open("GET", "listProvider.php?q="+str, true);
-//     xmlhttp.open("GET", "listProvider.php", true);
-//     xmlhttp.send();
-// });
-
 function startGeocoding(q) {
     if (q.length == 0) { 
         document.getElementById("listContents").innerHTML = "";
@@ -82,8 +64,17 @@ var map;
 var service;
 var infowindow;
 
-function initMap() {
-    var pyrmont = new google.maps.LatLng(49.8951,-97.1384);
+function getLocation() {
+    var msg = document.getElementById("errorMsg");
+    if (navigator.geolocation) {
+        pos = navigator.geolocation.getCurrentPosition(initMap);
+    } else {
+        msg.innerHTML = "Geolocation is not supported by this browser";
+    }
+}
+
+function initMap(position) {
+    var pyrmont = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
 
     map = new google.maps.Map(document.getElementById('map_nearme'), {
         center: pyrmont,

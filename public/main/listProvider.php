@@ -7,7 +7,6 @@ $geoData = file_get_contents('https://maps.googleapis.com/maps/api/geocode/json?
 $geoDataJSON = json_decode($geoData, true);
 
 $restListData = file_get_contents('https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=' . $geoDataJSON['results'][0]['geometry']['location']['lat'] . ',' . $geoDataJSON['results'][0]['geometry']['location']['lng'] . '&radius=15000&type=restaurant&price_level&key=AIzaSyANSsJmxJqYNxohpoCaTgXuX0bIlrMrZu8');
-// $restListData = file_get_contents('https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=49.8951,-97.1384&radius=15000&type=restaurant&price_level&key=AIzaSyANSsJmxJqYNxohpoCaTgXuX0bIlrMrZu8');
 $restListJSON = json_decode($restListData, true);
 
 foreach ($restListJSON['results'] as $value) {
