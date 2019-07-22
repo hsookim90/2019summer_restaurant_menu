@@ -56,9 +56,8 @@ document.addEventListener('DOMContentLoaded', function(event) {
 //     xmlhttp.send();
 // });
 
-function startGeocoding() {
-    var searchInput = document.getElementById('addrInput').value;
-    if (searchInput.length == 0) { 
+function startGeocoding(q) {
+    if (q.length == 0) { 
         document.getElementById("listContents").innerHTML = "";
     } else {
         if (window.XMLHttpRequest) {
@@ -72,7 +71,7 @@ function startGeocoding() {
                 document.getElementById("listContents").innerHTML = this.responseText;
             }
         }
-        xmlhttp.open("GET", "listProvider.php?q="+searchInput, true);
+        xmlhttp.open("GET", "listProvider.php?q="+q, true);
         xmlhttp.send();
     }
 }
