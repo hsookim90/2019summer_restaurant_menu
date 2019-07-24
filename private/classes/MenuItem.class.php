@@ -8,7 +8,8 @@ class MenuItem extends DatabaseObject {
 	protected $id;
 	protected $itemNumber;
 	protected $itemName;
-	protected $price;
+	// protected $price;
+	public $price;
 	protected $image;
 
 	protected $upVoteNumber = 0;
@@ -28,8 +29,16 @@ class MenuItem extends DatabaseObject {
 	public function getItemDetails()
 	{
 		// might need to do h($this->itemName), but that might make the price a int to a string
+		$getID = $this->id;
 		return ['itemName'=>$this->itemName, 'price'=>$this->price, 'upVoteNumber'=>$this->upVoteNumber,
-						'downVoteNumber'=>$this->downVoteNumber, 'itemNumber'=>$this->itemNumber];
+						'downVoteNumber'=>$this->downVoteNumber, 'itemNumber'=>$this->itemNumber, 'id'=>$this->id];
+	}
+
+	public function getItemDBDetails()
+	{
+		// might need to do h($this->itemName), but that might make the price a int to a string
+		return ['itemName'=>$this->itemName, 'price'=>$this->price, 'upVoteNumber'=>$this->upVoteNumber,
+						'downVoteNumber'=>$this->downVoteNumber, 'itemNumber'=>$this->itemNumber, 'id'=>$this->id];
 	}
 
 	// created to test if can compare private var of another instance of same class

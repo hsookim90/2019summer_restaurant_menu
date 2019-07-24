@@ -12,6 +12,7 @@ class Restaurant {
 	private static $restaurantCount = 0;
 	private $restaurantID;
 	private $filterObject;
+	private $menuDBItems = [];
 
 	function __construct($args=[])
 	{
@@ -29,6 +30,14 @@ class Restaurant {
 		if (isset($args['menuItems']))
 		{
 			$this->initializeMenu($args['menuItems']);
+		}
+
+		if (isset($args['menuDBItems']))
+		{
+			$this->menuDBItems = $args['menuDBItems'];
+			$testing = $this->menuDBItems[0]->price;
+			$testing = $this->menuDBItems[0];
+			$testing = $testing->getItemDetails();
 		}
 
 	}
@@ -52,12 +61,13 @@ class Restaurant {
 		$itemCountArray=['itemCount'=>$this->itemCount];
 
 		$menuItem = new MenuItem($args+$itemCountArray);
-		$result = $menuItem->save();
-		if($result === true) {
+		// $result = $menuItem->save();
+		// if($result === true) {
 			// should check if save worked
-		} else {
+		// } else {
 			// show errors
-		}
+		// }
+
 		//$this->menuItems[]=$menuItem;
 		// changed menuItems from reg array to associative key value to address items by item number
 		$this->menuItems[$this->itemCount] = $menuItem;
@@ -134,8 +144,21 @@ class Restaurant {
 
 	public function ajaxJSONEncode()
 	{
-		echo json_encode($this->getAllItemsDetails());
+		// echo json_encode($this->getAllItemsDetails());
+		echo json_encode($this->getAllDBItemsDetails());
 	}
+
+	public function getAllDBItemsDetails()
+	{
+		$allItemsDetails = [];
+		foreach($this->menuDBItems as $item)
+		{
+			$allItemsDetails[] = $item->getItemDetails();
+		}
+		// echo json_encode($allItemsDetails);
+		return $allItemsDetails;
+	}	
+
 }
 
 ?>

@@ -137,7 +137,7 @@ function getMobileItemHTMLString(itemObj)
 		displayCode += "<i class='fas fa-thumbs-up'></i>";
 		displayCode += "<div class='votes-bar'>";
 		displayCode += "<span class ='down-votes-num'>" + escapeHTML(itemObj.downVoteNumber) + "</span>";
-		displayCode += "<span class ='up-votes-num'>" + escapeHTML(itemObj.upvote_num) + "</span>";
+		displayCode += "<span class ='up-votes-num'>" + escapeHTML(itemObj.upVoteNumber) + "</span>";
 		displayCode += "</div>";
 		displayCode += "</section>";
 		return displayCode;
@@ -145,12 +145,17 @@ function getMobileItemHTMLString(itemObj)
 
 function getDesktopItemHTMLString(itemObj)
 {
-		var displayCode = "<section id = 'menu-item-" + escapeHTML(itemObj.itemNumber)
+		// var displayCode = "<section id = 'menu-item-" + escapeHTML(itemObj.itemNumber)
+		// + "' class = 'menu-item'>";
+
+		// problem itemCount used by JS upvote file to determine which thumb up corresponds to which item
+		// TODO: replace item count number with id from DB
+		var displayCode = "<section id = 'menu-item-" + escapeHTML(itemObj.id)
 		+ "' class = 'menu-item'>";
 
     displayCode += "<section class = 'thumbs-and-nums'>";
     displayCode += "<span class='vertical-align'>";
-		displayCode += "<span class ='up-votes-num'>" + escapeHTML(itemObj.upvote_num) + "</span>";
+		displayCode += "<span class ='up-votes-num'>" + escapeHTML(itemObj.upVoteNumber) + "</span>";
 		displayCode += "<span class ='down-votes-num'>" + escapeHTML(itemObj.downVoteNumber) + "</span>";
     displayCode += "</span>";
     displayCode += "<span class='vertical-align'>";
