@@ -1,23 +1,25 @@
 <?php
 
-class MenuItem {
-	private $itemNumber;
-	private $itemName;
-	private $price;
-	private $imageLink;
-	private $thumbsUp;
-	private $thumbsDown;
+class MenuItem extends DatabaseObject {
 
+	static protected $table_name = 'menu_item';
+	static protected $db_columns = ['id','itemNumber','itemName','price','image','upVoteNumber','downVoteNumber'];
 
-	private $upVoteNumber = 0;
-	private $downVoteNumber = 0;
+	protected $id;
+	protected $itemNumber;
+	protected $itemName;
+	protected $price;
+	protected $image;
+
+	protected $upVoteNumber = 0;
+	protected $downVoteNumber = 0;
 
 	// menu itemNumber is meaningless when not created by restaurant instance
 	// but still able to make menu item without restaurant
 	function __construct($args=[])
 	{
-    $this->itemNumber = $args['itemCount'] ?? 0;
-    $this->itemName = $args['itemName'] ?? '';
+		$this->itemNumber = $args['itemCount'] ?? 0;
+		$this->itemName = $args['itemName'] ?? '';
 		$this->price = $args['price'] ?? 0;
 		$this->upVoteNumber = $args['upVoteNumber'] ?? 0;
 		$this->downVoteNumber = $args['downVoteNumber'] ?? 0;

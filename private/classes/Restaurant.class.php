@@ -52,6 +52,12 @@ class Restaurant {
 		$itemCountArray=['itemCount'=>$this->itemCount];
 
 		$menuItem = new MenuItem($args+$itemCountArray);
+		$result = $menuItem->save();
+		if($result === true) {
+			// should check if save worked
+		} else {
+			// show errors
+		}
 		//$this->menuItems[]=$menuItem;
 		// changed menuItems from reg array to associative key value to address items by item number
 		$this->menuItems[$this->itemCount] = $menuItem;

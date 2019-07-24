@@ -137,7 +137,7 @@ function getMobileItemHTMLString(itemObj)
 		displayCode += "<i class='fas fa-thumbs-up'></i>";
 		displayCode += "<div class='votes-bar'>";
 		displayCode += "<span class ='down-votes-num'>" + escapeHTML(itemObj.downVoteNumber) + "</span>";
-		displayCode += "<span class ='up-votes-num'>" + escapeHTML(itemObj.upVoteNumber) + "</span>";
+		displayCode += "<span class ='up-votes-num'>" + escapeHTML(itemObj.upvote_num) + "</span>";
 		displayCode += "</div>";
 		displayCode += "</section>";
 		return displayCode;
@@ -150,7 +150,7 @@ function getDesktopItemHTMLString(itemObj)
 
     displayCode += "<section class = 'thumbs-and-nums'>";
     displayCode += "<span class='vertical-align'>";
-		displayCode += "<span class ='up-votes-num'>" + escapeHTML(itemObj.upVoteNumber) + "</span>";
+		displayCode += "<span class ='up-votes-num'>" + escapeHTML(itemObj.upvote_num) + "</span>";
 		displayCode += "<span class ='down-votes-num'>" + escapeHTML(itemObj.downVoteNumber) + "</span>";
     displayCode += "</span>";
     displayCode += "<span class='vertical-align'>";

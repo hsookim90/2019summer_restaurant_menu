@@ -18,10 +18,10 @@ class UpdateFilterTest extends TestCase
 
   public function testOrderDuplicates()
   {
-      $menuItem1 = new MenuItem(['itemCount' => 1, 'upVoteNumber'=>2]);
-      $menuItem2 = new MenuItem(['itemCount' => 2, 'upVoteNumber'=>3]);
-      $menuItem3 = new MenuItem(['itemCount' => 3, 'upVoteNumber'=>2]);
-      $menuItem4 = new MenuItem(['itemCount' => 4, 'upVoteNumber'=>1]);
+      $menuItem1 = new MenuItem(['itemCount' => 1, 'upvote_num'=>2]);
+      $menuItem2 = new MenuItem(['itemCount' => 2, 'upvote_num'=>3]);
+      $menuItem3 = new MenuItem(['itemCount' => 3, 'upvote_num'=>2]);
+      $menuItem4 = new MenuItem(['itemCount' => 4, 'upvote_num'=>1]);
 
       // Descending
 
@@ -51,10 +51,10 @@ class UpdateFilterTest extends TestCase
 
   public function testCorrectOrder()
   {
-      $menuItem1 = new MenuItem(['itemCount' => 1, 'upVoteNumber'=>10]);
-      $menuItem2 = new MenuItem(['itemCount' => 2, 'upVoteNumber'=>5]);
-      $menuItem3 = new MenuItem(['itemCount' => 3, 'upVoteNumber'=>3]);
-      $menuItem4 = new MenuItem(['itemCount' => 4, 'upVoteNumber'=>1]);
+      $menuItem1 = new MenuItem(['itemCount' => 1, 'upvote_num'=>10]);
+      $menuItem2 = new MenuItem(['itemCount' => 2, 'upvote_num'=>5]);
+      $menuItem3 = new MenuItem(['itemCount' => 3, 'upvote_num'=>3]);
+      $menuItem4 = new MenuItem(['itemCount' => 4, 'upvote_num'=>1]);
 
       // Descending
 
@@ -88,10 +88,10 @@ class UpdateFilterTest extends TestCase
 
   public function testOrderGeneric()
   {
-      $menuItem1 = new MenuItem(['itemCount' => 1, 'upVoteNumber'=>4]);
-      $menuItem2 = new MenuItem(['itemCount' => 2, 'upVoteNumber'=>50]);
-      $menuItem3 = new MenuItem(['itemCount' => 3, 'upVoteNumber'=>32]);
-      $menuItem4 = new MenuItem(['itemCount' => 4, 'upVoteNumber'=>40]);
+      $menuItem1 = new MenuItem(['itemCount' => 1, 'upvote_num'=>4]);
+      $menuItem2 = new MenuItem(['itemCount' => 2, 'upvote_num'=>50]);
+      $menuItem3 = new MenuItem(['itemCount' => 3, 'upvote_num'=>32]);
+      $menuItem4 = new MenuItem(['itemCount' => 4, 'upvote_num'=>40]);
 
       // Descending
 
