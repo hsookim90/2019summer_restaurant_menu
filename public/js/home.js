@@ -37,11 +37,12 @@ document.addEventListener('DOMContentLoaded', function(event) {
 })
 
 // ------------------------------------------------------ //
+var addrSearchKeyword = "";
+
 // create a list of restaurant with search keyword
 function startGeocoding(q) {
-    if (q.length == 0) { 
-        document.getElementById("listContents").innerHTML = "";
-    } else {
+    addrSearchKeyword = q;
+    if (q.length != 0) {
         if (window.XMLHttpRequest) {
             // code for IE7+, Firefox, Chrome, Opera, Safari
             xmlhttp = new XMLHttpRequest();
@@ -53,8 +54,29 @@ function startGeocoding(q) {
                 document.getElementById("listContents").innerHTML = this.responseText;
             }
         }
-        xmlhttp.open("GET", "listProvider.php?q="+q, true);
+        xmlhttp.open("GET", "listProvider.php?addrKeyword="+addrSearchKeyword, true);
         xmlhttp.send();
+    }
+}
+
+function applyPriceFilter() {
+    var priceCheck = document.querySelector('input[name="priceLevel"]:checked');
+    if (!priceCheck && addrSearchKeyword != "") {
+        if (window.XMLHttpRequest) {
+            // code for IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp = new XMLHttpRequest();
+        } else {  // code for IE6, IE5
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("listContents").innerHTML = this.responseText;
+            }
+        }
+        xmlhttp.open("GET", "priceFilter.php?addrKeyword="+addrSearchKeyword+"&pCheck="+priceCheck, true);
+        xmlhttp.send();
+    } else {
+        // error handling
     }
 }
 
