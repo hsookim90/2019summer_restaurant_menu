@@ -1,6 +1,7 @@
 <?php
 
-class Restaurant {
+class Restaurant
+{
 	private $itemCount = 0;
 	private $name;
 	private $address;
@@ -15,16 +16,16 @@ class Restaurant {
 
 	function __construct($args=[])
 	{
-    $this->name = $args['name'] ?? '';
-    $this->address = $args['address'] ?? '';
-    $this->phoneNum = $args['phoneNum'] ?? '';
-    $this->website = $args['website'] ?? '';
-    $this->rating = $args['rating'] ?? '';
-    $this->hours = $args['hours'] ?? '';
-    self::$restaurantCount++;
-    $this->restaurantID = self::$restaurantCount;
+		$this->name = $args['name'] ?? '';
+		$this->address = $args['address'] ?? '';
+		$this->phoneNum = $args['phoneNum'] ?? '';
+		$this->website = $args['website'] ?? '';
+		$this->rating = $args['rating'] ?? '';
+		$this->hours = $args['hours'] ?? '';
+		$this->type = $args['type'] ?? '';
+		self::$restaurantCount++;
+		$this->restaurantID = self::$restaurantCount;
 		$this->filterObject = new UpvotesFilter();
-
 
 		if (isset($args['menuItems']))
 		{
@@ -37,7 +38,7 @@ class Restaurant {
 	// but nice way to quickly initialize menu items list in dev
 	private function initializeMenu($menuItemsAsString)
 	{
-		foreach($menuItemsAsString as $item)
+		foreach ($menuItemsAsString as $item)
 		{
 			$this->createItem($item);
 		}

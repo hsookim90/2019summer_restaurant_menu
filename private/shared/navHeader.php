@@ -50,17 +50,27 @@
 
                     <div id="priceFilter">
                         <h6>Price</h6>
-                        <button>$</button>
-                        <button>$$</button>
-                        <button>$$$</button>
+                        <form action=<?php echo url_for('main/priceFilter.php')?>>
+                            <input type="checkbox" name="priceLv0" value="$">most affordable<br>
+                            <input type="checkbox" name="priceLv1" value="$$">affordable<br>
+                            <input type="checkbox" name="priceLv2" value="$$$">average<br>
+                            <input type="checkbox" name="priceLv3" value="$$$$">expensive<br>
+                            <input type="checkbox" name="priceLv4" value="$$$$$">most expensive<br>
+                            <input type="submit">
+                        </form>
                     </div>
 
                     <div id="genreFilter">
-                        <h6>Genre</h6>
+                        <h6>Type</h6>
                         <!-- TODO: these should be replaced with circular icons -->
-                        <button>Korean</button>
-                        <button>Chinese</button>
-                        <button>Italian</button>
+                        <form action=<?php echo url_for('main/typeFilter.php')?>>
+                            <input type="checkbox" name="type1" value="Korean">Korean<br>
+                            <input type="checkbox" name="type2" value="Italian">Italian<br>
+                            <input type="checkbox" name="type3" value="Chinses">Chinese<br>
+                            <input type="checkbox" name="type4" value="French">French<br>
+                            <input type="checkbox" name="type5" value="Indian">Indian<br>
+                            <input type="submit">
+                        </form>
                     </div>
                 </div>
             </div>

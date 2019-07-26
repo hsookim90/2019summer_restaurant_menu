@@ -8,6 +8,7 @@ include(SHARED_PATH . '/navHeader.php');
         <h3>Restaurants</h3>
         <script src=<?php echo url_for('js/home.js')?>></script>
         <div>
+            <!-- https://www.w3schools.com/howto/howto_js_trigger_button_enter.asp -->
             <input type="text" id="addrInput" placeholder="Enter your address">
             <input type="button" value="Submit" onclick="startGeocoding(document.getElementById('addrInput').value)"/>
         </div>

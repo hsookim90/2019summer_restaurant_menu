@@ -1,13 +1,11 @@
 // ------------- Modal
 function popupModal(event, modalName) {
     var modal = document.getElementById(modalName);
-
     modal.style.display = "block";
 }
 
 function closeModal(event, modalName) {
     var modal = document.getElementById(modalName);
-
     modal.style.display = "none";
 }
 
@@ -38,6 +36,8 @@ document.addEventListener('DOMContentLoaded', function(event) {
     }
 })
 
+// ------------------------------------------------------ //
+// create a list of restaurant with search keyword
 function startGeocoding(q) {
     if (q.length == 0) { 
         document.getElementById("listContents").innerHTML = "";
