@@ -96,7 +96,10 @@ class Restaurant {
 	public function incrementUpVoteByItemNumber($number)
 	{
 		// menuItem's key should be the menu item
-		$this->menuItems[$number]->incrementUpvote();
+		// $this->menuItems[$number]->incrementUpvote();
+		$item = MenuItem::find_by_id($number);
+		// Problem: Menu DB array not updated b/c don't access from DB array
+		$item->incrementUpvote();
 	}
 
 	public function incrementDownVoteByItemNumber($number)
@@ -111,11 +114,13 @@ class Restaurant {
 		$className = get_class($this->filterObject);
 		if ($className == 'AlphaFilter' || $className =='PriceFilter')
 		{
-			$this->filterObject->setOrderAscending($this->menuItems);
+			// $this->filterObject->setOrderAscending($this->menuItems);
+			$this->filterObject->setOrderAscending($this->menuDBItems);
 		}
 		else
 		{
-			$this->filterObject->setOrderDescending($this->menuItems);
+			// $this->filterObject->setOrderDescending($this->menuItems);
+			$this->filterObject->setOrderDescending($this->menuDBItems);
 		}
 	}
 

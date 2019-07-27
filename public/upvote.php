@@ -23,7 +23,7 @@
     $rest = $_SESSION['restaurants'][0];
 		// $menuItems = $rest->menuItems;
 
-		$rest->incrementUpVoteByItemNumber($id);
+    $rest->incrementUpVoteByItemNumber($id);
 		$rest->updatePositions();
 		$rest->ajaxJSONEncode();
   }
