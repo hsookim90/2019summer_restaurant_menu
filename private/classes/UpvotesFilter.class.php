@@ -4,12 +4,12 @@ class UpvotesFilter implements iFilter
 {
   public function setOrderDescending(&$array)
 	{
-		uasort($array, array('self', "cmpDecending"));
+		usort($array, array('self', "cmpDecending"));
 	}
 
   public function setOrderAscending(&$array)
 	{
-		uasort($array, array($this, "cmpAscending"));
+		usort($array, array($this, "cmpAscending"));
 	}
 
 	private function cmpDecending($menuItemA, $menuItemB)

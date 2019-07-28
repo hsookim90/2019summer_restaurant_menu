@@ -6,13 +6,14 @@ class Restaurant {
 	private $address;
 	private $phoneNum;
 	private $website;
-	private $menuItems = [];
 	private $rating;
 	private $hours;
 	private static $restaurantCount = 0;
 	private $restaurantID;
 	private $filterObject;
 	private $menuDBItems = [];
+	private $menuDB2Items = [];
+	private $menuDBReg = [];
 
 	function __construct($args=[])
 	{
@@ -26,18 +27,14 @@ class Restaurant {
     $this->restaurantID = self::$restaurantCount;
 		$this->filterObject = new UpvotesFilter();
 
-
-		if (isset($args['menuItems']))
-		{
-			$this->initializeMenu($args['menuItems']);
-		}
-
 		if (isset($args['menuDBItems']))
 		{
 			$this->menuDBItems = $args['menuDBItems'];
-			$testing = $this->menuDBItems[0]->price;
-			$testing = $this->menuDBItems[0];
-			$testing = $testing->getItemDetails();
+			foreach($this->menuDBItems as $item)
+			// foreach($this->$args['menuDBItems'] as $item)
+			{
+				$this->addToMenuArray($item);
+			}
 		}
 
 	}
@@ -51,6 +48,13 @@ class Restaurant {
 			$this->createItem($item);
 		}
 		$this->updatePositions();
+	}
+
+	private function addToMenuArray($item)
+	{
+		$this->itemCount++;
+		$this->menuDB2Items[$this->itemCount] = $item;
+		$this->menuDBReg[] = $item;
 	}
 
 	// menuitem's itemNumber is dictated by where it is in the restaurant's item list
@@ -70,7 +74,7 @@ class Restaurant {
 
 		//$this->menuItems[]=$menuItem;
 		// changed menuItems from reg array to associative key value to address items by item number
-		$this->menuItems[$this->itemCount] = $menuItem;
+		$this->menuItems[] = $menuItem;
 
 		echo $this->itemCount;
 	}
@@ -93,12 +97,18 @@ class Restaurant {
 		return $allItemsDetails;
 	}
 
-	public function incrementUpVoteByItemNumber($number)
+	public function incrementUpVoteByItemNumber($position)
 	{
 		// menuItem's key should be the menu item
 		// $this->menuItems[$number]->incrementUpvote();
-		$item = MenuItem::find_by_id($number);
+
+		// $item = MenuItem::find_by_id($number);
+
 		// Problem: Menu DB array not updated b/c don't access from DB array
+
+		// not sure if this works b/c don't do find by id, when add Restaurant table should do a find id
+		$item = $this->menuDBReg[$position];
+
 		$item->incrementUpvote();
 	}
 
@@ -115,12 +125,16 @@ class Restaurant {
 		if ($className == 'AlphaFilter' || $className =='PriceFilter')
 		{
 			// $this->filterObject->setOrderAscending($this->menuItems);
-			$this->filterObject->setOrderAscending($this->menuDBItems);
+			// $this->filterObject->setOrderAscending($this->menuDBItems);
+			// $this->filterObject->setOrderAscending($this->menuDB2Items);
+			$this->filterObject->setOrderAscending($this->menuDBReg);
 		}
 		else
 		{
 			// $this->filterObject->setOrderDescending($this->menuItems);
-			$this->filterObject->setOrderDescending($this->menuDBItems);
+			// $this->filterObject->setOrderDescending($this->menuDBItems);
+			// $this->filterObject->setOrderDescending($this->menuDB2Items);
+			$this->filterObject->setOrderDescending($this->menuDBReg);
 		}
 	}
 
@@ -153,10 +167,35 @@ class Restaurant {
 		echo json_encode($this->getAllDBItemsDetails());
 	}
 
+	public function ajaxJSONRestEncode()
+	{
+		// echo json_encode($this->menuDB2Items);
+		// foreach()
+		// $toJSON = $this->createItemsJSON($this->menuDB2Items);
+		$allItemsDetails = [];
+		foreach($this->menuDBReg as $item)
+		{
+			$allItemsDetails[]=$item->getItemDetails();
+		}
+		echo json_encode($allItemsDetails);
+	}
+
+	public function createItemsJSON()
+	{
+		$allItemsDetails = [];
+		foreach($this->menuDB2Items as $key => $value)
+		{
+			// $allItemsDetails[$key]->$value;
+			$allItemsDetails[$key] = $value->getItemDetails();
+		}
+		return $allItemsDetails;
+	}
+
 	public function getAllDBItemsDetails()
 	{
 		$allItemsDetails = [];
-		foreach($this->menuDBItems as $item)
+		// foreach($this->menuDB2Items as $item)
+		foreach($this->menuDBReg as $item)
 		{
 			$allItemsDetails[] = $item->getItemDetails();
 		}

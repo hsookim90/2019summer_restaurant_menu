@@ -61,7 +61,7 @@
 	// did not create with rating or hours, think of what to do for that later
 	$stubRestaurantArgs = ['name' => 'Rockwood Urban Grill', 'address' => '50 Sage Creek Blvd',
 	 				 'phoneNum' => '204-256-7625', 'website' =>'rockwoodgrill.ca',
-					  'menuItems' => $stubMenuItems, 'menuDBItems'=>$menuItems];
+					  'menuDBItems'=>$menuItems];
 
   $restaurant = new Restaurant($stubRestaurantArgs);
 

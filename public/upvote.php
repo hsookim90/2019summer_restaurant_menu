@@ -25,7 +25,8 @@
 
     $rest->incrementUpVoteByItemNumber($id);
 		$rest->updatePositions();
-		$rest->ajaxJSONEncode();
+    // $rest->ajaxJSONEncode();
+    $rest->ajaxJSONRestEncode();
   }
   else {
     echo 'false';

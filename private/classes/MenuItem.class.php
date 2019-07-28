@@ -71,8 +71,12 @@ class MenuItem extends DatabaseObject {
 
 	public function incrementUpvote()
 	{
+		
 		$this->upVoteNumber++;
 		$this->save();
+		// $item = MenuItem::find_by_id($this->id);
+		// $item->upVoteNumber++;
+		// $item->save();
 	}
 
 	public function incrementDownvote()
