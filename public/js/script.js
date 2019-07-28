@@ -39,7 +39,7 @@ function printMenuItems()
 	  {
 			if (mobile == true)
 			{
-				menuDisplayHtml += getMobileItemHTMLString(menuItemsDetails[i]);
+				menuDisplayHtml += getMobileItemHTMLString(menuItemsDetails[i], i);
 			}
 			else
 			{
@@ -124,9 +124,9 @@ function addThumbsDownListners()
 	}
 }
 
-function getMobileItemHTMLString(itemObj)
+function getMobileItemHTMLString(itemObj, position)
 {
-		var displayCode = "<section id = 'menu-item-" + escapeHTML(itemObj.itemNumber)
+		var displayCode = "<section id = 'menu-item-" + escapeHTML(position)
 		+ "' class = 'menu-item'>";
 		displayCode += "<h1>" + escapeHTML(itemObj.itemName) + "</h1>";
 		displayCode += "<div class = 'plate'>";
@@ -140,43 +140,6 @@ function getMobileItemHTMLString(itemObj)
 		displayCode += "<span class ='up-votes-num'>" + escapeHTML(itemObj.upVoteNumber) + "</span>";
 		displayCode += "</div>";
 		displayCode += "</section>";
-		return displayCode;
-}
-
-function getDesktopItemHTMLString(itemObj)
-{
-		// var displayCode = "<section id = 'menu-item-" + escapeHTML(itemObj.itemNumber)
-		// + "' class = 'menu-item'>";
-
-		// problem itemCount used by JS upvote file to determine which thumb up corresponds to which item
-		// TODO: replace item count number with id from DB
-		var displayCode = "<section id = 'menu-item-" + escapeHTML(itemObj.id)
-		+ "' class = 'menu-item'>";
-
-    displayCode += "<section class = 'thumbs-and-nums'>";
-    displayCode += "<span class='vertical-align'>";
-		displayCode += "<span class ='up-votes-num'>" + escapeHTML(itemObj.upVoteNumber) + "</span>";
-		displayCode += "<span class ='down-votes-num'>" + escapeHTML(itemObj.downVoteNumber) + "</span>";
-    displayCode += "</span>";
-    displayCode += "<span class='vertical-align'>";
-    displayCode += "<i class='fas fa-thumbs-up'></i>";
-    displayCode += "<i class='fas fa-thumbs-down'></i>";
-    displayCode += "</span>";
-    displayCode += "</section>";
-  	displayCode += "<div class = 'plate'>";
-    displayCode += "<img src = 'https://lh5.ggpht.com/_OaYG005JPDs/TVr8btiAytI/AAAAAAAACuA/7aZpNQQxKbE/s640/Chana%20Masala%20above%20close.jpg' class = 'item-image'>";
-  	displayCode += "</div>";
-    displayCode += "<span class = 'vertical-align item-and-price'>";
-		displayCode += "<h1>" + escapeHTML(itemObj.itemName) + "</h1>";
-		displayCode += "<p class='price-num'>$" + escapeHTML(itemObj.price) + "</p>";
-  	displayCode += "</span>";
-    displayCode += "<div class = 'ingredients'>";
-    displayCode += "<p>";
-    displayCode += "Garbanzo Beans, zucchiini, mushrooms, tomato, garlic, oregano, cilantro.";
-    displayCode += "<p>";
-    displayCode += "<div>";
-		displayCode += "</section>";
-
 		return displayCode;
 }
 

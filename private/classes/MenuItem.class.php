@@ -8,7 +8,6 @@ class MenuItem extends DatabaseObject {
 	protected $id;
 	protected $itemNumber;
 	protected $itemName;
-	// protected $price;
 	public $price;
 	protected $image;
 
@@ -29,19 +28,10 @@ class MenuItem extends DatabaseObject {
 	public function getItemDetails()
 	{
 		// might need to do h($this->itemName), but that might make the price a int to a string
-		$getID = $this->id;
 		return ['itemName'=>$this->itemName, 'price'=>$this->price, 'upVoteNumber'=>$this->upVoteNumber,
-						'downVoteNumber'=>$this->downVoteNumber, 'itemNumber'=>$this->itemNumber, 'id'=>$this->id];
+						'downVoteNumber'=>$this->downVoteNumber, 'itemNumber'=>$this->itemNumber];
 	}
 
-	public function getItemDBDetails()
-	{
-		// might need to do h($this->itemName), but that might make the price a int to a string
-		return ['itemName'=>$this->itemName, 'price'=>$this->price, 'upVoteNumber'=>$this->upVoteNumber,
-						'downVoteNumber'=>$this->downVoteNumber, 'itemNumber'=>$this->itemNumber, 'id'=>$this->id];
-	}
-
-	// created to test if can compare private var of another instance of same class
 	public function compareItem($comparedItem)
 	{
 		$comparison = $this->price == $comparedItem->price;
@@ -63,7 +53,6 @@ class MenuItem extends DatabaseObject {
 		return $this->downVoteNumber > $comparedItem->downVoteNumber;
 	}
 
-	// created b/c complications with hasMoreUpvotes with duplicates in list
 	public function hasLessDownvotes($comparedItem)
 	{
 		return $this->downVoteNumber < $comparedItem->downVoteNumber;
@@ -71,12 +60,10 @@ class MenuItem extends DatabaseObject {
 
 	public function incrementUpvote()
 	{
-		
+		// Note: We rely that the item has a id var that corresponds to the DB.
+		// We may have to do a find_by_id search in the future instead, for now this works.
 		$this->upVoteNumber++;
 		$this->save();
-		// $item = MenuItem::find_by_id($this->id);
-		// $item->upVoteNumber++;
-		// $item->save();
 	}
 
 	public function incrementDownvote()
@@ -92,8 +79,8 @@ class MenuItem extends DatabaseObject {
 
 	public function comparePrice($comparedItem)
 	{
-			// below doesn't work b/c only does integers.
 			// return $this->price <=> $comparedItem->price;
+			// above doesn't work b/c only does integers.
 
 			$difference = $this->price - $comparedItem->price;
 			if ($difference > 0)

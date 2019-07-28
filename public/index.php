@@ -15,7 +15,6 @@
 
   <form class = 'categories-bar' action = "<?php echo url_for("/index.php"); ?>" method = "GET">
     <section class = "filters-row">
-					<!-- ratio button idea -->
 		      <button type = "submit" name = "filter" class ="" value = "upvotes">Upvotes</button>
 		      <button type = "submit" name = "filter" class ="" value = "downvotes">DownVotes</button>
 		      <button type = "submit" name = "filter" class ="" value = "alpha">Alpha</button>
@@ -32,51 +31,25 @@
 <section class = "menu-items-display">
 
 <?php
+	$menuItems = MenuItem::find_all();
 
-	// stub stuff will be replaced with database in future milestones
-	$stubMenuItem1 = ['itemName'=>'chickpears', 'price'=>4];
-	$stubMenuItem2 = ['itemName'=>'rice', 'price'=>5, 'downVoteNumber'=>1];
-
-	// note upvotenumber = 1 for now, in production go back to 0 b/c no one voted for it
-	$stubMenuItem3 = ['itemName'=>'bananas', 'price'=>3, 'upVoteNumber'=>1];
-
-	$menuItemsResult = MenuItem::find_all();
-	$menuItems = [];
-
-	// $stubMenuItems = [];
-	foreach($menuItemsResult as $menuItem)
-	{
-	// 	$stubMenuItem = [
-	// 		'itemName' => $menuItem->itemName,
-	// 		'price'=>$menuItem->price,
-	// 		'upVoteNumber'=>$menuItem->upVoteNumber,
-	// 		'downVoteNumber'=>$menuItem->downVoteNumber
-	// 	];
-	// 	$stubMenuItems[]=$stubMenuItem;
-		$menuItems[] = $menuItem;
-	}
-
-	$stubMenuItems = [$stubMenuItem1, $stubMenuItem2, $stubMenuItem3];
-
-	// did not create with rating or hours, think of what to do for that later
 	$stubRestaurantArgs = ['name' => 'Rockwood Urban Grill', 'address' => '50 Sage Creek Blvd',
 	 				 'phoneNum' => '204-256-7625', 'website' =>'rockwoodgrill.ca',
-					  'menuDBItems'=>$menuItems];
+					  'menuItems'=>$menuItems];
 
-  $restaurant = new Restaurant($stubRestaurantArgs);
+	$restaurant = new Restaurant($stubRestaurantArgs);
 
 	if(isset($_SESSION['restaurants'])===false)
 	{
-  	$_SESSION['restaurants'][]=$restaurant;
+		$_SESSION['restaurants'][]=$restaurant;
 	}
 	$_SESSION['restaurants'][0]->setFilter($filter);
 ?>
 
-	<script type = "text/javascript">
-		<?php $returnOfEncode = $_SESSION['restaurants'][0]->getAllDBItemsDetails(); ?>
-		var menuItemsDetails = <?php echo json_encode($_SESSION['restaurants'][0]->getAllDBItemsDetails()); ?>;
-  </script>
+<script type = "text/javascript">
+	var menuItemsDetails = <?php echo json_encode($_SESSION['restaurants'][0]->getAllItemsDetails()); ?>;
+</script>
 
-	</section>
+</section>
 
-	<?php include(SHARED_PATH . '/footer.php');?>
+<?php include(SHARED_PATH . '/footer.php');?>
