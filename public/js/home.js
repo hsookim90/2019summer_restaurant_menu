@@ -60,8 +60,10 @@ function startGeocoding(q) {
 }
 
 function applyPriceFilter() {
-    var priceCheck = document.querySelector('input[name="priceLevel"]:checked');
-    if (!priceCheck && addrSearchKeyword != "") {
+    var priceCheck = document.querySelectorAll('input[name="priceLevel"]:checked');
+    // var priceCheck = Array.from(priceCheckNodeList);
+    if (priceCheck.length != 0 && addrSearchKeyword != "") {
+        window.alert(priceCheck[0].value);
         if (window.XMLHttpRequest) {
             // code for IE7+, Firefox, Chrome, Opera, Safari
             xmlhttp = new XMLHttpRequest();
@@ -73,10 +75,8 @@ function applyPriceFilter() {
                 document.getElementById("listContents").innerHTML = this.responseText;
             }
         }
-        xmlhttp.open("GET", "priceFilter.php?addrKeyword="+addrSearchKeyword+"&pCheck="+priceCheck, true);
+        xmlhttp.open("GET", "priceFilter.php?addrKeyword="+addrSearchKeyword+"&pCheck="+priceCheck[0].value, true);
         xmlhttp.send();
-    } else {
-        // error handling
     }
 }
 
