@@ -112,10 +112,14 @@ class Restaurant {
 		$item->incrementUpvote();
 	}
 
-	public function incrementDownVoteByItemNumber($number)
+	public function incrementDownVoteByItemNumber($position)
 	{
 		// menuItem's key should be the menu item
-		$this->menuItems[$number]->incrementDownvote();
+		// $this->menuItems[$number]->incrementDownvote();
+
+		$item = $this->menuDBReg[$position];
+
+		$item->incrementDownvote();
 	}
 
 

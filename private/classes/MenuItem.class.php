@@ -82,6 +82,7 @@ class MenuItem extends DatabaseObject {
 	public function incrementDownvote()
 	{
 		$this->downVoteNumber++;
+		$this->save();
 	}
 
 	public function compareNames($comparedItem)
