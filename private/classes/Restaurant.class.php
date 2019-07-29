@@ -1,7 +1,6 @@
 <?php
 
 class Restaurant {
-	private $itemCount = 0;
 	private $name;
 	private $address;
 	private $phoneNum;

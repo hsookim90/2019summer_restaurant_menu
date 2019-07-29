@@ -3,10 +3,9 @@
 class MenuItem extends DatabaseObject {
 
 	static protected $table_name = 'menu_item';
-	static protected $db_columns = ['id','itemNumber','itemName','price','image','upVoteNumber','downVoteNumber'];
+	static protected $db_columns = ['id','itemName','price','image','upVoteNumber','downVoteNumber'];
 
 	protected $id;
-	protected $itemNumber;
 	protected $itemName;
 	public $price;
 	protected $image;
@@ -14,11 +13,8 @@ class MenuItem extends DatabaseObject {
 	protected $upVoteNumber = 0;
 	protected $downVoteNumber = 0;
 
-	// menu itemNumber is meaningless when not created by restaurant instance
-	// but still able to make menu item without restaurant
 	function __construct($args=[])
 	{
-		$this->itemNumber = $args['itemCount'] ?? 0;
 		$this->itemName = $args['itemName'] ?? '';
 		$this->price = $args['price'] ?? 0;
 		$this->upVoteNumber = $args['upVoteNumber'] ?? 0;
@@ -29,7 +25,7 @@ class MenuItem extends DatabaseObject {
 	{
 		// might need to do h($this->itemName), but that might make the price a int to a string
 		return ['itemName'=>$this->itemName, 'price'=>$this->price, 'upVoteNumber'=>$this->upVoteNumber,
-						'downVoteNumber'=>$this->downVoteNumber, 'itemNumber'=>$this->itemNumber];
+						'downVoteNumber'=>$this->downVoteNumber];
 	}
 
 	public function compareItem($comparedItem)
