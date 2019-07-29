@@ -1,10 +1,17 @@
 <?php
+/*
+Menu Item Voting Page
+
+@Author Glenn <jayasugp@myumanitoba.ca>
+*/
+
 	require_once('../private/initialize.php');
 	session_start();
 
 	// default filter is by upvote
 	$filter = $_GET['filter']??"upvotes";
 
+	// if reset button clicked, clear restaurant in sessions var
 	if(isset($_POST['resetRest']))
 	{
 		unset($_SESSION['restaurants']);
@@ -13,17 +20,17 @@
 	include(SHARED_PATH . '/navHeader.php')
 ?>
 
-  <form class = 'categories-bar' action = "<?php echo url_for("/index.php"); ?>" method = "GET">
-    <section class = "filters-row">
-		      <button type = "submit" name = "filter" class ="" value = "upvotes">Upvotes</button>
-		      <button type = "submit" name = "filter" class ="" value = "downvotes">DownVotes</button>
-		      <button type = "submit" name = "filter" class ="" value = "alpha">Alpha</button>
-		      <button type = "submit" name = "filter" class ="" value = "price">Price</button>
-    </section>
-	</form>
+<form class = 'filters-bar' action = "<?php echo url_for("/index.php"); ?>" method = "GET">
+	<section class = "filters-row">
+			<button type = "submit" name = "filter" class ="" value = "upvotes">Upvotes</button>
+			<button type = "submit" name = "filter" class ="" value = "downvotes">DownVotes</button>
+			<button type = "submit" name = "filter" class ="" value = "alpha">Alpha</button>
+			<button type = "submit" name = "filter" class ="" value = "price">Price</button>
+	</section>
+</form>
 
-	<div>
-  <form action = "<?php echo url_for("/index.php"); ?>" method = "POST">
+<div>
+	<form action = "<?php echo url_for("/index.php"); ?>" method = "POST">
 		<button type = "submit" name = "resetRest" value = "Submit">Reset Resaurants</button>
 	</form>
 </div>
@@ -31,6 +38,7 @@
 <section class = "menu-items-display">
 
 <?php
+	// Get all menu items from menu_item table in DB
 	$menuItems = MenuItem::find_all();
 
 	$stubRestaurantArgs = ['name' => 'Rockwood Urban Grill', 'address' => '50 Sage Creek Blvd',
@@ -43,10 +51,12 @@
 	{
 		$_SESSION['restaurants'][]=$restaurant;
 	}
+	// Sesssion is array of arrays to support multiple restaurants if needed.
 	$_SESSION['restaurants'][0]->setFilter($filter);
 ?>
 
 <script type = "text/javascript">
+	// script.js runs after this file and uses menuItemsDetails
 	var menuItemsDetails = <?php echo json_encode($_SESSION['restaurants'][0]->getAllItemsDetails()); ?>;
 </script>
 
