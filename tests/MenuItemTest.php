@@ -16,9 +16,9 @@ class MenuItemTest extends TestCase
 
     public function testHasMoreUpvotes()
     {
-  		$item1 = new MenuItem(['itemCount'=>1, 'itemName'=>'rice', 'upvote_num'=>4]);
-  		$item3 = new MenuItem(['itemCount'=>2, 'itemName'=>'potatos', 'upvote_num'=>5]);
-  		$item4 = new MenuItem(['itemCount'=>8, 'itemName'=>'grapes', 'upvote_num'=>5]);
+  		$item1 = new MenuItem(['itemCount'=>1, 'itemName'=>'rice', 'upVoteNumber'=>4]);
+  		$item3 = new MenuItem(['itemCount'=>2, 'itemName'=>'potatos', 'upVoteNumber'=>5]);
+  		$item4 = new MenuItem(['itemCount'=>8, 'itemName'=>'grapes', 'upVoteNumber'=>5]);
 
       $this->assertTrue($item3->hasMoreUpvotes($item1));
       $this->assertFalse($item3->hasMoreUpvotes($item4));

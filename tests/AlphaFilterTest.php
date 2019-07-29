@@ -25,9 +25,9 @@ class AlphaFilterTest extends TestCase
 
       // Descending
 
-      $testArray = [1=>$menuItem1, 2=>$menuItem2, 3=>$menuItem3, 4=>$menuItem4];
-      $expectedArray = [2=>$menuItem2, 1=>$menuItem1, 3=>$menuItem3, 4=>$menuItem4];
-      $expectedFalseArray = [2=>$menuItem2, 3=>$menuItem3, 1=>$menuItem1, 4=>$menuItem4];
+      $testArray = [$menuItem1, $menuItem2, $menuItem3, $menuItem4];
+      $expectedArray = [$menuItem2, $menuItem1, $menuItem3, $menuItem4];
+      $expectedFalseArray = [$menuItem2, $menuItem3, $menuItem1, $menuItem4];
       self::$alphaFilter->setOrderDescending($testArray);
 
       // same ensures order of elements is correct, assertEquals won't work
@@ -39,9 +39,9 @@ class AlphaFilterTest extends TestCase
 
       // Ascending
 
-      $testArray = [1=>$menuItem1, 2=>$menuItem2, 3=>$menuItem3, 4=>$menuItem4];
-      $expectedArray = [4=>$menuItem4, 1=>$menuItem1, 3=>$menuItem3, 2=>$menuItem2];
-      $expectedFalseArray = [4=>$menuItem4, 3=>$menuItem3, 1=>$menuItem1, 2=>$menuItem2];
+      $testArray = [$menuItem1, $menuItem2, $menuItem3, $menuItem4];
+      $expectedArray = [$menuItem4, $menuItem1, $menuItem3, $menuItem2];
+      $expectedFalseArray = [$menuItem4, $menuItem3, $menuItem1, $menuItem2];
       self::$alphaFilter->setOrderAscending($testArray);
 
       $this->assertSame($expectedArray, $testArray, "Ascending Assert");
@@ -58,8 +58,8 @@ class AlphaFilterTest extends TestCase
 
       // Descending
 
-      $testArray = [1=>$menuItem1, 2=>$menuItem2, 3=>$menuItem3, 4=>$menuItem4];
-      $expectedArray = [1=>$menuItem1, 2=>$menuItem2, 3=>$menuItem3, 4=>$menuItem4];
+      $testArray = [$menuItem1, $menuItem2, $menuItem3, $menuItem4];
+      $expectedArray = [$menuItem1, $menuItem2, $menuItem3, $menuItem4];
 
       self::$alphaFilter->setOrderDescending($testArray);
 
@@ -67,8 +67,8 @@ class AlphaFilterTest extends TestCase
 
       // Ascending
 
-      $testArray = [4=>$menuItem4, 3=>$menuItem3, 2=>$menuItem2, 1=>$menuItem1];
-      $expectedArray = [4=>$menuItem4, 3=>$menuItem3, 2=>$menuItem2, 1=>$menuItem1];
+      $testArray = [$menuItem4, $menuItem3, $menuItem2, $menuItem1];
+      $expectedArray = [$menuItem4, $menuItem3, $menuItem2, $menuItem1];
 
       self::$alphaFilter->setOrderAscending($testArray);
 
@@ -95,16 +95,16 @@ class AlphaFilterTest extends TestCase
 
       // Descending
 
-      $testArray = [1=>$menuItem1, 2=>$menuItem2, 3=>$menuItem3, 4=>$menuItem4];
-      $expectedArray = [2=>$menuItem2, 4=>$menuItem4, 3=>$menuItem3, 1=>$menuItem1];
+      $testArray = [$menuItem1, $menuItem2, $menuItem3, $menuItem4];
+      $expectedArray = [$menuItem2, $menuItem4, $menuItem3, $menuItem1];
       self::$alphaFilter->setOrderDescending($testArray);
 
       $this->assertSame($expectedArray, $testArray, "Descending Assert");
 
       // Ascending
 
-      $testArray = [1=>$menuItem1, 2=>$menuItem2, 3=>$menuItem3, 4=>$menuItem4];
-      $expectedArray = [1=>$menuItem1, 3=>$menuItem3, 4=>$menuItem4, 2=>$menuItem2];
+      $testArray = [$menuItem1, $menuItem2, $menuItem3, $menuItem4];
+      $expectedArray = [$menuItem1, $menuItem3, $menuItem4, $menuItem2];
       self::$alphaFilter->setOrderAscending($testArray);
 
       $this->assertSame($expectedArray, $testArray, "Ascending Assert");
@@ -114,8 +114,8 @@ class AlphaFilterTest extends TestCase
   {
       $menuItem1 = new MenuItem(['itemCount' => 1, 'itemName'=>'apple']);
       $menuItem2 = new MenuItem(['itemCount' => 2, 'itemName'=>'duck']);
-      $testArray = [1=>$menuItem1, 2=>$menuItem2];
-      $expectedArray = [2=>$menuItem2, 1=>$menuItem1];
+      $testArray = [$menuItem1, $menuItem2];
+      $expectedArray = [$menuItem2, $menuItem1];
 
       self::$alphaFilter->setOrderDescending($testArray);
       $this->assertSame($expectedArray, $testArray, "Both Lower");
@@ -124,8 +124,8 @@ class AlphaFilterTest extends TestCase
       // in php lower case is greater than upper case
       $menuItem1 = new MenuItem(['itemCount' => 1, 'itemName'=>'apple']);
       $menuItem2 = new MenuItem(['itemCount' => 2, 'itemName'=>'Duck']);
-      $testArray = [1=>$menuItem1, 2=>$menuItem2];
-      $expectedArray = [2=>$menuItem2, 1=>$menuItem1];
+      $testArray = [$menuItem1, $menuItem2];
+      $expectedArray = [$menuItem2, $menuItem1];
 
       self::$alphaFilter->setOrderDescending($testArray);
       $this->assertSame($expectedArray, $testArray, "Diff Case");
