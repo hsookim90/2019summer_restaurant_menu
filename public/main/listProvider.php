@@ -15,6 +15,7 @@ $restListData = file_get_contents('https://maps.googleapis.com/maps/api/place/ne
 $restListJSON = json_decode($restListData, true);
 
 foreach ($restListJSON['results'] as $value) {
+    // echo '<div class="col-12">';
     echo '<a href="' . 'restaurant.php?restName=' . urlencode($value['name']) .
                         '&address=' . urlencode($value['vicinity']) .
                         '&photo_ref=' . urlencode($value['photos'][0]['photo_reference']) . '">';
@@ -32,5 +33,6 @@ foreach ($restListJSON['results'] as $value) {
     echo '<br>';
     echo '</button>';
     echo '</a>';
+    // echo '</div>';
 }
 ?>
