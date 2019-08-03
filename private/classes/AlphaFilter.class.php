@@ -1,4 +1,8 @@
 <?php
+/*
+	Sorta menu items alphabetically.
+	@author Glenn <jayasugp@myumanitoba.ca>
+*/
 
 class AlphaFilter implements iFilter
 {
