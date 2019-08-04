@@ -1,4 +1,8 @@
 <?php
+/*
+	Sorts menu items by price.
+	@author Glenn <jayasugp@myumanitoba.ca>
+*/
 
 class PriceFilter implements iFilter
 {

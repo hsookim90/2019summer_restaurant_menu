@@ -1,4 +1,8 @@
 <?php
+/*
+	Sorts menu items by downvote number.
+	@author Glenn <jayasugp@myumanitoba.ca>
+*/
 
 class DownvotesFilter implements iFilter
 {

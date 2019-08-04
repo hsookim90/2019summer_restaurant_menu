@@ -1,6 +1,6 @@
 <?php
 /*
-	Sorta menu items alphabetically.
+	Sorts menu items alphabetically.
 	@author Glenn <jayasugp@myumanitoba.ca>
 */
 

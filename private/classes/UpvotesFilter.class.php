@@ -1,4 +1,8 @@
 <?php
+/*
+	Sorts menu items by upvote number.
+	@author Glenn <jayasugp@myumanitoba.ca>
+*/
 
 class UpvotesFilter implements iFilter
 {
