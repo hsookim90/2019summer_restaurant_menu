@@ -41,11 +41,12 @@ Menu Item Voting Page
 	// Get all menu items from menu_item table in DB
 	$menuItems = MenuItem::find_all();
 
-	$stubRestaurantArgs = ['name' => 'Rockwood Urban Grill', 'address' => '50 Sage Creek Blvd',
-	 				 'phoneNum' => '204-256-7625', 'website' =>'rockwoodgrill.ca',
-					  'menuItems'=>$menuItems];
+	$stubRestaurantArgs = ['restName' => 'Rockwood Urban Grill', 'address' => '50 Sage Creek Blvd',
+					  'phoneNum' => '204-256-7625', 'website' =>'rockwoodgrill.ca',
+					  'priceLevel' => 2, 'rating'=>4.2, 'menuItems'=>$menuItems];
 
 	$restaurant = new Restaurant($stubRestaurantArgs);
+	$dbRestaurant = Restaurant::find_by_id(1);
 
 	if(isset($_SESSION['restaurants'])===false)
 	{

@@ -1,33 +1,43 @@
 <?php
 
-class Restaurant {
-	private $name;
-	private $address;
-	private $phoneNum;
-	private $website;
-	private $rating;
-	private $hours;
-	private static $restaurantCount = 0;
-	private $restaurantID;
-	private $filterObject;
-	private $menuItems = [];
+class Restaurant extends DatabaseObject {
+
+	static protected $table_name = 'restaurant';
+	static protected $db_columns = ['id','restName','address','rating','priceLevel','hours','phoneNum','website','photos'];
+
+	protected $restName;
+	protected $address;
+	protected $phoneNum;
+	protected $website;
+	protected $rating;
+	protected $hours;
+	protected static $restaurantCount = 0;
+	protected $id;
+	protected $filterObject;
+	protected $menuItems = [];
+	protected $priceLevel;
+	protected $photos;
 
 	function __construct($args=[])
 	{
-		$this->name = $args['name'] ?? '';
+		$this->restName = $args['restName'] ?? '';
 		$this->address = $args['address'] ?? '';
 		$this->phoneNum = $args['phoneNum'] ?? '';
 		$this->website = $args['website'] ?? '';
 		$this->rating = $args['rating'] ?? '';
 		$this->hours = $args['hours'] ?? '';
-		self::$restaurantCount++;
-		$this->restaurantID = self::$restaurantCount;
+		$this->priceLevel = $args['priceLevel'] ?? '';
+		$this->photos = $args['photos'] ?? '';
 		$this->filterObject = new UpvotesFilter();
 
 		if (isset($args['menuItems']))
 		{
 			$this->menuItems = $args['menuItems'];
 		}
+
+		// hardcoded below line for now
+		// currently every restaurant would have the same menu items lists
+		$this->menuItems = MenuItem::find_all();
 	}
 
 	public function incrementUpVoteByItemNumber($position)
