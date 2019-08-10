@@ -19,11 +19,14 @@
   {
     $id = $matches[1];
 
-    $rest = $_SESSION['restaurant'];
+    if (isset($_SESSION['restaurant']))
+    {
+      $rest = $_SESSION['restaurant'];
 
-		$rest->incrementDownVoteByItemNumber($id);
-		$rest->updatePositions();
-    $rest->ajaxJSONRestEncode();
+      $rest->incrementDownVoteByItemNumber($id);
+      $rest->updatePositions();
+      $rest->ajaxJSONEncode();
+    }
   }
   else {
     echo 'false';

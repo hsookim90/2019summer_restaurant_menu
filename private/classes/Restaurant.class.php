@@ -92,7 +92,7 @@ class Restaurant extends DatabaseObject {
 	}
 
 	// json encode reference: https://www.dyn-web.com/tutorials/php-js/json/multidim-arrays.php
-	public function ajaxJSONRestEncode()
+	public function ajaxJSONEncode()
 	{
 		echo json_encode($this->getAllItemsDetails());
 	}
