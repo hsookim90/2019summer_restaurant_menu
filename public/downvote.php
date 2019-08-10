@@ -20,7 +20,10 @@
   {
     $id = $matches[1];
 
+		// $menuItems = $rest->menuItems;
     $rest = $_SESSION['restaurants'][0];
+    $rest = Restaurant::find_by_id(1);
+    $rest = $_SESSION['restaurant'];
 
 		$rest->incrementDownVoteByItemNumber($id);
 		$rest->updatePositions();

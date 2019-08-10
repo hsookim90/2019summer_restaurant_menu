@@ -38,6 +38,7 @@ class Restaurant extends DatabaseObject {
 		// hardcoded below line for now
 		// currently every restaurant would have the same menu items lists
 		$this->menuItems = MenuItem::find_all();
+		// $this->updatePositions();
 	}
 
 	public function incrementUpVoteByItemNumber($position)

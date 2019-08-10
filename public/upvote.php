@@ -21,7 +21,9 @@
     $id = $matches[1];
 
     $rest = $_SESSION['restaurants'][0];
-		// $menuItems = $rest->menuItems;
+    $rest = Restaurant::find_by_id(1);
+    $rest = $_SESSION['restaurant'];
+
 
     $rest->incrementUpVoteByItemNumber($id);
 		$rest->updatePositions();

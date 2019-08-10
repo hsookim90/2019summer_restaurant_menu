@@ -41,7 +41,7 @@ Menu Item Voting Page
 	// Get all menu items from menu_item table in DB
 	$menuItems = MenuItem::find_all();
 
-	$stubRestaurantArgs = ['restName' => 'Rockwood Urban Grill', 'address' => '50 Sage Creek Blvd',
+	$stubRestaurantArgs = ['restName' => 'Sushi Urban Grill', 'address' => '50 Sage Creek Blvd',
 					  'phoneNum' => '204-256-7625', 'website' =>'rockwoodgrill.ca',
 					  'priceLevel' => 2, 'rating'=>4.2, 'menuItems'=>$menuItems];
 
@@ -54,11 +54,15 @@ Menu Item Voting Page
 	}
 	// Sesssion is array of arrays to support multiple restaurants if needed.
 	$_SESSION['restaurants'][0]->setFilter($filter);
+	// might not need below line
+	$dbRestaurant->setFilter($filter);
+	$_SESSION['restaurant'] = $dbRestaurant;
+	echo ('');
 ?>
 
 <script type = "text/javascript">
 	// script.js runs after this file and uses menuItemsDetails
-	var menuItemsDetails = <?php echo json_encode($_SESSION['restaurants'][0]->getAllItemsDetails()); ?>;
+	var menuItemsDetails = <?php echo json_encode($dbRestaurant->getAllItemsDetails()); ?>;
 </script>
 
 </section>
