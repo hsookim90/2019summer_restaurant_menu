@@ -14,7 +14,7 @@ Menu Item Voting Page
 	// if reset button clicked, clear restaurant in sessions var
 	if(isset($_POST['resetRest']))
 	{
-		unset($_SESSION['restaurants']);
+		// TODO: add reset logic for now just does upvotes filter
 	}
 
 	include(SHARED_PATH . '/navHeader.php')
@@ -38,31 +38,14 @@ Menu Item Voting Page
 <section class = "menu-items-display">
 
 <?php
-	// Get all menu items from menu_item table in DB
-	$menuItems = MenuItem::find_all();
-
-	$stubRestaurantArgs = ['restName' => 'Sushi Urban Grill', 'address' => '50 Sage Creek Blvd',
-					  'phoneNum' => '204-256-7625', 'website' =>'rockwoodgrill.ca',
-					  'priceLevel' => 2, 'rating'=>4.2, 'menuItems'=>$menuItems];
-
-	$restaurant = new Restaurant($stubRestaurantArgs);
-	$dbRestaurant = Restaurant::find_by_id(1);
-
-	if(isset($_SESSION['restaurants'])===false)
-	{
-		$_SESSION['restaurants'][]=$restaurant;
-	}
-	// Sesssion is array of arrays to support multiple restaurants if needed.
-	$_SESSION['restaurants'][0]->setFilter($filter);
-	// might not need below line
-	$dbRestaurant->setFilter($filter);
-	$_SESSION['restaurant'] = $dbRestaurant;
-	echo ('');
+	$restaurant = Restaurant::find_by_id(1);
+	$restaurant->setFilter($filter);
+	$_SESSION['restaurant'] = $restaurant;
 ?>
 
 <script type = "text/javascript">
 	// script.js runs after this file and uses menuItemsDetails
-	var menuItemsDetails = <?php echo json_encode($dbRestaurant->getAllItemsDetails()); ?>;
+	var menuItemsDetails = <?php echo json_encode($restaurant->getAllItemsDetails()); ?>;
 </script>
 
 </section>

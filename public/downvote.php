@@ -4,7 +4,6 @@
 
 	require_once('../private/initialize.php');
 	session_start();
-	if(!isset($_SESSION['restaurants'])) {$_SESSION['restaurants'] = []; }
 
   function is_ajax_request() {
     return isset($_SERVER['HTTP_X_REQUESTED_WITH']) &&
@@ -20,14 +19,10 @@
   {
     $id = $matches[1];
 
-		// $menuItems = $rest->menuItems;
-    $rest = $_SESSION['restaurants'][0];
-    $rest = Restaurant::find_by_id(1);
     $rest = $_SESSION['restaurant'];
 
 		$rest->incrementDownVoteByItemNumber($id);
 		$rest->updatePositions();
-		// $rest->ajaxJSONEncode();
     $rest->ajaxJSONRestEncode();
   }
   else {
