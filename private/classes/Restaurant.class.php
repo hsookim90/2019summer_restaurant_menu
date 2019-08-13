@@ -106,5 +106,10 @@ class Restaurant extends DatabaseObject {
 		}
 		return $allItemsDetails;
 	}	
+
+	public function getName()
+	{
+		return $this->restName;
+	}
 }
 ?>
