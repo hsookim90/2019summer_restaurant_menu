@@ -25,6 +25,7 @@ $restaurants = Restaurant::find_all();
       <?php foreach($restaurants as $restaurant) { ?>
         <tr>
           <td><?php echo h($restaurant->getName()); ?></td>
+          <td><a class="action" href="<?php echo url_for('/restaurant/delete.php?id=' . h(u($restaurant->getID()))); ?>">Delete</a></td>
         </tr>
       <?php } ?>
   	</table>
