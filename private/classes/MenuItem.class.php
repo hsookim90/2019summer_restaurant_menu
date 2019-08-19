@@ -92,5 +92,21 @@ class MenuItem extends DatabaseObject {
 			}
 	}
 
+	public function updateItemRestaurantTable($restId)
+	{
+		$sql = "INSERT INTO item_restaurant ";
+		$sql .= "(item_id, restaurant_id) ";
+		$sql .= "VALUES (";
+		$sql .= self::$database->escape_string($this->id) . ", ";
+		$sql .= self::$database->escape_string($restId) . ")";
+
+		$result = self::$database->query($sql);
+
+		if(!$result) 
+		{
+			exit("Database query failed.");
+		}
+
+	}
 }
 ?>

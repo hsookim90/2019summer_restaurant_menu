@@ -168,5 +168,13 @@ class DatabaseObject {
     $result = self::$database->query($sql);
     return $result;
   }
+
+  // TODO not done
+  public function find_restaurant_items($restID)
+  {
+    $sql = "SELECT * FROM item_restaurant ";
+    $sql .= "INNER JOIN item_restaurant on menu_item.id = item_restaurant.";
+    $sql .= "INNER JOIN menu_item on item_restaurant.restaurant_id = ";
+  }
 }
 ?>

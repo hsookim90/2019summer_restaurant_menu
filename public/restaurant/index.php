@@ -17,7 +17,7 @@ $restaurants = Restaurant::find_all();
   	<table class="list">
       <tr>
         <th>Name</th>
-        <th>&nbsp;</th>
+        <th>View</th>
         <th>&nbsp;</th>
         <th>&nbsp;</th>
       </tr>
@@ -26,6 +26,7 @@ $restaurants = Restaurant::find_all();
         <tr>
           <td><?php echo h($restaurant->getName()); ?></td>
           <td><a class="action" href="<?php echo url_for('/restaurant/delete.php?id=' . h(u($restaurant->getID()))); ?>">Delete</a></td>
+          <td><a class="action" href="<?php echo url_for('/restaurant/show.php?id=' . h(u($restaurant->getID()))); ?>">View</a></td>
         </tr>
       <?php } ?>
   	</table>
