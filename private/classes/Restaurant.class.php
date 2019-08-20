@@ -37,7 +37,7 @@ class Restaurant extends DatabaseObject {
 
 		// hardcoded below line for now
 		// currently every restaurant would have the same menu items lists
-		$this->menuItems = MenuItem::find_all();
+		// $this->menuItems = MenuItem::find_all();
 		// $this->updatePositions();
 	}
 
@@ -57,6 +57,7 @@ class Restaurant extends DatabaseObject {
 
 	public function updatePositions()
 	{
+		$this->menuItems = $this->findRestaurantItems();
 		$className = get_class($this->filterObject);
 		if ($className == 'AlphaFilter' || $className =='PriceFilter')
 		{
@@ -100,6 +101,7 @@ class Restaurant extends DatabaseObject {
 	public function getAllItemsDetails()
 	{
 		$allItemsDetails = [];
+		// $this->menuItems = $this->findRestaurantItems();
 		foreach($this->menuItems as $item)
 		{
 			$allItemsDetails[] = $item->getItemDetails();
@@ -115,6 +117,16 @@ class Restaurant extends DatabaseObject {
 	public function getID()
 	{
 		return $this->id;
+	}
+
+	public function findRestaurantItems()
+	{
+		$sql = "SELECT mi.* ";
+		$sql.= "FROM item_restaurant as ir ";
+		$sql.= "INNER JOIN menu_item mi on ir.item_id = mi.id ";
+		$sql.= "WHERE restaurant_id = " . self::$database->escape_string($this->id);
+
+		return MenuItem::find_by_sql($sql);
 	}
 }
 ?>

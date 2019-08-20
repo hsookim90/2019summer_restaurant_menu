@@ -24,6 +24,8 @@ Menu Item Voting Page
 
 <div class="actions">
 	<a class="action" href="<?php echo url_for('/menu_item/new.php?id=' . h(u($id))); ?>">Add Item</a>
+	<br>
+	<a class="action" href="<?php echo url_for('/restaurant'); ?>">Restaurants List</a>
 </div>
 
 <form class = 'filters-bar' action = "<?php echo url_for("/index.php"); ?>" method = "GET">
@@ -44,9 +46,12 @@ Menu Item Voting Page
 <section class = "menu-items-display">
 
 <?php
-	$restaurant = Restaurant::find_by_id(1);
-	$restaurant->setFilter($filter);
-	$_SESSION['restaurant'] = $restaurant;
+	$restaurant = Restaurant::find_by_id($id);
+	if ($restaurant !== false)
+	{
+		$restaurant->setFilter($filter);
+		$_SESSION['restaurant'] = $restaurant;
+	}
 ?>
 
 <script type = "text/javascript">
