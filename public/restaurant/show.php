@@ -28,12 +28,13 @@ Menu Item Voting Page
 	<a class="action" href="<?php echo url_for('/restaurant'); ?>">Restaurants List</a>
 </div>
 
-<form class = 'filters-bar' action = "<?php echo url_for("/index.php"); ?>" method = "GET">
+<form class = 'filters-bar' action = "<?php echo url_for("/restaurant/show.php"); ?>" method = "GET">
 	<section class = "filters-row">
 			<button type = "submit" name = "filter" class ="" value = "upvotes">Upvotes</button>
 			<button type = "submit" name = "filter" class ="" value = "downvotes">DownVotes</button>
 			<button type = "submit" name = "filter" class ="" value = "alpha">Alpha</button>
 			<button type = "submit" name = "filter" class ="" value = "price">Price</button>
+			<input type ="hidden" name="id" value=<?php echo h(u($id));?>>
 	</section>
 </form>
 
