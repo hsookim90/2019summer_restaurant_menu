@@ -67,7 +67,7 @@ function upVote() {
 	}
 
   var xhr = new XMLHttpRequest();
-  xhr.open('POST', 'upvote.php', true);
+  xhr.open('POST', getSiteRoot() + '/public/upvote.php', true);
   xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
   xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
   xhr.onreadystatechange = function () {
@@ -93,7 +93,7 @@ function downVote() {
 	}
 
   var xhr = new XMLHttpRequest();
-  xhr.open('POST', 'downvote.php', true);
+  xhr.open('POST', getSiteRoot() + '/public/downvote.php', true);
   xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
   xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
   xhr.onreadystatechange = function () {
@@ -180,4 +180,24 @@ function escapeHTML(html)
   var temp = document.createElement('div');
   temp.textContent = html;
   return temp.innerHTML;
+}
+
+// source: https://www.codeproject.com/Questions/192023/Getting-absolute-path-with-JavaScript
+function getSiteRoot()
+{
+    var rootPath = window.location.protocol + "//" + window.location.host + "/";
+    if (window.location.hostname == "localhost")
+    {
+        var path = window.location.pathname;
+        if (path.indexOf("/") == 0)
+        {
+            path = path.substring(1);
+        }
+        path = path.split("/", 1);
+        if (path != "")
+        {
+            rootPath = rootPath + path + "/";
+        }
+    }
+    return rootPath;
 }
