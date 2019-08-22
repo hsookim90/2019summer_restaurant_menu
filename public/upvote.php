@@ -3,7 +3,6 @@
   // sleep(2);
 
 	require_once('../private/initialize.php');
-	session_start();
 
   function is_ajax_request() {
     return isset($_SERVER['HTTP_X_REQUESTED_WITH']) &&
