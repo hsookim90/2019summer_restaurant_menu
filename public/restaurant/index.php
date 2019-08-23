@@ -12,6 +12,7 @@ $restaurants = Restaurant::find_all();
 
     <div class="actions">
       <a class="action" href="<?php echo url_for('/restaurant/new.php'); ?>">Add Restaurant</a>
+      <a class="action" href="<?php echo url_for('/staff/admin/new.php'); ?>">Add User</a>
     </div>
 
   	<table class="list">

@@ -6,7 +6,6 @@ Menu Item Voting Page
 */
 
 	require_once('../private/initialize.php');
-	session_start();
 
 	// default filter is by upvote
 	$filter = $_GET['filter']??"upvotes";
